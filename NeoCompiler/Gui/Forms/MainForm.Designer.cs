@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.newFileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -45,6 +44,10 @@
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.panelContainer = new System.Windows.Forms.Panel();
+            this.sourceCodeModule = new NeoCompiler.Gui.Modules.SourceCodeModule();
+            this.analisisModule = new NeoCompiler.Gui.Modules.AnalisisModule();
+            this.explorerModule = new NeoCompiler.Gui.Modules.ExplorerModule();
+            this.outputModule = new NeoCompiler.Gui.Modules.OutputModule();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.toolStripButtonNewFile = new System.Windows.Forms.ToolStripButton();
             this.toolStripButtonOpenFile = new System.Windows.Forms.ToolStripButton();
@@ -57,10 +60,6 @@
             this.toolStripButtonCompile = new System.Windows.Forms.ToolStripButton();
             this.toolStripButtonRun = new System.Windows.Forms.ToolStripButton();
             this.toolStripButtonCompileAndRun = new System.Windows.Forms.ToolStripButton();
-            this.sourceCodeModule1 = new NeoCompiler.Gui.Modules.SourceCodeModule();
-            this.analisisModule1 = new NeoCompiler.Gui.Modules.AnalisisModule();
-            this.explorerModule1 = new NeoCompiler.Gui.Modules.ExplorerModule();
-            this.outputModule1 = new NeoCompiler.Gui.Modules.OutputModule();
             this.menuStrip1.SuspendLayout();
             this.panelContainer.SuspendLayout();
             this.toolStrip1.SuspendLayout();
@@ -179,16 +178,56 @@
             // 
             // panelContainer
             // 
-            this.panelContainer.Controls.Add(this.sourceCodeModule1);
-            this.panelContainer.Controls.Add(this.analisisModule1);
-            this.panelContainer.Controls.Add(this.explorerModule1);
-            this.panelContainer.Controls.Add(this.outputModule1);
+            this.panelContainer.Controls.Add(this.sourceCodeModule);
+            this.panelContainer.Controls.Add(this.analisisModule);
+            this.panelContainer.Controls.Add(this.explorerModule);
+            this.panelContainer.Controls.Add(this.outputModule);
             this.panelContainer.Controls.Add(this.toolStrip1);
             this.panelContainer.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelContainer.Location = new System.Drawing.Point(0, 28);
             this.panelContainer.Name = "panelContainer";
             this.panelContainer.Size = new System.Drawing.Size(1182, 625);
             this.panelContainer.TabIndex = 1;
+            // 
+            // sourceCodeModule
+            // 
+            this.sourceCodeModule.App = null;
+            this.sourceCodeModule.BackColor = System.Drawing.Color.Silver;
+            this.sourceCodeModule.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.sourceCodeModule.Location = new System.Drawing.Point(350, 27);
+            this.sourceCodeModule.Name = "sourceCodeModule";
+            this.sourceCodeModule.Padding = new System.Windows.Forms.Padding(6);
+            this.sourceCodeModule.Size = new System.Drawing.Size(482, 348);
+            this.sourceCodeModule.TabIndex = 4;
+            // 
+            // analisisModule
+            // 
+            this.analisisModule.App = null;
+            this.analisisModule.BackColor = System.Drawing.Color.Silver;
+            this.analisisModule.Dock = System.Windows.Forms.DockStyle.Right;
+            this.analisisModule.Location = new System.Drawing.Point(832, 27);
+            this.analisisModule.Name = "analisisModule";
+            this.analisisModule.Size = new System.Drawing.Size(350, 348);
+            this.analisisModule.TabIndex = 3;
+            // 
+            // explorerModule
+            // 
+            this.explorerModule.App = null;
+            this.explorerModule.BackColor = System.Drawing.Color.Silver;
+            this.explorerModule.Dock = System.Windows.Forms.DockStyle.Left;
+            this.explorerModule.Location = new System.Drawing.Point(0, 27);
+            this.explorerModule.Name = "explorerModule";
+            this.explorerModule.Size = new System.Drawing.Size(350, 348);
+            this.explorerModule.TabIndex = 2;
+            // 
+            // outputModule
+            // 
+            this.outputModule.App = null;
+            this.outputModule.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.outputModule.Location = new System.Drawing.Point(0, 375);
+            this.outputModule.Name = "outputModule";
+            this.outputModule.Size = new System.Drawing.Size(1182, 250);
+            this.outputModule.TabIndex = 1;
             // 
             // toolStrip1
             // 
@@ -214,34 +253,37 @@
             // toolStripButtonNewFile
             // 
             this.toolStripButtonNewFile.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButtonNewFile.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButtonNewFile.Image")));
+            this.toolStripButtonNewFile.Image = global::NeoCompiler.Properties.Resources.new_file;
             this.toolStripButtonNewFile.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButtonNewFile.Name = "toolStripButtonNewFile";
             this.toolStripButtonNewFile.Size = new System.Drawing.Size(24, 24);
             this.toolStripButtonNewFile.Text = "toolStripButton1";
+            this.toolStripButtonNewFile.Click += new System.EventHandler(this.toolStripButtonNewFile_Click);
             // 
             // toolStripButtonOpenFile
             // 
             this.toolStripButtonOpenFile.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButtonOpenFile.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButtonOpenFile.Image")));
+            this.toolStripButtonOpenFile.Image = global::NeoCompiler.Properties.Resources.open_file;
             this.toolStripButtonOpenFile.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButtonOpenFile.Name = "toolStripButtonOpenFile";
             this.toolStripButtonOpenFile.Size = new System.Drawing.Size(24, 24);
             this.toolStripButtonOpenFile.Text = "toolStripButton1";
+            this.toolStripButtonOpenFile.Click += new System.EventHandler(this.toolStripButtonOpenFile_Click);
             // 
             // toolStripButtonSaveFile
             // 
             this.toolStripButtonSaveFile.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButtonSaveFile.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButtonSaveFile.Image")));
+            this.toolStripButtonSaveFile.Image = global::NeoCompiler.Properties.Resources.save_all;
             this.toolStripButtonSaveFile.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButtonSaveFile.Name = "toolStripButtonSaveFile";
             this.toolStripButtonSaveFile.Size = new System.Drawing.Size(24, 24);
             this.toolStripButtonSaveFile.Text = "toolStripButton1";
+            this.toolStripButtonSaveFile.Click += new System.EventHandler(this.toolStripButtonSaveFile_Click);
             // 
             // toolStripButtonCloseFile
             // 
             this.toolStripButtonCloseFile.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButtonCloseFile.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButtonCloseFile.Image")));
+            this.toolStripButtonCloseFile.Image = global::NeoCompiler.Properties.Resources.close;
             this.toolStripButtonCloseFile.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButtonCloseFile.Name = "toolStripButtonCloseFile";
             this.toolStripButtonCloseFile.Size = new System.Drawing.Size(24, 24);
@@ -255,7 +297,7 @@
             // toolStripButtonUndo
             // 
             this.toolStripButtonUndo.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButtonUndo.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButtonUndo.Image")));
+            this.toolStripButtonUndo.Image = global::NeoCompiler.Properties.Resources.arrow_undo;
             this.toolStripButtonUndo.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButtonUndo.Name = "toolStripButtonUndo";
             this.toolStripButtonUndo.Size = new System.Drawing.Size(24, 24);
@@ -264,7 +306,7 @@
             // toolStripButtonRedo
             // 
             this.toolStripButtonRedo.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButtonRedo.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButtonRedo.Image")));
+            this.toolStripButtonRedo.Image = global::NeoCompiler.Properties.Resources.arrow_redo;
             this.toolStripButtonRedo.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButtonRedo.Name = "toolStripButtonRedo";
             this.toolStripButtonRedo.Size = new System.Drawing.Size(24, 24);
@@ -278,16 +320,17 @@
             // toolStripButtonCompile
             // 
             this.toolStripButtonCompile.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButtonCompile.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButtonCompile.Image")));
+            this.toolStripButtonCompile.Image = global::NeoCompiler.Properties.Resources.compile;
             this.toolStripButtonCompile.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButtonCompile.Name = "toolStripButtonCompile";
             this.toolStripButtonCompile.Size = new System.Drawing.Size(24, 24);
             this.toolStripButtonCompile.Text = "toolStripButton1";
+            this.toolStripButtonCompile.Click += new System.EventHandler(this.toolStripButtonCompile_Click);
             // 
             // toolStripButtonRun
             // 
             this.toolStripButtonRun.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButtonRun.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButtonRun.Image")));
+            this.toolStripButtonRun.Image = global::NeoCompiler.Properties.Resources.run;
             this.toolStripButtonRun.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButtonRun.Name = "toolStripButtonRun";
             this.toolStripButtonRun.Size = new System.Drawing.Size(24, 24);
@@ -296,47 +339,11 @@
             // toolStripButtonCompileAndRun
             // 
             this.toolStripButtonCompileAndRun.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButtonCompileAndRun.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButtonCompileAndRun.Image")));
+            this.toolStripButtonCompileAndRun.Image = global::NeoCompiler.Properties.Resources.compile_run;
             this.toolStripButtonCompileAndRun.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButtonCompileAndRun.Name = "toolStripButtonCompileAndRun";
             this.toolStripButtonCompileAndRun.Size = new System.Drawing.Size(24, 24);
             this.toolStripButtonCompileAndRun.Text = "toolStripButton1";
-            // 
-            // sourceCodeModule1
-            // 
-            this.sourceCodeModule1.BackColor = System.Drawing.Color.Silver;
-            this.sourceCodeModule1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.sourceCodeModule1.Location = new System.Drawing.Point(300, 27);
-            this.sourceCodeModule1.Name = "sourceCodeModule1";
-            this.sourceCodeModule1.Padding = new System.Windows.Forms.Padding(6);
-            this.sourceCodeModule1.Size = new System.Drawing.Size(582, 348);
-            this.sourceCodeModule1.TabIndex = 4;
-            // 
-            // analisisModule1
-            // 
-            this.analisisModule1.BackColor = System.Drawing.Color.Silver;
-            this.analisisModule1.Dock = System.Windows.Forms.DockStyle.Right;
-            this.analisisModule1.Location = new System.Drawing.Point(882, 27);
-            this.analisisModule1.Name = "analisisModule1";
-            this.analisisModule1.Size = new System.Drawing.Size(300, 348);
-            this.analisisModule1.TabIndex = 3;
-            // 
-            // explorerModule1
-            // 
-            this.explorerModule1.BackColor = System.Drawing.Color.Silver;
-            this.explorerModule1.Dock = System.Windows.Forms.DockStyle.Left;
-            this.explorerModule1.Location = new System.Drawing.Point(0, 27);
-            this.explorerModule1.Name = "explorerModule1";
-            this.explorerModule1.Size = new System.Drawing.Size(300, 348);
-            this.explorerModule1.TabIndex = 2;
-            // 
-            // outputModule1
-            // 
-            this.outputModule1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.outputModule1.Location = new System.Drawing.Point(0, 375);
-            this.outputModule1.Name = "outputModule1";
-            this.outputModule1.Size = new System.Drawing.Size(1182, 250);
-            this.outputModule1.TabIndex = 1;
             // 
             // MainForm
             // 
@@ -390,10 +397,10 @@
         private System.Windows.Forms.ToolStripButton toolStripButtonCompile;
         private System.Windows.Forms.ToolStripButton toolStripButtonRun;
         private System.Windows.Forms.ToolStripButton toolStripButtonCompileAndRun;
-        private Gui.Modules.SourceCodeModule sourceCodeModule1;
-        private Gui.Modules.AnalisisModule analisisModule1;
-        private Gui.Modules.ExplorerModule explorerModule1;
-        private Gui.Modules.OutputModule outputModule1;
+        private Gui.Modules.SourceCodeModule sourceCodeModule;
+        private Gui.Modules.AnalisisModule analisisModule;
+        private Gui.Modules.ExplorerModule explorerModule;
+        private Gui.Modules.OutputModule outputModule;
     }
 }
 

@@ -12,6 +12,13 @@ namespace NeoCompiler.Gui.Modules
 {
     public partial class AnalisisModule : UserControl
     {
+        private MainForm app;
+        public MainForm App
+        {
+            get { return app; }
+            set { app = value; }
+        }
+
         public AnalisisModule()
         {
             InitializeComponent();

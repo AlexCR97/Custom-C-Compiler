@@ -6,7 +6,6 @@ C:\Users\carp_\source\repos\NeoCompiler\NeoCompiler\obj\Debug\NeoCompiler.Gui.Co
 C:\Users\carp_\source\repos\NeoCompiler\NeoCompiler\obj\Debug\NeoCompiler.MainForm.resources
 C:\Users\carp_\source\repos\NeoCompiler\NeoCompiler\obj\Debug\NeoCompiler.Gui.Modules.AnalisisModule.resources
 C:\Users\carp_\source\repos\NeoCompiler\NeoCompiler\obj\Debug\NeoCompiler.Gui.Modules.ExplorerModule.resources
-C:\Users\carp_\source\repos\NeoCompiler\NeoCompiler\obj\Debug\NeoCompiler.Gui.Modules.NeoModule.resources
 C:\Users\carp_\source\repos\NeoCompiler\NeoCompiler\obj\Debug\NeoCompiler.Gui.Modules.OutputModule.resources
 C:\Users\carp_\source\repos\NeoCompiler\NeoCompiler\obj\Debug\NeoCompiler.Gui.Modules.SourceCodeModule.resources
 C:\Users\carp_\source\repos\NeoCompiler\NeoCompiler\obj\Debug\NeoCompiler.Properties.Resources.resources

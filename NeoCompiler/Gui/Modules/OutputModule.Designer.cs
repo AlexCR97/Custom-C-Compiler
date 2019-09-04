@@ -30,7 +30,7 @@
         {
             this.panelTitle = new System.Windows.Forms.Panel();
             this.labelTitle = new System.Windows.Forms.Label();
-            this.textBoxCode = new System.Windows.Forms.TextBox();
+            this.richTextBoxOutput = new System.Windows.Forms.RichTextBox();
             this.panelTitle.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -55,30 +55,30 @@
             this.labelTitle.TabIndex = 1;
             this.labelTitle.Text = "Output";
             // 
-            // textBoxCode
+            // richTextBoxOutput
             // 
-            this.textBoxCode.BackColor = System.Drawing.Color.Gray;
-            this.textBoxCode.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.textBoxCode.Font = new System.Drawing.Font("Consolas", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBoxCode.ForeColor = System.Drawing.Color.Black;
-            this.textBoxCode.Location = new System.Drawing.Point(0, 35);
-            this.textBoxCode.Multiline = true;
-            this.textBoxCode.Name = "textBoxCode";
-            this.textBoxCode.Size = new System.Drawing.Size(800, 215);
-            this.textBoxCode.TabIndex = 3;
+            this.richTextBoxOutput.BackColor = System.Drawing.Color.Silver;
+            this.richTextBoxOutput.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.richTextBoxOutput.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.richTextBoxOutput.Font = new System.Drawing.Font("Consolas", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.richTextBoxOutput.Location = new System.Drawing.Point(0, 35);
+            this.richTextBoxOutput.Name = "richTextBoxOutput";
+            this.richTextBoxOutput.ReadOnly = true;
+            this.richTextBoxOutput.Size = new System.Drawing.Size(800, 215);
+            this.richTextBoxOutput.TabIndex = 4;
+            this.richTextBoxOutput.Text = "";
             // 
             // OutputModule
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.textBoxCode);
+            this.Controls.Add(this.richTextBoxOutput);
             this.Controls.Add(this.panelTitle);
             this.Name = "OutputModule";
             this.Size = new System.Drawing.Size(800, 250);
             this.panelTitle.ResumeLayout(false);
             this.panelTitle.PerformLayout();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -86,6 +86,6 @@
 
         private System.Windows.Forms.Panel panelTitle;
         private System.Windows.Forms.Label labelTitle;
-        private System.Windows.Forms.TextBox textBoxCode;
+        private System.Windows.Forms.RichTextBox richTextBoxOutput;
     }
 }

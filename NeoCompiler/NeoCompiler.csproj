@@ -77,12 +77,6 @@
     <Compile Include="Gui\Modules\ExplorerModule.Designer.cs">
       <DependentUpon>ExplorerModule.cs</DependentUpon>
     </Compile>
-    <Compile Include="Gui\Modules\NeoModule.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Gui\Modules\NeoModule.Designer.cs">
-      <DependentUpon>NeoModule.cs</DependentUpon>
-    </Compile>
     <Compile Include="Gui\Modules\OutputModule.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -109,9 +103,6 @@
     <EmbeddedResource Include="Gui\Modules\ExplorerModule.resx">
       <DependentUpon>ExplorerModule.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Gui\Modules\NeoModule.resx">
-      <DependentUpon>NeoModule.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Gui\Modules\OutputModule.resx">
       <DependentUpon>OutputModule.cs</DependentUpon>
     </EmbeddedResource>
@@ -126,6 +117,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
@@ -141,6 +133,50 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <None Include="Resources\arrow-redo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\arrow-undo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\close.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\compile.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\compile-run.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\exit.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\loading1.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\logo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\new-file.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\open-file.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\run.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\save-all.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\search.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\settings.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\splash-screen.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

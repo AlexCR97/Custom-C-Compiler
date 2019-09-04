@@ -152,6 +152,7 @@ namespace NeoCompiler.Analyzer
             #region Production rules
 
             start.Rule =
+                functionDeclaration + start |
                 functionDeclaration;
 
             functionDeclaration.Rule =
@@ -171,6 +172,11 @@ namespace NeoCompiler.Analyzer
             functionBlock.Rule =
                 curlyBraceOpen_ + curlyBraceClose_ |
                 curlyBraceOpen_ + statementList + curlyBraceClose_;
+
+            // void main() {}
+            // int max() {}
+            // double peso() {}
+
 
             statementList.Rule =
                 statement + semicolon_ + statementList |

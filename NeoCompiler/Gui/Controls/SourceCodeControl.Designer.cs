@@ -29,12 +29,12 @@
         private void InitializeComponent()
         {
             this.textBoxLines = new System.Windows.Forms.TextBox();
-            this.textBoxCode = new System.Windows.Forms.TextBox();
+            this.richTextBoxCode = new System.Windows.Forms.RichTextBox();
             this.SuspendLayout();
             // 
             // textBoxLines
             // 
-            this.textBoxLines.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(35)))), ((int)(((byte)(35)))));
+            this.textBoxLines.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.textBoxLines.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textBoxLines.Dock = System.Windows.Forms.DockStyle.Left;
             this.textBoxLines.Font = new System.Drawing.Font("Consolas", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -45,23 +45,23 @@
             this.textBoxLines.Size = new System.Drawing.Size(40, 400);
             this.textBoxLines.TabIndex = 1;
             // 
-            // textBoxCode
+            // richTextBoxCode
             // 
-            this.textBoxCode.BackColor = System.Drawing.Color.Gray;
-            this.textBoxCode.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.textBoxCode.Font = new System.Drawing.Font("Consolas", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBoxCode.ForeColor = System.Drawing.Color.Black;
-            this.textBoxCode.Location = new System.Drawing.Point(40, 0);
-            this.textBoxCode.Multiline = true;
-            this.textBoxCode.Name = "textBoxCode";
-            this.textBoxCode.Size = new System.Drawing.Size(360, 400);
-            this.textBoxCode.TabIndex = 2;
+            this.richTextBoxCode.BackColor = System.Drawing.Color.LightGray;
+            this.richTextBoxCode.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.richTextBoxCode.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.richTextBoxCode.Font = new System.Drawing.Font("Consolas", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.richTextBoxCode.Location = new System.Drawing.Point(40, 0);
+            this.richTextBoxCode.Name = "richTextBoxCode";
+            this.richTextBoxCode.Size = new System.Drawing.Size(360, 400);
+            this.richTextBoxCode.TabIndex = 3;
+            this.richTextBoxCode.Text = "";
             // 
             // SourceCodeControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.textBoxCode);
+            this.Controls.Add(this.richTextBoxCode);
             this.Controls.Add(this.textBoxLines);
             this.Name = "SourceCodeControl";
             this.Size = new System.Drawing.Size(400, 400);
@@ -73,6 +73,6 @@
         #endregion
 
         private System.Windows.Forms.TextBox textBoxLines;
-        private System.Windows.Forms.TextBox textBoxCode;
+        private System.Windows.Forms.RichTextBox richTextBoxCode;
     }
 }

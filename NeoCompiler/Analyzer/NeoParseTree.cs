@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
 using Irony.Ast;
 using Irony.Parsing;
 
@@ -28,10 +27,10 @@ namespace NeoCompiler.Analyzer
         private void Traverse(ParseTreeNode root, List<ParseTreeNode> nodes)
         {
             nodes.Add(root);
-            foreach (var node in root.ChildNodes)
+            root.ChildNodes.ForEach(node =>
             {
                 Traverse(node, nodes);
-            }
+            });
         }
 
         public override string ToString()
