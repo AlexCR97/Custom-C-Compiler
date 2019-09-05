@@ -1,0 +1,78 @@
+﻿namespace NeoCompiler.Gui.Controles
+{
+    partial class ControlCodigo
+    {
+        /// <summary> 
+        /// Required designer variable.
+        /// </summary>
+        private System.ComponentModel.IContainer components = null;
+
+        /// <summary> 
+        /// Clean up any resources being used.
+        /// </summary>
+        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing && (components != null))
+            {
+                components.Dispose();
+            }
+            base.Dispose(disposing);
+        }
+
+        #region Component Designer generated code
+
+        /// <summary> 
+        /// Required method for Designer support - do not modify 
+        /// the contents of this method with the code editor.
+        /// </summary>
+        private void InitializeComponent()
+        {
+            this.textBoxLineas = new System.Windows.Forms.TextBox();
+            this.richTextBoxCodigo = new System.Windows.Forms.RichTextBox();
+            this.SuspendLayout();
+            // 
+            // textBoxLineas
+            // 
+            this.textBoxLineas.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.textBoxLineas.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBoxLineas.Dock = System.Windows.Forms.DockStyle.Left;
+            this.textBoxLineas.Font = new System.Drawing.Font("Consolas", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBoxLineas.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.textBoxLineas.Location = new System.Drawing.Point(0, 0);
+            this.textBoxLineas.Multiline = true;
+            this.textBoxLineas.Name = "textBoxLineas";
+            this.textBoxLineas.Size = new System.Drawing.Size(40, 400);
+            this.textBoxLineas.TabIndex = 1;
+            // 
+            // richTextBoxCodigo
+            // 
+            this.richTextBoxCodigo.BackColor = System.Drawing.Color.LightGray;
+            this.richTextBoxCodigo.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.richTextBoxCodigo.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.richTextBoxCodigo.Font = new System.Drawing.Font("Consolas", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.richTextBoxCodigo.Location = new System.Drawing.Point(40, 0);
+            this.richTextBoxCodigo.Name = "richTextBoxCodigo";
+            this.richTextBoxCodigo.Size = new System.Drawing.Size(360, 400);
+            this.richTextBoxCodigo.TabIndex = 3;
+            this.richTextBoxCodigo.Text = "";
+            // 
+            // ControlCodigo
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.richTextBoxCodigo);
+            this.Controls.Add(this.textBoxLineas);
+            this.Name = "ControlCodigo";
+            this.Size = new System.Drawing.Size(400, 400);
+            this.ResumeLayout(false);
+            this.PerformLayout();
+
+        }
+
+        #endregion
+
+        private System.Windows.Forms.TextBox textBoxLineas;
+        private System.Windows.Forms.RichTextBox richTextBoxCodigo;
+    }
+}

@@ -1,6 +1,6 @@
-﻿namespace NeoCompiler.Gui.Modules
+﻿namespace NeoCompiler.Gui.Modulos
 {
-    partial class AnalisisModule
+    partial class ModuloAnalisis
     {
         /// <summary> 
         /// Required designer variable.
@@ -30,12 +30,13 @@
         {
             this.panelTitle = new System.Windows.Forms.Panel();
             this.labelTitle = new System.Windows.Forms.Label();
-            this.tabControlAnalyzers = new System.Windows.Forms.TabControl();
-            this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.tabControlAnalizadores = new System.Windows.Forms.TabControl();
+            this.tabPageLexico = new System.Windows.Forms.TabPage();
+            this.tabPageSintactico = new System.Windows.Forms.TabPage();
             this.panelContainer = new System.Windows.Forms.Panel();
+            this.tabPageSemantico = new System.Windows.Forms.TabPage();
             this.panelTitle.SuspendLayout();
-            this.tabControlAnalyzers.SuspendLayout();
+            this.tabControlAnalizadores.SuspendLayout();
             this.panelContainer.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -60,40 +61,41 @@
             this.labelTitle.TabIndex = 1;
             this.labelTitle.Text = "Analisis";
             // 
-            // tabControlAnalyzers
+            // tabControlAnalizadores
             // 
-            this.tabControlAnalyzers.Controls.Add(this.tabPage1);
-            this.tabControlAnalyzers.Controls.Add(this.tabPage2);
-            this.tabControlAnalyzers.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tabControlAnalyzers.Location = new System.Drawing.Point(6, 6);
-            this.tabControlAnalyzers.Name = "tabControlAnalyzers";
-            this.tabControlAnalyzers.SelectedIndex = 0;
-            this.tabControlAnalyzers.Size = new System.Drawing.Size(488, 553);
-            this.tabControlAnalyzers.TabIndex = 5;
+            this.tabControlAnalizadores.Controls.Add(this.tabPageLexico);
+            this.tabControlAnalizadores.Controls.Add(this.tabPageSintactico);
+            this.tabControlAnalizadores.Controls.Add(this.tabPageSemantico);
+            this.tabControlAnalizadores.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tabControlAnalizadores.Location = new System.Drawing.Point(6, 6);
+            this.tabControlAnalizadores.Name = "tabControlAnalizadores";
+            this.tabControlAnalizadores.SelectedIndex = 0;
+            this.tabControlAnalizadores.Size = new System.Drawing.Size(488, 553);
+            this.tabControlAnalizadores.TabIndex = 5;
             // 
-            // tabPage1
+            // tabPageLexico
             // 
-            this.tabPage1.Location = new System.Drawing.Point(4, 25);
-            this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(480, 524);
-            this.tabPage1.TabIndex = 0;
-            this.tabPage1.Text = "tabPage1";
-            this.tabPage1.UseVisualStyleBackColor = true;
+            this.tabPageLexico.Location = new System.Drawing.Point(4, 25);
+            this.tabPageLexico.Name = "tabPageLexico";
+            this.tabPageLexico.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPageLexico.Size = new System.Drawing.Size(480, 524);
+            this.tabPageLexico.TabIndex = 0;
+            this.tabPageLexico.Text = "Lexico";
+            this.tabPageLexico.UseVisualStyleBackColor = true;
             // 
-            // tabPage2
+            // tabPageSintactico
             // 
-            this.tabPage2.Location = new System.Drawing.Point(4, 25);
-            this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(192, 71);
-            this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "tabPage2";
-            this.tabPage2.UseVisualStyleBackColor = true;
+            this.tabPageSintactico.Location = new System.Drawing.Point(4, 25);
+            this.tabPageSintactico.Name = "tabPageSintactico";
+            this.tabPageSintactico.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPageSintactico.Size = new System.Drawing.Size(480, 524);
+            this.tabPageSintactico.TabIndex = 1;
+            this.tabPageSintactico.Text = "Sintactico";
+            this.tabPageSintactico.UseVisualStyleBackColor = true;
             // 
             // panelContainer
             // 
-            this.panelContainer.Controls.Add(this.tabControlAnalyzers);
+            this.panelContainer.Controls.Add(this.tabControlAnalizadores);
             this.panelContainer.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelContainer.Location = new System.Drawing.Point(0, 35);
             this.panelContainer.Name = "panelContainer";
@@ -101,18 +103,28 @@
             this.panelContainer.Size = new System.Drawing.Size(500, 565);
             this.panelContainer.TabIndex = 6;
             // 
-            // AnalisisModule
+            // tabPageSemantico
+            // 
+            this.tabPageSemantico.Location = new System.Drawing.Point(4, 25);
+            this.tabPageSemantico.Name = "tabPageSemantico";
+            this.tabPageSemantico.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPageSemantico.Size = new System.Drawing.Size(480, 524);
+            this.tabPageSemantico.TabIndex = 2;
+            this.tabPageSemantico.Text = "Semantico";
+            this.tabPageSemantico.UseVisualStyleBackColor = true;
+            // 
+            // ModuloAnalisis
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Silver;
             this.Controls.Add(this.panelContainer);
             this.Controls.Add(this.panelTitle);
-            this.Name = "AnalisisModule";
+            this.Name = "ModuloAnalisis";
             this.Size = new System.Drawing.Size(500, 600);
             this.panelTitle.ResumeLayout(false);
             this.panelTitle.PerformLayout();
-            this.tabControlAnalyzers.ResumeLayout(false);
+            this.tabControlAnalizadores.ResumeLayout(false);
             this.panelContainer.ResumeLayout(false);
             this.ResumeLayout(false);
 
@@ -122,9 +134,10 @@
 
         private System.Windows.Forms.Panel panelTitle;
         private System.Windows.Forms.Label labelTitle;
-        private System.Windows.Forms.TabControl tabControlAnalyzers;
-        private System.Windows.Forms.TabPage tabPage1;
-        private System.Windows.Forms.TabPage tabPage2;
+        private System.Windows.Forms.TabControl tabControlAnalizadores;
+        private System.Windows.Forms.TabPage tabPageLexico;
+        private System.Windows.Forms.TabPage tabPageSintactico;
         private System.Windows.Forms.Panel panelContainer;
+        private System.Windows.Forms.TabPage tabPageSemantico;
     }
 }

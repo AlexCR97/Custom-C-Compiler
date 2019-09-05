@@ -1,6 +1,6 @@
-﻿namespace NeoCompiler.Gui.Modules
+﻿namespace NeoCompiler.Gui.Modulos
 {
-    partial class OutputModule
+    partial class ModuloSalida
     {
         /// <summary> 
         /// Required designer variable.
@@ -30,7 +30,7 @@
         {
             this.panelTitle = new System.Windows.Forms.Panel();
             this.labelTitle = new System.Windows.Forms.Label();
-            this.richTextBoxOutput = new System.Windows.Forms.RichTextBox();
+            this.richTextBoxSalida = new System.Windows.Forms.RichTextBox();
             this.panelTitle.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -51,30 +51,30 @@
             this.labelTitle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.labelTitle.Location = new System.Drawing.Point(3, 7);
             this.labelTitle.Name = "labelTitle";
-            this.labelTitle.Size = new System.Drawing.Size(59, 20);
+            this.labelTitle.Size = new System.Drawing.Size(55, 20);
             this.labelTitle.TabIndex = 1;
-            this.labelTitle.Text = "Output";
+            this.labelTitle.Text = "Salida";
             // 
-            // richTextBoxOutput
+            // richTextBoxSalida
             // 
-            this.richTextBoxOutput.BackColor = System.Drawing.Color.Silver;
-            this.richTextBoxOutput.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.richTextBoxOutput.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.richTextBoxOutput.Font = new System.Drawing.Font("Consolas", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.richTextBoxOutput.Location = new System.Drawing.Point(0, 35);
-            this.richTextBoxOutput.Name = "richTextBoxOutput";
-            this.richTextBoxOutput.ReadOnly = true;
-            this.richTextBoxOutput.Size = new System.Drawing.Size(800, 215);
-            this.richTextBoxOutput.TabIndex = 4;
-            this.richTextBoxOutput.Text = "";
+            this.richTextBoxSalida.BackColor = System.Drawing.Color.Silver;
+            this.richTextBoxSalida.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.richTextBoxSalida.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.richTextBoxSalida.Font = new System.Drawing.Font("Consolas", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.richTextBoxSalida.Location = new System.Drawing.Point(0, 35);
+            this.richTextBoxSalida.Name = "richTextBoxSalida";
+            this.richTextBoxSalida.ReadOnly = true;
+            this.richTextBoxSalida.Size = new System.Drawing.Size(800, 215);
+            this.richTextBoxSalida.TabIndex = 4;
+            this.richTextBoxSalida.Text = "";
             // 
-            // OutputModule
+            // ModuloSalida
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.richTextBoxOutput);
+            this.Controls.Add(this.richTextBoxSalida);
             this.Controls.Add(this.panelTitle);
-            this.Name = "OutputModule";
+            this.Name = "ModuloSalida";
             this.Size = new System.Drawing.Size(800, 250);
             this.panelTitle.ResumeLayout(false);
             this.panelTitle.PerformLayout();
@@ -86,6 +86,6 @@
 
         private System.Windows.Forms.Panel panelTitle;
         private System.Windows.Forms.Label labelTitle;
-        private System.Windows.Forms.RichTextBox richTextBoxOutput;
+        private System.Windows.Forms.RichTextBox richTextBoxSalida;
     }
 }

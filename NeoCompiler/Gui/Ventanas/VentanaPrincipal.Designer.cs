@@ -1,6 +1,6 @@
 ﻿namespace NeoCompiler
 {
-    partial class MainForm
+    partial class VentanaPrincipal
     {
         /// <summary>
         /// Required designer variable.
@@ -44,10 +44,10 @@
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.panelContainer = new System.Windows.Forms.Panel();
-            this.sourceCodeModule = new NeoCompiler.Gui.Modules.SourceCodeModule();
-            this.analisisModule = new NeoCompiler.Gui.Modules.AnalisisModule();
-            this.explorerModule = new NeoCompiler.Gui.Modules.ExplorerModule();
-            this.outputModule = new NeoCompiler.Gui.Modules.OutputModule();
+            this.moduloCodigo = new NeoCompiler.Gui.Modulos.ModuloCodigo();
+            this.moduloAnalisis = new NeoCompiler.Gui.Modulos.ModuloAnalisis();
+            this.moduloExplorador = new NeoCompiler.Gui.Modulos.ModuloExplorador();
+            this.moduloSalida = new NeoCompiler.Gui.Modulos.ModuloSalida();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.toolStripButtonNewFile = new System.Windows.Forms.ToolStripButton();
             this.toolStripButtonOpenFile = new System.Windows.Forms.ToolStripButton();
@@ -178,10 +178,10 @@
             // 
             // panelContainer
             // 
-            this.panelContainer.Controls.Add(this.sourceCodeModule);
-            this.panelContainer.Controls.Add(this.analisisModule);
-            this.panelContainer.Controls.Add(this.explorerModule);
-            this.panelContainer.Controls.Add(this.outputModule);
+            this.panelContainer.Controls.Add(this.moduloCodigo);
+            this.panelContainer.Controls.Add(this.moduloAnalisis);
+            this.panelContainer.Controls.Add(this.moduloExplorador);
+            this.panelContainer.Controls.Add(this.moduloSalida);
             this.panelContainer.Controls.Add(this.toolStrip1);
             this.panelContainer.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelContainer.Location = new System.Drawing.Point(0, 28);
@@ -189,45 +189,45 @@
             this.panelContainer.Size = new System.Drawing.Size(1182, 625);
             this.panelContainer.TabIndex = 1;
             // 
-            // sourceCodeModule
+            // moduloCodigo
             // 
-            this.sourceCodeModule.App = null;
-            this.sourceCodeModule.BackColor = System.Drawing.Color.Silver;
-            this.sourceCodeModule.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.sourceCodeModule.Location = new System.Drawing.Point(350, 27);
-            this.sourceCodeModule.Name = "sourceCodeModule";
-            this.sourceCodeModule.Padding = new System.Windows.Forms.Padding(6);
-            this.sourceCodeModule.Size = new System.Drawing.Size(482, 348);
-            this.sourceCodeModule.TabIndex = 4;
+            this.moduloCodigo.App = null;
+            this.moduloCodigo.BackColor = System.Drawing.Color.Silver;
+            this.moduloCodigo.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.moduloCodigo.Location = new System.Drawing.Point(350, 27);
+            this.moduloCodigo.Name = "moduloCodigo";
+            this.moduloCodigo.Padding = new System.Windows.Forms.Padding(6);
+            this.moduloCodigo.Size = new System.Drawing.Size(482, 348);
+            this.moduloCodigo.TabIndex = 4;
             // 
-            // analisisModule
+            // moduloAnalisis
             // 
-            this.analisisModule.App = null;
-            this.analisisModule.BackColor = System.Drawing.Color.Silver;
-            this.analisisModule.Dock = System.Windows.Forms.DockStyle.Right;
-            this.analisisModule.Location = new System.Drawing.Point(832, 27);
-            this.analisisModule.Name = "analisisModule";
-            this.analisisModule.Size = new System.Drawing.Size(350, 348);
-            this.analisisModule.TabIndex = 3;
+            this.moduloAnalisis.App = null;
+            this.moduloAnalisis.BackColor = System.Drawing.Color.Silver;
+            this.moduloAnalisis.Dock = System.Windows.Forms.DockStyle.Right;
+            this.moduloAnalisis.Location = new System.Drawing.Point(832, 27);
+            this.moduloAnalisis.Name = "moduloAnalisis";
+            this.moduloAnalisis.Size = new System.Drawing.Size(350, 348);
+            this.moduloAnalisis.TabIndex = 3;
             // 
-            // explorerModule
+            // moduloExplorador
             // 
-            this.explorerModule.App = null;
-            this.explorerModule.BackColor = System.Drawing.Color.Silver;
-            this.explorerModule.Dock = System.Windows.Forms.DockStyle.Left;
-            this.explorerModule.Location = new System.Drawing.Point(0, 27);
-            this.explorerModule.Name = "explorerModule";
-            this.explorerModule.Size = new System.Drawing.Size(350, 348);
-            this.explorerModule.TabIndex = 2;
+            this.moduloExplorador.App = null;
+            this.moduloExplorador.BackColor = System.Drawing.Color.Silver;
+            this.moduloExplorador.Dock = System.Windows.Forms.DockStyle.Left;
+            this.moduloExplorador.Location = new System.Drawing.Point(0, 27);
+            this.moduloExplorador.Name = "moduloExplorador";
+            this.moduloExplorador.Size = new System.Drawing.Size(350, 348);
+            this.moduloExplorador.TabIndex = 2;
             // 
-            // outputModule
+            // moduloSalida
             // 
-            this.outputModule.App = null;
-            this.outputModule.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.outputModule.Location = new System.Drawing.Point(0, 375);
-            this.outputModule.Name = "outputModule";
-            this.outputModule.Size = new System.Drawing.Size(1182, 250);
-            this.outputModule.TabIndex = 1;
+            this.moduloSalida.App = null;
+            this.moduloSalida.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.moduloSalida.Location = new System.Drawing.Point(0, 375);
+            this.moduloSalida.Name = "moduloSalida";
+            this.moduloSalida.Size = new System.Drawing.Size(1182, 250);
+            this.moduloSalida.TabIndex = 1;
             // 
             // toolStrip1
             // 
@@ -288,6 +288,7 @@
             this.toolStripButtonCloseFile.Name = "toolStripButtonCloseFile";
             this.toolStripButtonCloseFile.Size = new System.Drawing.Size(24, 24);
             this.toolStripButtonCloseFile.Text = "toolStripButton1";
+            this.toolStripButtonCloseFile.Click += new System.EventHandler(this.toolStripButtonCloseFile_Click);
             // 
             // toolStripSeparator1
             // 
@@ -345,7 +346,7 @@
             this.toolStripButtonCompileAndRun.Size = new System.Drawing.Size(24, 24);
             this.toolStripButtonCompileAndRun.Text = "toolStripButton1";
             // 
-            // MainForm
+            // VentanaPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -353,7 +354,7 @@
             this.Controls.Add(this.panelContainer);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
-            this.Name = "MainForm";
+            this.Name = "VentanaPrincipal";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Neo Compiler";
             this.menuStrip1.ResumeLayout(false);
@@ -397,10 +398,10 @@
         private System.Windows.Forms.ToolStripButton toolStripButtonCompile;
         private System.Windows.Forms.ToolStripButton toolStripButtonRun;
         private System.Windows.Forms.ToolStripButton toolStripButtonCompileAndRun;
-        private Gui.Modules.SourceCodeModule sourceCodeModule;
-        private Gui.Modules.AnalisisModule analisisModule;
-        private Gui.Modules.ExplorerModule explorerModule;
-        private Gui.Modules.OutputModule outputModule;
+        private Gui.Modulos.ModuloCodigo moduloCodigo;
+        private Gui.Modulos.ModuloAnalisis moduloAnalisis;
+        private Gui.Modulos.ModuloExplorador moduloExplorador;
+        private Gui.Modulos.ModuloSalida moduloSalida;
     }
 }
 

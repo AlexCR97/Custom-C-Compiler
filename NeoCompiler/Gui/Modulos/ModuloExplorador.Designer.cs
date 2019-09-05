@@ -1,6 +1,6 @@
-﻿namespace NeoCompiler.Gui.Modules
+﻿namespace NeoCompiler.Gui.Modulos
 {
-    partial class ExplorerModule
+    partial class ModuloExplorador
     {
         /// <summary> 
         /// Required designer variable.
@@ -51,9 +51,9 @@
             this.labelTitle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.labelTitle.Location = new System.Drawing.Point(3, 7);
             this.labelTitle.Name = "labelTitle";
-            this.labelTitle.Size = new System.Drawing.Size(71, 20);
+            this.labelTitle.Size = new System.Drawing.Size(89, 20);
             this.labelTitle.TabIndex = 1;
-            this.labelTitle.Text = "Explorer";
+            this.labelTitle.Text = "Explorador";
             // 
             // treeViewFiles
             // 
@@ -64,14 +64,14 @@
             this.treeViewFiles.Size = new System.Drawing.Size(500, 565);
             this.treeViewFiles.TabIndex = 3;
             // 
-            // ExplorerModule
+            // ModuloExplorador
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Silver;
             this.Controls.Add(this.treeViewFiles);
             this.Controls.Add(this.panelTitle);
-            this.Name = "ExplorerModule";
+            this.Name = "ModuloExplorador";
             this.Size = new System.Drawing.Size(500, 600);
             this.panelTitle.ResumeLayout(false);
             this.panelTitle.PerformLayout();

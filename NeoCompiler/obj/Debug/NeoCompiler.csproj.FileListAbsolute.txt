@@ -2,12 +2,6 @@ C:\Users\carp_\source\repos\NeoCompiler\NeoCompiler\bin\Debug\NeoCompiler.exe.co
 C:\Users\carp_\source\repos\NeoCompiler\NeoCompiler\bin\Debug\NeoCompiler.exe
 C:\Users\carp_\source\repos\NeoCompiler\NeoCompiler\bin\Debug\NeoCompiler.pdb
 C:\Users\carp_\source\repos\NeoCompiler\NeoCompiler\bin\Debug\Irony.dll
-C:\Users\carp_\source\repos\NeoCompiler\NeoCompiler\obj\Debug\NeoCompiler.Gui.Controls.SourceCodeControl.resources
-C:\Users\carp_\source\repos\NeoCompiler\NeoCompiler\obj\Debug\NeoCompiler.MainForm.resources
-C:\Users\carp_\source\repos\NeoCompiler\NeoCompiler\obj\Debug\NeoCompiler.Gui.Modules.AnalisisModule.resources
-C:\Users\carp_\source\repos\NeoCompiler\NeoCompiler\obj\Debug\NeoCompiler.Gui.Modules.ExplorerModule.resources
-C:\Users\carp_\source\repos\NeoCompiler\NeoCompiler\obj\Debug\NeoCompiler.Gui.Modules.OutputModule.resources
-C:\Users\carp_\source\repos\NeoCompiler\NeoCompiler\obj\Debug\NeoCompiler.Gui.Modules.SourceCodeModule.resources
 C:\Users\carp_\source\repos\NeoCompiler\NeoCompiler\obj\Debug\NeoCompiler.Properties.Resources.resources
 C:\Users\carp_\source\repos\NeoCompiler\NeoCompiler\obj\Debug\NeoCompiler.csproj.GenerateResource.cache
 C:\Users\carp_\source\repos\NeoCompiler\NeoCompiler\obj\Debug\NeoCompiler.csproj.CoreCompileInputs.cache
@@ -15,3 +9,9 @@ C:\Users\carp_\source\repos\NeoCompiler\NeoCompiler\obj\Debug\NeoCompiler.csproj
 C:\Users\carp_\source\repos\NeoCompiler\NeoCompiler\obj\Debug\NeoCompiler.exe
 C:\Users\carp_\source\repos\NeoCompiler\NeoCompiler\obj\Debug\NeoCompiler.pdb
 C:\Users\carp_\source\repos\NeoCompiler\NeoCompiler\obj\Debug\NeoCompiler.csprojAssemblyReference.cache
+C:\Users\carp_\source\repos\NeoCompiler\NeoCompiler\obj\Debug\NeoCompiler.Gui.Controles.ControlCodigo.resources
+C:\Users\carp_\source\repos\NeoCompiler\NeoCompiler\obj\Debug\NeoCompiler.VentanaPrincipal.resources
+C:\Users\carp_\source\repos\NeoCompiler\NeoCompiler\obj\Debug\NeoCompiler.Gui.Modulos.ModuloAnalisis.resources
+C:\Users\carp_\source\repos\NeoCompiler\NeoCompiler\obj\Debug\NeoCompiler.Gui.Modulos.ModuloExplorador.resources
+C:\Users\carp_\source\repos\NeoCompiler\NeoCompiler\obj\Debug\NeoCompiler.Gui.Modulos.ModuloSalida.resources
+C:\Users\carp_\source\repos\NeoCompiler\NeoCompiler\obj\Debug\NeoCompiler.Gui.Modulos.ModuloCodigo.resources

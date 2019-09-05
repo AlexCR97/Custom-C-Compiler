@@ -1,6 +1,6 @@
-﻿namespace NeoCompiler.Gui.Modules
+﻿namespace NeoCompiler.Gui.Modulos
 {
-    partial class SourceCodeModule
+    partial class ModuloCodigo
     {
         /// <summary> 
         /// Required designer variable.
@@ -28,25 +28,25 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.tabControl = new System.Windows.Forms.TabControl();
+            this.tabControlPestanas = new System.Windows.Forms.TabControl();
             this.SuspendLayout();
             // 
-            // tabControl
+            // tabControlArchivos
             // 
-            this.tabControl.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tabControl.Location = new System.Drawing.Point(6, 6);
-            this.tabControl.Name = "tabControl";
-            this.tabControl.SelectedIndex = 0;
-            this.tabControl.Size = new System.Drawing.Size(488, 588);
-            this.tabControl.TabIndex = 0;
+            this.tabControlPestanas.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tabControlPestanas.Location = new System.Drawing.Point(6, 6);
+            this.tabControlPestanas.Name = "tabControlArchivos";
+            this.tabControlPestanas.SelectedIndex = 0;
+            this.tabControlPestanas.Size = new System.Drawing.Size(488, 588);
+            this.tabControlPestanas.TabIndex = 0;
             // 
-            // SourceCodeModule
+            // ModuloCodigo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Silver;
-            this.Controls.Add(this.tabControl);
-            this.Name = "SourceCodeModule";
+            this.Controls.Add(this.tabControlPestanas);
+            this.Name = "ModuloCodigo";
             this.Padding = new System.Windows.Forms.Padding(6);
             this.Size = new System.Drawing.Size(500, 600);
             this.ResumeLayout(false);
@@ -54,6 +54,6 @@
         }
 
         #endregion
-        private System.Windows.Forms.TabControl tabControl;
+        private System.Windows.Forms.TabControl tabControlPestanas;
     }
 }

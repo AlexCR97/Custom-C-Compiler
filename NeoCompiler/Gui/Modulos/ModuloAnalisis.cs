@@ -8,18 +8,18 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace NeoCompiler.Gui.Modules
+namespace NeoCompiler.Gui.Modulos
 {
-    public partial class AnalisisModule : UserControl
+    public partial class ModuloAnalisis : UserControl
     {
-        private MainForm app;
-        public MainForm App
+        private VentanaPrincipal app;
+        public VentanaPrincipal App
         {
             get { return app; }
             set { app = value; }
         }
 
-        public AnalisisModule()
+        public ModuloAnalisis()
         {
             InitializeComponent();
         }

@@ -49,65 +49,67 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Analyzer\NeoGrammar.cs" />
-    <Compile Include="Analyzer\NeoGrammar2.cs" />
-    <Compile Include="Analyzer\NeoParser.cs" />
-    <Compile Include="Analyzer\NeoParseTree.cs" />
-    <Compile Include="Gui\Controls\SourceCodeControl.cs">
+    <Compile Include="Analizador\Gramatica.cs" />
+    <Compile Include="Analizador\Semantico.cs" />
+    <Compile Include="Analizador\Simbolo.cs" />
+    <Compile Include="Analizador\Sintactico.cs" />
+    <Compile Include="Analizador\ArbolSintaxis.cs" />
+    <Compile Include="Analizador\TablaSimbolos.cs" />
+    <Compile Include="Gui\Controles\ControlCodigo.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Gui\Controls\SourceCodeControl.Designer.cs">
-      <DependentUpon>SourceCodeControl.cs</DependentUpon>
+    <Compile Include="Gui\Controles\ControlCodigo.Designer.cs">
+      <DependentUpon>ControlCodigo.cs</DependentUpon>
     </Compile>
-    <Compile Include="Gui\Forms\MainForm.cs">
+    <Compile Include="Gui\Ventanas\VentanaPrincipal.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Gui\Forms\MainForm.Designer.cs">
-      <DependentUpon>MainForm.cs</DependentUpon>
+    <Compile Include="Gui\Ventanas\VentanaPrincipal.Designer.cs">
+      <DependentUpon>VentanaPrincipal.cs</DependentUpon>
     </Compile>
-    <Compile Include="Gui\Modules\AnalisisModule.cs">
+    <Compile Include="Gui\Modulos\ModuloAnalisis.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Gui\Modules\AnalisisModule.Designer.cs">
-      <DependentUpon>AnalisisModule.cs</DependentUpon>
+    <Compile Include="Gui\Modulos\ModuloAnalisis.Designer.cs">
+      <DependentUpon>ModuloAnalisis.cs</DependentUpon>
     </Compile>
-    <Compile Include="Gui\Modules\ExplorerModule.cs">
+    <Compile Include="Gui\Modulos\ModuloExplorador.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Gui\Modules\ExplorerModule.Designer.cs">
-      <DependentUpon>ExplorerModule.cs</DependentUpon>
+    <Compile Include="Gui\Modulos\ModuloExplorador.Designer.cs">
+      <DependentUpon>ModuloExplorador.cs</DependentUpon>
     </Compile>
-    <Compile Include="Gui\Modules\OutputModule.cs">
+    <Compile Include="Gui\Modulos\ModuloSalida.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Gui\Modules\OutputModule.Designer.cs">
-      <DependentUpon>OutputModule.cs</DependentUpon>
+    <Compile Include="Gui\Modulos\ModuloSalida.Designer.cs">
+      <DependentUpon>ModuloSalida.cs</DependentUpon>
     </Compile>
-    <Compile Include="Gui\Modules\SourceCodeModule.cs">
+    <Compile Include="Gui\Modulos\ModuloCodigo.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Gui\Modules\SourceCodeModule.Designer.cs">
-      <DependentUpon>SourceCodeModule.cs</DependentUpon>
+    <Compile Include="Gui\Modulos\ModuloCodigo.Designer.cs">
+      <DependentUpon>ModuloCodigo.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="Gui\Controls\SourceCodeControl.resx">
-      <DependentUpon>SourceCodeControl.cs</DependentUpon>
+    <EmbeddedResource Include="Gui\Controles\ControlCodigo.resx">
+      <DependentUpon>ControlCodigo.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Gui\Forms\MainForm.resx">
-      <DependentUpon>MainForm.cs</DependentUpon>
+    <EmbeddedResource Include="Gui\Ventanas\VentanaPrincipal.resx">
+      <DependentUpon>VentanaPrincipal.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Gui\Modules\AnalisisModule.resx">
-      <DependentUpon>AnalisisModule.cs</DependentUpon>
+    <EmbeddedResource Include="Gui\Modulos\ModuloAnalisis.resx">
+      <DependentUpon>ModuloAnalisis.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Gui\Modules\ExplorerModule.resx">
-      <DependentUpon>ExplorerModule.cs</DependentUpon>
+    <EmbeddedResource Include="Gui\Modulos\ModuloExplorador.resx">
+      <DependentUpon>ModuloExplorador.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Gui\Modules\OutputModule.resx">
-      <DependentUpon>OutputModule.cs</DependentUpon>
+    <EmbeddedResource Include="Gui\Modulos\ModuloSalida.resx">
+      <DependentUpon>ModuloSalida.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Gui\Modules\SourceCodeModule.resx">
-      <DependentUpon>SourceCodeModule.cs</DependentUpon>
+    <EmbeddedResource Include="Gui\Modulos\ModuloCodigo.resx">
+      <DependentUpon>ModuloCodigo.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
