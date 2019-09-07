@@ -50,6 +50,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Analizador\AccionesSemanticas.cs" />
+    <Compile Include="Analizador\ErroresSemanticos\ErrorVariableSinDeclarar.cs" />
+    <Compile Include="Analizador\ErroresSemanticos\ErrorVariableSinInicializar.cs" />
     <Compile Include="Analizador\Gramatica.cs" />
     <Compile Include="Analizador\PruebasAccionesSemanticas.cs" />
     <Compile Include="Analizador\Semantico.cs" />

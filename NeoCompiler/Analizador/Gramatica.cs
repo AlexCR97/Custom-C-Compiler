@@ -124,6 +124,8 @@ namespace NeoCompiler.Analizador
             public const string ComentarioRegex = "\\/\\*[\\s\\S]*?\\*\\/";
             public const string Id = "id";
             public const string IdRegex = "([a-zA-Z]|_*[a-zA-Z]){1}[a-zA-Z0-9_]*";
+            public const string IdAsignable = "id-asignable";
+            public const string IdAsignableRegex = "([a-zA-Z]|_*[a-zA-Z]){1}[a-zA-Z0-9_]*";
             public const string Numero = "numero";
             public const string NumeroRegex = "\\d+[f|d]?(\\.\\d+[f|d]?)?";
             public const string String = "string";
@@ -253,6 +255,7 @@ namespace NeoCompiler.Analizador
             #region Regex
             var comentario = new RegexBasedTerminal(ExpresionesRegulares.Comentario, ExpresionesRegulares.ComentarioRegex);
             var id = new RegexBasedTerminal(ExpresionesRegulares.Id, ExpresionesRegulares.IdRegex);
+            var idAsignable = new RegexBasedTerminal(ExpresionesRegulares.IdAsignable, ExpresionesRegulares.IdAsignableRegex);
             var numero = new RegexBasedTerminal(ExpresionesRegulares.Numero, ExpresionesRegulares.NumeroRegex);
             var stringRegex = new RegexBasedTerminal(ExpresionesRegulares.String, ExpresionesRegulares.StringRegex);
             #endregion
@@ -307,9 +310,9 @@ namespace NeoCompiler.Analizador
                 id + igual_ + asignable;
 
             asignable.Rule =
-                id |
-                expresionAritmetica |
                 bool_ |
+                idAsignable |
+                expresionAritmetica |
                 stringRegex |
                 llamadaFuncion;
 

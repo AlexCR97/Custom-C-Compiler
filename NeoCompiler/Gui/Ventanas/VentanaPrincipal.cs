@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Irony.Parsing;
 using NeoCompiler.Analizador;
+using NeoCompiler.Analizador.ErroresSemanticos;
 using NeoCompiler.Gui.Modulos;
 
 namespace NeoCompiler
@@ -124,7 +125,7 @@ namespace NeoCompiler
 
             EscribirArchivo(nombrePestanaSeleccionada, codigoPestanaSeleccionada);
 
-            // Despues, realizar analisis
+            // Segundo, realizar analisis lexico-sintactico
             var sintactico = new Sintactico();
             ParseTree arbol = sintactico.Analizar(codigoPestanaSeleccionada);
 
@@ -132,11 +133,56 @@ namespace NeoCompiler
 
             if (arbol.Root == null)
             {
-                moduloSalida.Mostrar("Analisis FALLÓ :(\n", ModuloSalida.SalidaError);
+                moduloSalida.Mostrar("Analisis Lexico-Sintáctico FALLÓ :(\n", ModuloSalida.SalidaError);
                 return;
             }
 
-            moduloSalida.Mostrar("Analisis EXITOSO :D\n", ModuloSalida.SalidaExito);
+            moduloSalida.Mostrar("Analisis Lexico-Sintáctico EXITOSO :D\n", ModuloSalida.SalidaExito);
+
+            // Tercero, realizar analisis semantico
+
+            try
+            {
+
+                var arbolSintaxis = new ArbolSintaxis(arbol);
+                var semantico = new Semantico(arbolSintaxis);
+
+                TablaSimbolos tabla = semantico.GenerarTablaSimbolos();
+
+                moduloAnalisis.LlenarTablaSimbolos(tabla);
+
+                Tuple<bool, string> resultadoDuplicados = semantico.ChecarDuplicados(tabla, -1);
+
+                if (!resultadoDuplicados.Item1)
+                {
+                    moduloSalida.Mostrar("Analisis Semantico FALLÓ :(\n", ModuloSalida.SalidaError);
+                    moduloSalida.Mostrar("Variable redeclarada: " + resultadoDuplicados.Item2 + '\n', ModuloSalida.SalidaError);
+                    return;
+                }
+
+                Tuple<bool, string, string> resultadoTipos = semantico.ChecarTipos(tabla, -1);
+
+                if (!resultadoTipos.Item1)
+                {
+                    moduloSalida.Mostrar("Analisis Semantico FALLÓ :(\n", ModuloSalida.SalidaError);
+                    moduloSalida.Mostrar($"La variable '{resultadoTipos.Item2}' debe ser de tipo '{resultadoTipos.Item3}'\n", ModuloSalida.SalidaError);
+                    return;
+                }
+            }
+            catch (ErrorVariableSinDeclarar err)
+            {
+                moduloSalida.Mostrar("Analisis Semantico FALLÓ :(\n", ModuloSalida.SalidaError);
+                moduloSalida.Mostrar(err.Message + '\n', ModuloSalida.SalidaError);
+                return;
+            }
+            catch (ErrorVariableSinInicializar err)
+            {
+                moduloSalida.Mostrar("Analisis Semantico FALLÓ :(\n", ModuloSalida.SalidaError);
+                moduloSalida.Mostrar(err.Message + '\n', ModuloSalida.SalidaError);
+                return;
+            }
+
+            moduloSalida.Mostrar("Analisis Semantico EXITOSO :D\n", ModuloSalida.SalidaExito);
         }
 
         // Cerrar archivo
@@ -188,6 +234,19 @@ namespace NeoCompiler
             {
                 MessageBox.Show("Tipados incorrectos :(");
             }
+
+            // ============================================================
+            Console.WriteLine("==================================================");
+            Console.WriteLine("==================================================");
+            Console.WriteLine("==================================================");
+
+            var pruebas = new PruebasAccionesSemanticas(arbolSintaxis);
+            pruebas.TestSemanticActions();
+
+            Console.WriteLine("==================================================");
+            Console.WriteLine("==================================================");
+            Console.WriteLine("==================================================");
+
         }
     }
 }

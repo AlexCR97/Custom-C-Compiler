@@ -9,9 +9,6 @@ namespace NeoCompiler.Analizador
 {
     class PruebasAccionesSemanticas
     {
-        private delegate void AccionSemantica(ArbolSintaxis arbol, ParseTreeNode raiz);
-        private Dictionary<string, AccionSemantica> acciones;
-
         private readonly ArbolSintaxis arbol;
 
         public PruebasAccionesSemanticas(ArbolSintaxis arbol)
@@ -19,14 +16,41 @@ namespace NeoCompiler.Analizador
             this.arbol = arbol;
         }
 
-        private void InicializarAccionesSemanticas()
-        {
-            acciones[Gramatica.NoTerminales.Inicio] = new AccionSemantica(AccionSemanticaInicio);
-        }
+        private delegate T SemanticAction<T>(ArbolSintaxis arbol, ParseTreeNode raiz);
 
-        private void AccionSemanticaInicio(ArbolSintaxis arbol, ParseTreeNode raiz)
+        public void TestSemanticActions()
         {
-            Console.WriteLine("Esta es la accion semantica de ");
+            SemanticAction<TablaSimbolos> x = AccionesSemanticas.DeclaracionVariable;
+            SemanticAction<object> y = AccionesSemanticas.Inicio;
+            SemanticAction<double> z = (tree, root) =>
+            {
+                Console.WriteLine("Lambda semantic action executing!");
+                return -1;
+            };
+
+            arbol.Recorrer().ForEach(nodo =>
+            {
+                switch (nodo.ToString())
+                {
+                    case Gramatica.NoTerminales.Inicio:
+                    {
+                        y.Invoke(arbol, nodo);
+                        break;
+                    }
+
+                    case Gramatica.NoTerminales.DeclaracionVariable:
+                    {
+                        x.Invoke(arbol, nodo);
+                        break;
+                    }
+
+                    case Gramatica.NoTerminales.DeclaracionFuncion:
+                    {
+                        z.Invoke(arbol, nodo);
+                        break;
+                    }
+                }
+            });
         }
     }
 }

@@ -15,12 +15,26 @@ namespace NeoCompiler.Analizador
 
         public void AgregarSimbolo(Simbolo simbolo)
         {
-            simbolos.Add(simbolo);
+            Simbolos.Add(simbolo);
         }
 
         public void AgregarSimbolos(List<Simbolo> simbolos)
         {
-            this.simbolos.AddRange(simbolos);
+            Simbolos.AddRange(simbolos);
+        }
+
+        public Simbolo BuscarSimbolo(string identificador)
+        {
+            return Simbolos.Find((simbolo) => simbolo.Identificador.Equals(identificador)) ?? null;
+        }
+
+        public bool ContieneSimbolo(string identificador)
+        {
+            foreach (Simbolo simbolo in Simbolos)
+                if (simbolo.Identificador.Equals(identificador))
+                    return true;
+
+            return false;
         }
 
         public override string ToString()
@@ -28,7 +42,7 @@ namespace NeoCompiler.Analizador
             var sb = new StringBuilder();
             sb.Append("TablaSimbolos{\n");
 
-            foreach (Simbolo simbolo in simbolos)
+            foreach (Simbolo simbolo in Simbolos)
             {
                 sb.Append('\t').Append(simbolo.ToString()).Append('\n');
             }
