@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using NeoCompiler.Analizador;
 
 namespace NeoCompiler.Gui.Modulos
 {
@@ -22,6 +23,16 @@ namespace NeoCompiler.Gui.Modulos
         public ModuloAnalisis()
         {
             InitializeComponent();
+        }
+
+        public void LlenarTablaSimbolos(TablaSimbolos tabla)
+        {
+            dataGridViewSimbolos.Rows.Clear();
+
+            foreach (Simbolo simbolo in tabla.Simbolos)
+            {
+                dataGridViewSimbolos.Rows.Add(simbolo.Tipo, simbolo.Identificador, simbolo.Valor);
+            }
         }
     }
 }

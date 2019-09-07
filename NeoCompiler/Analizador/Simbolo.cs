@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace NeoCompiler.Analizador
 {
-    class Simbolo
+    public class Simbolo
     {
         private string tipo;
         public string Tipo { get => tipo; set => tipo = value; }
@@ -32,11 +32,7 @@ namespace NeoCompiler.Analizador
 
         public override string ToString()
         {
-            string tipoTemp = tipo ?? "null";
-            string identificadorTemp = identificador ?? "null";
-            string valorTemp = valor ?? "null";
-
-            return "Simbolo{ Tipo=" + tipoTemp + ", Identificador=" + identificador + ", Valor=" + valor + " }";
+            return "Simbolo{'" + Tipo + "', '" + Identificador + "', '" + Valor + "'}";
         }
     }
 }

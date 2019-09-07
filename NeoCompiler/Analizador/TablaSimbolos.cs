@@ -6,9 +6,10 @@ using System.Threading.Tasks;
 
 namespace NeoCompiler.Analizador
 {
-    class TablaSimbolos
+    public class TablaSimbolos
     {
-        public List<Simbolo> simbolos = new List<Simbolo>();
+        private List<Simbolo> simbolos = new List<Simbolo>();
+        public List<Simbolo> Simbolos { get => simbolos; }
 
         public TablaSimbolos() {}
 
@@ -19,23 +20,18 @@ namespace NeoCompiler.Analizador
 
         public void AgregarSimbolos(List<Simbolo> simbolos)
         {
-            Console.WriteLine("Agregando los siguientes simbolos a la tabla: ");
-            simbolos.ForEach(s => Console.WriteLine(s));
-            simbolos.AddRange(simbolos);
+            this.simbolos.AddRange(simbolos);
         }
 
         public override string ToString()
         {
-            if (simbolos == null)
-                return "TablaSimbolos{}";
-
             var sb = new StringBuilder();
             sb.Append("TablaSimbolos{\n");
 
-            simbolos.ForEach(simbolo =>
+            foreach (Simbolo simbolo in simbolos)
             {
                 sb.Append('\t').Append(simbolo.ToString()).Append('\n');
-            });
+            }
 
             sb.Append('}');
 

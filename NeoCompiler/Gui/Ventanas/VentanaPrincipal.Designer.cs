@@ -194,10 +194,10 @@
             this.moduloCodigo.App = null;
             this.moduloCodigo.BackColor = System.Drawing.Color.Silver;
             this.moduloCodigo.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.moduloCodigo.Location = new System.Drawing.Point(350, 27);
+            this.moduloCodigo.Location = new System.Drawing.Point(400, 27);
             this.moduloCodigo.Name = "moduloCodigo";
             this.moduloCodigo.Padding = new System.Windows.Forms.Padding(6);
-            this.moduloCodigo.Size = new System.Drawing.Size(482, 348);
+            this.moduloCodigo.Size = new System.Drawing.Size(382, 348);
             this.moduloCodigo.TabIndex = 4;
             // 
             // moduloAnalisis
@@ -205,9 +205,9 @@
             this.moduloAnalisis.App = null;
             this.moduloAnalisis.BackColor = System.Drawing.Color.Silver;
             this.moduloAnalisis.Dock = System.Windows.Forms.DockStyle.Right;
-            this.moduloAnalisis.Location = new System.Drawing.Point(832, 27);
+            this.moduloAnalisis.Location = new System.Drawing.Point(782, 27);
             this.moduloAnalisis.Name = "moduloAnalisis";
-            this.moduloAnalisis.Size = new System.Drawing.Size(350, 348);
+            this.moduloAnalisis.Size = new System.Drawing.Size(400, 348);
             this.moduloAnalisis.TabIndex = 3;
             // 
             // moduloExplorador
@@ -217,7 +217,7 @@
             this.moduloExplorador.Dock = System.Windows.Forms.DockStyle.Left;
             this.moduloExplorador.Location = new System.Drawing.Point(0, 27);
             this.moduloExplorador.Name = "moduloExplorador";
-            this.moduloExplorador.Size = new System.Drawing.Size(350, 348);
+            this.moduloExplorador.Size = new System.Drawing.Size(400, 348);
             this.moduloExplorador.TabIndex = 2;
             // 
             // moduloSalida

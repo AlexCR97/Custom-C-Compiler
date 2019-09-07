@@ -42,8 +42,10 @@
             this.textBoxLineas.Location = new System.Drawing.Point(0, 0);
             this.textBoxLineas.Multiline = true;
             this.textBoxLineas.Name = "textBoxLineas";
+            this.textBoxLineas.ReadOnly = true;
             this.textBoxLineas.Size = new System.Drawing.Size(40, 400);
             this.textBoxLineas.TabIndex = 1;
+            this.textBoxLineas.WordWrap = false;
             // 
             // richTextBoxCodigo
             // 
@@ -56,6 +58,8 @@
             this.richTextBoxCodigo.Size = new System.Drawing.Size(360, 400);
             this.richTextBoxCodigo.TabIndex = 3;
             this.richTextBoxCodigo.Text = "";
+            this.richTextBoxCodigo.WordWrap = false;
+            this.richTextBoxCodigo.TextChanged += new System.EventHandler(this.richTextBoxCodigo_TextChanged);
             // 
             // ControlCodigo
             // 

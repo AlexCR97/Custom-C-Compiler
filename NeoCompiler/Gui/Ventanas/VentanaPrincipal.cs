@@ -149,38 +149,45 @@ namespace NeoCompiler
 
             ///
 
-            List<ParseTreeNode> nodos = arbolSintaxis.Recorrer(Gramatica.NT_DECLARACION_VARAIBLE);
-            Console.WriteLine("\n\nNodos con '"+ Gramatica.NT_DECLARACION_VARAIBLE +"' encontrados:");
+            List<ParseTreeNode> nodos = arbolSintaxis.Recorrer();
+            Console.WriteLine("\n\nNodos encontrados:");
 
-            //List<ParseTreeNode> nodos = arbolSintaxis.Recorrer();
-            //Console.WriteLine("\n\nNodos encontrados:");
-
-            nodos.ForEach(nodo =>
+            foreach (ParseTreeNode nodo in nodos)
             {
                 Console.WriteLine(arbolSintaxis.ImprimirNodo(nodo));
                 Console.WriteLine("========================================================");
-            });
-
-            Console.WriteLine("\nRecorridos sobre cada nodo encontrado:\n");
-            nodos.ForEach(nodo =>
-            {
-                arbolSintaxis
-                    .Recorrer(nodo)
-                    .ForEach(hijo => Console.Write(hijo.ToString() + " | "));
-
-                Console.WriteLine();
-            });
+            }
 
             Console.WriteLine("\n////////////////////////////////////////////////////////\n");
 
             var semantico = new Semantico(arbolSintaxis);
             TablaSimbolos tabla = semantico.GenerarTablaSimbolos();
 
-            Console.WriteLine("\n////////////////////////////////////////////////////////\n");
             Console.WriteLine(tabla);
 
-            Console.WriteLine(tabla.simbolos.Count);
-            tabla.simbolos.ForEach(s => Console.WriteLine(s.ToString()));
+            moduloAnalisis.LlenarTablaSimbolos(tabla);
+
+            bool noDuplicados = semantico.ChecarDuplicados(tabla);
+
+            if (noDuplicados)
+            {
+                MessageBox.Show("No hubo duplicados! :D");
+            }
+            else
+            {
+                MessageBox.Show("Si hubo duplicados :(");
+            }
+
+            bool tipadosCorrectos = semantico.ChecarTipos(tabla);
+
+            if (tipadosCorrectos)
+            {
+                MessageBox.Show("Tipados correctos! :D");
+            }
+            else
+            {
+                MessageBox.Show("Tipados incorrectos :(");
+            }
         }
     }
 }

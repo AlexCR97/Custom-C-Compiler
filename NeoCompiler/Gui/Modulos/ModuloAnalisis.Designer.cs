@@ -33,11 +33,17 @@
             this.tabControlAnalizadores = new System.Windows.Forms.TabControl();
             this.tabPageLexico = new System.Windows.Forms.TabPage();
             this.tabPageSintactico = new System.Windows.Forms.TabPage();
-            this.panelContainer = new System.Windows.Forms.Panel();
             this.tabPageSemantico = new System.Windows.Forms.TabPage();
+            this.panelContainer = new System.Windows.Forms.Panel();
+            this.dataGridViewSimbolos = new System.Windows.Forms.DataGridView();
+            this.Tipo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Identificador = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Valor = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panelTitle.SuspendLayout();
             this.tabControlAnalizadores.SuspendLayout();
+            this.tabPageSemantico.SuspendLayout();
             this.panelContainer.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewSimbolos)).BeginInit();
             this.SuspendLayout();
             // 
             // panelTitle
@@ -93,6 +99,17 @@
             this.tabPageSintactico.Text = "Sintactico";
             this.tabPageSintactico.UseVisualStyleBackColor = true;
             // 
+            // tabPageSemantico
+            // 
+            this.tabPageSemantico.Controls.Add(this.dataGridViewSimbolos);
+            this.tabPageSemantico.Location = new System.Drawing.Point(4, 25);
+            this.tabPageSemantico.Name = "tabPageSemantico";
+            this.tabPageSemantico.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPageSemantico.Size = new System.Drawing.Size(480, 524);
+            this.tabPageSemantico.TabIndex = 2;
+            this.tabPageSemantico.Text = "Semantico";
+            this.tabPageSemantico.UseVisualStyleBackColor = true;
+            // 
             // panelContainer
             // 
             this.panelContainer.Controls.Add(this.tabControlAnalizadores);
@@ -103,15 +120,40 @@
             this.panelContainer.Size = new System.Drawing.Size(500, 565);
             this.panelContainer.TabIndex = 6;
             // 
-            // tabPageSemantico
+            // dataGridViewSimbolos
             // 
-            this.tabPageSemantico.Location = new System.Drawing.Point(4, 25);
-            this.tabPageSemantico.Name = "tabPageSemantico";
-            this.tabPageSemantico.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageSemantico.Size = new System.Drawing.Size(480, 524);
-            this.tabPageSemantico.TabIndex = 2;
-            this.tabPageSemantico.Text = "Semantico";
-            this.tabPageSemantico.UseVisualStyleBackColor = true;
+            this.dataGridViewSimbolos.AllowUserToAddRows = false;
+            this.dataGridViewSimbolos.AllowUserToDeleteRows = false;
+            this.dataGridViewSimbolos.AllowUserToResizeColumns = false;
+            this.dataGridViewSimbolos.AllowUserToResizeRows = false;
+            this.dataGridViewSimbolos.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dataGridViewSimbolos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewSimbolos.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Tipo,
+            this.Identificador,
+            this.Valor});
+            this.dataGridViewSimbolos.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dataGridViewSimbolos.Location = new System.Drawing.Point(3, 3);
+            this.dataGridViewSimbolos.Name = "dataGridViewSimbolos";
+            this.dataGridViewSimbolos.RowTemplate.Height = 24;
+            this.dataGridViewSimbolos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dataGridViewSimbolos.Size = new System.Drawing.Size(474, 518);
+            this.dataGridViewSimbolos.TabIndex = 0;
+            // 
+            // Tipo
+            // 
+            this.Tipo.HeaderText = "Tipo";
+            this.Tipo.Name = "Tipo";
+            // 
+            // Identificador
+            // 
+            this.Identificador.HeaderText = "Identificador";
+            this.Identificador.Name = "Identificador";
+            // 
+            // Valor
+            // 
+            this.Valor.HeaderText = "Valor";
+            this.Valor.Name = "Valor";
             // 
             // ModuloAnalisis
             // 
@@ -125,7 +167,9 @@
             this.panelTitle.ResumeLayout(false);
             this.panelTitle.PerformLayout();
             this.tabControlAnalizadores.ResumeLayout(false);
+            this.tabPageSemantico.ResumeLayout(false);
             this.panelContainer.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewSimbolos)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -139,5 +183,9 @@
         private System.Windows.Forms.TabPage tabPageSintactico;
         private System.Windows.Forms.Panel panelContainer;
         private System.Windows.Forms.TabPage tabPageSemantico;
+        private System.Windows.Forms.DataGridView dataGridViewSimbolos;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Tipo;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Identificador;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Valor;
     }
 }

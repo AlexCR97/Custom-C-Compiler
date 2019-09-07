@@ -9,153 +9,252 @@ namespace NeoCompiler.Analizador
 {
     class Gramatica : Grammar
     {
-        #region Constantes
-        public const string NT_INICIO = "<inicio>";
-        public const string NT_DECLARACION_VARAIBLE = "<declaracion-variable>";
-        public const string NT_TIPO = "<tipo>";
-        public const string NT_ASIGNABLE = "<asignable>";
+        public static class NoTerminales
+        {
+            public const string Inicio = "<inicio>";
+            public const string DeclaracionVariable = "<declaracion-variable>";
+            public const string ListaDeclaracionVariable = "<lista-declaracion-variables>";
+            public const string ListaDeclaracionVariableValores = "<lista-declaracion-variables-valores>";
+            public const string ListaDeclaracionVariableDinamica = "<lista-declaracion-variables-dinamica>";
+            public const string DeclaracionConstante = "<declaracion-constante>";
+            public const string ListaDeclaracionConstante = "<lista-declaracion-constante>";
+            public const string Tipo = "<tipo>";
+            public const string Asignacion = "<asignacion>";
+            public const string Asignable = "<asignable>";
+            public const string ListaAsignable = "<lista-asignable>";
+            public const string ExpresionAritmetica = "<expresion-aritemtica>";
+            public const string OperadorAritmetico = "<operador-aritmetico>";
+            public const string ExpresionRelacional = "<expresion-relacional>";
+            public const string OperadorRelacional = "<operador-relacional>";
+            public const string LlamadaFuncion = "<llamada-funcion>";
+            public const string IdLlamadaFuncion = "<id-llamada-funcion>";
+            public const string DeclaracionFuncion = "<declaracion-funcion>";
+            public const string TipoFuncion = "<tipo-funcion>";
+            public const string BloqueFuncion = "<bloque-funcion>";
+            public const string Parametro = "<parametro>";
+            public const string ListaParametro = "<lista-parametro>";
+            public const string Sentencia = "<sentencia>";
+            public const string ListaSentencia = "<lista-sentencia>";
+            public const string ControladorFlujo = "<controlador-flujo>";
+            public const string SentenciaIf = "<if>";
+            public const string BloqueIf = "<bloque-if>";
+            public const string SentenciaElse = "<else>";
+            public const string SentenciaWhen = "<when>";
+            public const string BloqueWhen = "<bloque-when>";
+            public const string OpcionWhen = "<opcion-when>";
+            public const string ListaOpcionWhen = "<lista-opcion-when>";
+            public const string DefaultWhen = "<default-when>";
+            public const string SentenciaWhile = "<sentencia-while>";
+            public const string BloqueWhile = "<bloque-while>";
+            public const string SentenciaFor = "<for>";
+            public const string ParametrosFor = "<parametros-for>";
+            public const string ParametroFor1 = "<parametro-for-1>";
+            public const string ParametroFor2 = "<parametro-for-2>";
+            public const string ParametroFor3 = "<parametro-for-3>";
+            public const string BloqueFor = "<bloque-for>";
+        }
 
-        public const string R_ID = "id";
-        #endregion
+        public static class Terminales
+        {
+            public const string Void = "void";
+            public const string Return = "return";
+            public const string Var = "var";
+            public const string Const = "const";
+            public const string Null = "null";
+            public const string True = "true";
+            public const string False = "false";
+
+            public const string If = "if";
+            public const string Else = "else";
+            public const string When = "when";
+            public const string Matches = "matches";
+            public const string Default = "default";
+            public const string While = "while";
+            public const string For = "for";
+            //public const string Iterate = "iterate";
+
+            public const string Int = "int";
+            public const string Float = "float";
+            public const string Double = "double";
+            public const string Bool = "bool";
+            public const string String = "string";
+
+            public const string And = "and";
+            public const string Or = "or";
+            public const string Not = "not";
+
+            public const string Add = "+=";
+            public const string Sub = "-=";
+            public const string Mul = "*=";
+            public const string Div = "/=";
+            public const string Mod = "%=";
+            public const string Pow = "^=";
+            public const string Roo = "~=";
+
+            public const string IgualIgual = "==";
+            public const string Diferente = "<>";
+            public const string Mayor = ">";
+            public const string MayorIgual = ">=";
+            public const string Menor = "<";
+            public const string MenorIgual = "<=";
+
+            public const string Mas = "+";
+            public const string Menos = "-";
+            public const string Por = "*";
+            public const string Entre = "/";
+            public const string Modulo = "%";
+            public const string Potencia = "^";
+            public const string Raiz = "~";
+
+            public const string Punto = ".";
+            public const string Coma = ",";
+            public const string DosPuntos = ":";
+            public const string PuntoComa = ";";
+            public const string DosPuntosDoble = "::";
+            public const string ParentesisAbrir = "(";
+            public const string ParentesisCerrar = ")";
+            public const string LlavesAbrir = "{";
+            public const string LlavesCerrar = "}";
+            public const string Igual = "=";
+        }
+
+        public static class ExpresionesRegulares
+        {
+            public const string Comentario = "comentario";
+            public const string ComentarioRegex = "\\/\\*[\\s\\S]*?\\*\\/";
+            public const string Id = "id";
+            public const string IdRegex = "([a-zA-Z]|_*[a-zA-Z]){1}[a-zA-Z0-9_]*";
+            public const string Numero = "numero";
+            public const string NumeroRegex = "\\d+[f|d]?(\\.\\d+[f|d]?)?";
+            public const string String = "string";
+            public const string StringRegex = "\"[^\"]*\"";
+        }
 
         public Gramatica() : base()
         {
             #region Non terminals
-            var inicio = new NonTerminal("<start>");
-            //var useList = new NonTerminal("<use-list>");
-            //var useStatement = new NonTerminal("<use-statement>");
-            //var useId = new NonTerminal("<use-id>");
-            //var namespaceNonTerminal = new NonTerminal("<namespace>");
-            //var namespaceBlock = new NonTerminal("<namespace-block>");
-            //var namespaceBlockContent = new NonTerminal("<namespace-block-content>");
-            var declaracionVariable = new NonTerminal(NT_DECLARACION_VARAIBLE);
-            var listaDeclaracionVaraible = new NonTerminal("<var-declaration-list>");
-            var listaDeclaracionVariableDinamica = new NonTerminal("<var-declaration-list-dynamic>");
-            var declaracionConstante = new NonTerminal("<const-declaration>");
-            var listaDeclaracionConstante = new NonTerminal("<const-declaration-list>");
-            var tipo = new NonTerminal(NT_TIPO);
-            var asignacion = new NonTerminal("<assignment>");
-            var asignable = new NonTerminal(NT_ASIGNABLE);
-            var listaAsignable = new NonTerminal("<assignable-list>");
-            var expresionAritmetica = new NonTerminal("<arithmetic-expression>");
-            var operadorAritmetico = new NonTerminal("<arithmetic-operator>");
-            var expresionRelacional = new NonTerminal("<relational-expresion>");
-            var operadorRelacional = new NonTerminal("<relational-operator>");
+            var inicio = new NonTerminal(NoTerminales.Inicio);
+            var declaracionVariable = new NonTerminal(NoTerminales.DeclaracionVariable);
+            var listaDeclaracionVariable = new NonTerminal(NoTerminales.ListaDeclaracionVariable);
+            var listaDeclaracionVariableValores = new NonTerminal(NoTerminales.ListaDeclaracionVariableValores);
+            var listaDeclaracionVariableDinamica = new NonTerminal(NoTerminales.ListaDeclaracionVariableDinamica);
+            var declaracionConstante = new NonTerminal(NoTerminales.DeclaracionConstante);
+            var listaDeclaracionConstante = new NonTerminal(NoTerminales.ListaDeclaracionConstante);
+            var tipo = new NonTerminal(NoTerminales.Tipo);
+            var asignacion = new NonTerminal(NoTerminales.Asignacion);
+            var asignable = new NonTerminal(NoTerminales.Asignable);
+            var listaAsignable = new NonTerminal(NoTerminales.ListaAsignable);
+            var expresionAritmetica = new NonTerminal(NoTerminales.ExpresionAritmetica);
+            var operadorAritmetico = new NonTerminal(NoTerminales.OperadorAritmetico);
+            var expresionRelacional = new NonTerminal(NoTerminales.ExpresionRelacional);
+            var operadorRelacional = new NonTerminal(NoTerminales.OperadorRelacional);
             //var mathAssignment = new NonTerminal("<math-assignment>");
             //var mathOperator = new NonTerminal("<math-operator>");
             //var mathAssignable = new NonTerminal("<math-assignable>");
-            var llamadaFuncion = new NonTerminal("<function-call>");
-            var idLlamadaFuncion = new NonTerminal("<function-call-id>");
-            var declaracionFuncion = new NonTerminal("<function-declaration>");
-            var tipoFuncion = new NonTerminal("<function-type>");
-            var bloqueFuncion = new NonTerminal("<function-block>");
-            var parametro = new NonTerminal("<parameter>");
-            var listaParametro = new NonTerminal("<parameter-list>");
-            var sentencia = new NonTerminal("<statement>");
-            var listaSentencia = new NonTerminal("<statement-list>");
-            var controladorFlujo = new NonTerminal("<flow-controller>");
-            var sentenciaIf = new NonTerminal("<if>");
-            var bloqueIf = new NonTerminal("<if-block>");
-            var sentenciaElse = new NonTerminal("<else>");
-            var sentenciaWhen = new NonTerminal("<when>");
-            var bloqueWhen = new NonTerminal("<when-block>");
-            var opcionWhen = new NonTerminal("<when-match>");
-            var listaOpcionWhen = new NonTerminal("<when-match-list>");
-            var defaultWhen = new NonTerminal("<when-default>");
-            var sentenciaWhile = new NonTerminal("<while>");
-            var bloqueWhile = new NonTerminal("<while-block>");
-            var sentenciaFor = new NonTerminal("<for>");
-            var parametrosFor = new NonTerminal("<for-params>");
-            var parametroFor1 = new NonTerminal("<for-param-1>");
-            var parametroFor2 = new NonTerminal("<for-param-2>");
-            var parametroFor3 = new NonTerminal("<for-param-3>");
-            var bloqueFor = new NonTerminal("<for-block>");
+            var llamadaFuncion = new NonTerminal(NoTerminales.LlamadaFuncion);
+            var idLlamadaFuncion = new NonTerminal(NoTerminales.IdLlamadaFuncion);
+            var declaracionFuncion = new NonTerminal(NoTerminales.DeclaracionFuncion);
+            var tipoFuncion = new NonTerminal(NoTerminales.TipoFuncion);
+            var bloqueFuncion = new NonTerminal(NoTerminales.BloqueFuncion);
+            var parametro = new NonTerminal(NoTerminales.Parametro);
+            var listaParametro = new NonTerminal(NoTerminales.ListaParametro);
+            var sentencia = new NonTerminal(NoTerminales.Sentencia);
+            var listaSentencia = new NonTerminal(NoTerminales.ListaSentencia);
+            var controladorFlujo = new NonTerminal(NoTerminales.ControladorFlujo);
+            var sentenciaIf = new NonTerminal(NoTerminales.SentenciaIf);
+            var bloqueIf = new NonTerminal(NoTerminales.BloqueIf);
+            var sentenciaElse = new NonTerminal(NoTerminales.SentenciaElse);
+            var sentenciaWhen = new NonTerminal(NoTerminales.SentenciaWhen);
+            var bloqueWhen = new NonTerminal(NoTerminales.BloqueWhen);
+            var opcionWhen = new NonTerminal(NoTerminales.OpcionWhen);
+            var listaOpcionWhen = new NonTerminal(NoTerminales.ListaOpcionWhen);
+            var defaultWhen = new NonTerminal(NoTerminales.DefaultWhen);
+            var sentenciaWhile = new NonTerminal(NoTerminales.SentenciaWhile);
+            var bloqueWhile = new NonTerminal(NoTerminales.BloqueWhile);
+            var sentenciaFor = new NonTerminal(NoTerminales.SentenciaFor);
+            var parametrosFor = new NonTerminal(NoTerminales.ParametrosFor);
+            var parametroFor1 = new NonTerminal(NoTerminales.ParametroFor1);
+            var parametroFor2 = new NonTerminal(NoTerminales.ParametroFor2);
+            var parametroFor3 = new NonTerminal(NoTerminales.ParametroFor3);
+            var bloqueFor = new NonTerminal(NoTerminales.BloqueFor);
             #endregion
 
             #region Terminals
 
-            // reserved words
-            var use_ = ToTerm("use");
-            var namespace_ = ToTerm("namespace");
-            var void_ = ToTerm("void");
-            var return_ = ToTerm("return");
-            var var_ = ToTerm("var");
-            var const_ = ToTerm("const");
-            var null_ = ToTerm("null");
-            var true_ = ToTerm("true");
-            var false_ = ToTerm("false");
+            // palabras reservadas
+            var void_ = ToTerm(Terminales.Void);
+            var return_ = ToTerm(Terminales.Return);
+            var var_ = ToTerm(Terminales.Var);
+            var const_ = ToTerm(Terminales.Const);
+            var null_ = ToTerm(Terminales.Null);
+            var true_ = ToTerm(Terminales.True);
+            var false_ = ToTerm(Terminales.False);
 
             // flow controllers
-            var if_ = ToTerm("if");
-            var else_ = ToTerm("else");
-            var when_ = ToTerm("when");
-            var matches_ = ToTerm("matches");
-            var default_ = ToTerm("default");
-            var while_ = ToTerm("while");
-            var for_ = ToTerm("for");
-            var iterate_ = ToTerm("iterate");
+            var if_ = ToTerm(Terminales.If);
+            var else_ = ToTerm(Terminales.Else);
+            var when_ = ToTerm(Terminales.When);
+            var matches_ = ToTerm(Terminales.Matches);
+            var default_ = ToTerm(Terminales.Default);
+            var while_ = ToTerm(Terminales.While);
+            var for_ = ToTerm(Terminales.For);
 
             // data types
-            var int_ = ToTerm("int");
-            var float_ = ToTerm("float");
-            var double_ = ToTerm("double");
-            var bool_ = ToTerm("bool");
-            var string_ = ToTerm("string");
-            var array_ = ToTerm("array");
-            var matrix_ = ToTerm("matrix");
+            var int_ = ToTerm(Terminales.Int);
+            var float_ = ToTerm(Terminales.Float);
+            var double_ = ToTerm(Terminales.Double);
+            var bool_ = ToTerm(Terminales.Bool);
+            var string_ = ToTerm(Terminales.String);
 
             // logical operators
-            var and_ = ToTerm("and");
-            var or_ = ToTerm("or");
-            var not_ = ToTerm("not");
+            var and_ = ToTerm(Terminales.And);
+            var or_ = ToTerm(Terminales.Or);
+            var not_ = ToTerm(Terminales.Not);
 
             // math operators
-            var add_ = ToTerm("+=");
-            var sub_ = ToTerm("-=");
-            var mul_ = ToTerm("*=");
-            var div_ = ToTerm("/=");
-            var mod_ = ToTerm("%=");
-            var pow_ = ToTerm("^=");
-            var roo_ = ToTerm("~=");
+            var add_ = ToTerm(Terminales.Add);
+            var sub_ = ToTerm(Terminales.Sub);
+            var mul_ = ToTerm(Terminales.Mul);
+            var div_ = ToTerm(Terminales.Div);
+            var mod_ = ToTerm(Terminales.Mod);
+            var pow_ = ToTerm(Terminales.Pow);
+            var roo_ = ToTerm(Terminales.Roo);
 
             // relational operators
-            var doubleEquals_ = ToTerm("==");
-            var different_ = ToTerm("<>");
-            var greaterEquals_ = ToTerm(">=");
-            var greater_ = ToTerm(">");
-            var lessEquals_ = ToTerm("<=");
-            var less_ = ToTerm("<");
+            var igualIgual_ = ToTerm(Terminales.IgualIgual);
+            var diferente_ = ToTerm(Terminales.Diferente);
+            var mayor_ = ToTerm(Terminales.Mayor);
+            var mayorIgual_ = ToTerm(Terminales.MayorIgual);
+            var menor_ = ToTerm(Terminales.Menor);
+            var menorIgual_ = ToTerm(Terminales.MenorIgual);
 
             // arithmetic operators
-            var plus_ = ToTerm("+");
-            var minus_ = ToTerm("-");
-            var times_ = ToTerm("*");
-            var divededBy_ = ToTerm("/");
-            var modulus_ = ToTerm("%");
-            var powerOf_ = ToTerm("^");
-            var root_ = ToTerm("~");
+            var mas_ = ToTerm(Terminales.Mas);
+            var menos_ = ToTerm(Terminales.Menos);
+            var por_ = ToTerm(Terminales.Por);
+            var entre_ = ToTerm(Terminales.Entre);
+            var modulo_ = ToTerm(Terminales.Modulo);
+            var potencia_ = ToTerm(Terminales.Potencia);
+            var raiz_ = ToTerm(Terminales.Raiz);
 
             // others
-            var punto_ = ToTerm(".");
-            var coma_ = ToTerm(",");
-            var dosPuntos_ = ToTerm(":");
-            var puntoComa_ = ToTerm(";");
-            var dosPuntosDoble_ = ToTerm("::");
-            var parentesisAbrir_ = ToTerm("(");
-            var parentesisCerrar_ = ToTerm(")");
-            var llavesAbrir_ = ToTerm("{");
-            var llavesCerrar_ = ToTerm("}");
-            //var corcheteAbrir_ = ToTerm("[");
-            //var corcheteCerrar_ = ToTerm("]");
-            var igual_ = ToTerm("=");
-            //var barra_ = ToTerm("|");
+            var punto_ = ToTerm(Terminales.Punto);
+            var coma_ = ToTerm(Terminales.Coma);
+            var dosPuntos_ = ToTerm(Terminales.DosPuntos);
+            var puntoComa_ = ToTerm(Terminales.PuntoComa);
+            var dosPuntosDoble_ = ToTerm(Terminales.DosPuntosDoble);
+            var parentesisAbrir_ = ToTerm(Terminales.ParentesisAbrir);
+            var parentesisCerrar_ = ToTerm(Terminales.ParentesisCerrar);
+            var llavesAbrir_ = ToTerm(Terminales.LlavesAbrir);
+            var llavesCerrar_ = ToTerm(Terminales.LlavesCerrar);
+            var igual_ = ToTerm(Terminales.Igual);
             #endregion
 
             #region Regex
-            var comment = new RegexBasedTerminal("comment", "\\/\\*[\\s\\S]*?\\*\\/");
-            var id = new RegexBasedTerminal("id", "([a-zA-Z]|_*[a-zA-Z]){1}[a-zA-Z0-9_]*");
-            var number = new RegexBasedTerminal("number", "\\d+[f|d]?(\\.\\d+[f|d]?)?");
-            var stringRegex = new RegexBasedTerminal("stringRegex", "\"[^\"]*\"");
+            var comentario = new RegexBasedTerminal(ExpresionesRegulares.Comentario, ExpresionesRegulares.ComentarioRegex);
+            var id = new RegexBasedTerminal(ExpresionesRegulares.Id, ExpresionesRegulares.IdRegex);
+            var numero = new RegexBasedTerminal(ExpresionesRegulares.Numero, ExpresionesRegulares.NumeroRegex);
+            var stringRegex = new RegexBasedTerminal(ExpresionesRegulares.String, ExpresionesRegulares.StringRegex);
             #endregion
 
             #region Production rules
@@ -182,11 +281,6 @@ namespace NeoCompiler.Analizador
                 llavesAbrir_ + llavesCerrar_ |
                 llavesAbrir_ + listaSentencia + llavesCerrar_;
 
-            // void main() {}
-            // int max() {}
-            // double peso() {}
-
-
             listaSentencia.Rule =
                 sentencia + puntoComa_ + listaSentencia |
                 sentencia + puntoComa_ |
@@ -198,13 +292,16 @@ namespace NeoCompiler.Analizador
                 declaracionVariable;
 
             declaracionVariable.Rule =
-                tipo + listaDeclaracionVaraible;
+                tipo + listaDeclaracionVariable |
+                tipo + listaDeclaracionVariableValores;
 
-            listaDeclaracionVaraible.Rule =
-                id + coma_ + listaDeclaracionVaraible |
-                asignacion + coma_ + listaDeclaracionVaraible |
-                asignacion |
+            listaDeclaracionVariable.Rule =
+                id + coma_ + listaDeclaracionVariable |
                 id;
+
+            listaDeclaracionVariableValores.Rule =
+                asignacion + coma_ + listaDeclaracionVariableValores |
+                asignacion;
 
             asignacion.Rule =
                 id + igual_ + asignable;
@@ -221,20 +318,20 @@ namespace NeoCompiler.Analizador
                 asignable;
 
             expresionAritmetica.Rule =
-                number |
+                numero |
                 id |
                 llamadaFuncion |
                 parentesisAbrir_ + expresionAritmetica + parentesisCerrar_ |
                 expresionAritmetica + operadorAritmetico + expresionAritmetica;
 
             operadorAritmetico.Rule =
-                plus_ |
-                minus_ |
-                times_ |
-                divededBy_ |
-                modulus_ |
-                powerOf_ |
-                root_;
+                mas_ |
+                menos_ |
+                por_ |
+                entre_ |
+                modulo_ |
+                potencia_ |
+                raiz_;
 
             controladorFlujo.Rule =
                 sentenciaIf |
@@ -256,12 +353,12 @@ namespace NeoCompiler.Analizador
                 asignable + operadorRelacional + asignable;
 
             operadorRelacional.Rule =
-                doubleEquals_ |
-                different_ |
-                greaterEquals_ |
-                greater_ |
-                lessEquals_ |
-                less_;
+                igualIgual_ |
+                diferente_ |
+                mayorIgual_ |
+                mayor_ |
+                menorIgual_ |
+                menor_;
 
             sentenciaWhen.Rule =
                 when_ + parentesisAbrir_ + id + parentesisCerrar_ + bloqueWhen;
