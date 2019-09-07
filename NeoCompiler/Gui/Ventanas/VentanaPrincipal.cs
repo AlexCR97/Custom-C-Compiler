@@ -140,10 +140,8 @@ namespace NeoCompiler
             moduloSalida.Mostrar("Analisis Lexico-Sintáctico EXITOSO :D\n", ModuloSalida.SalidaExito);
 
             // Tercero, realizar analisis semantico
-
             try
             {
-
                 var arbolSintaxis = new ArbolSintaxis(arbol);
                 var semantico = new Semantico(arbolSintaxis);
 
@@ -151,23 +149,27 @@ namespace NeoCompiler
 
                 moduloAnalisis.LlenarTablaSimbolos(tabla);
 
-                Tuple<bool, string> resultadoDuplicados = semantico.ChecarDuplicados(tabla, -1);
+                semantico.ChecarDuplicados(tabla, -1);
 
-                if (!resultadoDuplicados.Item1)
-                {
-                    moduloSalida.Mostrar("Analisis Semantico FALLÓ :(\n", ModuloSalida.SalidaError);
-                    moduloSalida.Mostrar("Variable redeclarada: " + resultadoDuplicados.Item2 + '\n', ModuloSalida.SalidaError);
-                    return;
-                }
-
-                Tuple<bool, string, string> resultadoTipos = semantico.ChecarTipos(tabla, -1);
-
-                if (!resultadoTipos.Item1)
-                {
-                    moduloSalida.Mostrar("Analisis Semantico FALLÓ :(\n", ModuloSalida.SalidaError);
-                    moduloSalida.Mostrar($"La variable '{resultadoTipos.Item2}' debe ser de tipo '{resultadoTipos.Item3}'\n", ModuloSalida.SalidaError);
-                    return;
-                }
+                semantico.ChecarTipos(tabla, -1);
+            }
+            catch (ErrorVariableYaDeclarada err)
+            {
+                moduloSalida.Mostrar("Analisis Semantico FALLÓ :(\n", ModuloSalida.SalidaError);
+                moduloSalida.Mostrar(err.Message + '\n', ModuloSalida.SalidaError);
+                return;
+            }
+            catch (ErrorAsignacionRecursiva err)
+            {
+                moduloSalida.Mostrar("Analisis Semantico FALLÓ :(\n", ModuloSalida.SalidaError);
+                moduloSalida.Mostrar(err.Message + '\n', ModuloSalida.SalidaError);
+                return;
+            }
+            catch (ErrorTipoIncorrento err)
+            {
+                moduloSalida.Mostrar("Analisis Semantico FALLÓ :(\n", ModuloSalida.SalidaError);
+                moduloSalida.Mostrar(err.Message + '\n', ModuloSalida.SalidaError);
+                return;
             }
             catch (ErrorVariableSinDeclarar err)
             {
@@ -188,64 +190,6 @@ namespace NeoCompiler
         // Cerrar archivo
         private void toolStripButtonCloseFile_Click(object sender, EventArgs e)
         {
-            string entrada = moduloCodigo.CodigoFuenteSeleccionado();
-            var sintactico = new Sintactico();
-            ParseTree arbol = sintactico.Analizar(entrada);
-            var arbolSintaxis = new ArbolSintaxis(arbol);
-
-            ///
-
-            List<ParseTreeNode> nodos = arbolSintaxis.Recorrer();
-            Console.WriteLine("\n\nNodos encontrados:");
-
-            foreach (ParseTreeNode nodo in nodos)
-            {
-                Console.WriteLine(arbolSintaxis.ImprimirNodo(nodo));
-                Console.WriteLine("========================================================");
-            }
-
-            Console.WriteLine("\n////////////////////////////////////////////////////////\n");
-
-            var semantico = new Semantico(arbolSintaxis);
-            TablaSimbolos tabla = semantico.GenerarTablaSimbolos();
-
-            Console.WriteLine(tabla);
-
-            moduloAnalisis.LlenarTablaSimbolos(tabla);
-
-            bool noDuplicados = semantico.ChecarDuplicados(tabla);
-
-            if (noDuplicados)
-            {
-                MessageBox.Show("No hubo duplicados! :D");
-            }
-            else
-            {
-                MessageBox.Show("Si hubo duplicados :(");
-            }
-
-            bool tipadosCorrectos = semantico.ChecarTipos(tabla);
-
-            if (tipadosCorrectos)
-            {
-                MessageBox.Show("Tipados correctos! :D");
-            }
-            else
-            {
-                MessageBox.Show("Tipados incorrectos :(");
-            }
-
-            // ============================================================
-            Console.WriteLine("==================================================");
-            Console.WriteLine("==================================================");
-            Console.WriteLine("==================================================");
-
-            var pruebas = new PruebasAccionesSemanticas(arbolSintaxis);
-            pruebas.TestSemanticActions();
-
-            Console.WriteLine("==================================================");
-            Console.WriteLine("==================================================");
-            Console.WriteLine("==================================================");
 
         }
     }

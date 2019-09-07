@@ -95,7 +95,7 @@ namespace NeoCompiler.Analizador
             return true;
         }
 
-        public Tuple<bool, string> ChecarDuplicados(TablaSimbolos tabla, int foo)
+        public bool ChecarDuplicados(TablaSimbolos tabla, int foo)
         {
             var contadores = new Dictionary<string, int>();
 
@@ -109,10 +109,10 @@ namespace NeoCompiler.Analizador
                 contadores[id] += 1;
 
                 if (contadores[id] > 1)
-                    return Tuple.Create(false, id);
+                    throw new ErrorVariableYaDeclarada(id);
             }
 
-            return Tuple.Create(true, String.Empty);
+            return true;
         }
 
         public bool ChecarTipos(TablaSimbolos tabla)
@@ -176,7 +176,7 @@ namespace NeoCompiler.Analizador
             return true;
         }
 
-        public Tuple<bool, string, string> ChecarTipos(TablaSimbolos tabla, int foo)
+        public bool ChecarTipos(TablaSimbolos tabla, int foo)
         {
             foreach (Simbolo simbolo in tabla.Simbolos)
             {
@@ -213,10 +213,10 @@ namespace NeoCompiler.Analizador
                     case Gramatica.Terminales.Int:
                     {
                         if (!ValidarRegex(valor, Gramatica.ExpresionesRegulares.NumeroRegex))
-                            return Tuple.Create(false, simbolo.Identificador, Gramatica.Terminales.Int);
+                            throw new ErrorTipoIncorrento(simbolo.Identificador, Gramatica.Terminales.Int);
 
                         if (valor.Contains('.'))
-                            return Tuple.Create(false, simbolo.Identificador, Gramatica.Terminales.Int);
+                            throw new ErrorTipoIncorrento(simbolo.Identificador, Gramatica.Terminales.Int);
 
                         break;
                     }
@@ -224,7 +224,7 @@ namespace NeoCompiler.Analizador
                     case Gramatica.Terminales.Float:
                     {
                         if (!ValidarRegex(valor, Gramatica.ExpresionesRegulares.NumeroRegex))
-                            return Tuple.Create(false, simbolo.Identificador, Gramatica.Terminales.Float);
+                            throw new ErrorTipoIncorrento(simbolo.Identificador, Gramatica.Terminales.Float);
 
                         break;
                     }
@@ -232,7 +232,7 @@ namespace NeoCompiler.Analizador
                     case Gramatica.Terminales.Double:
                     {
                         if (!ValidarRegex(valor, Gramatica.ExpresionesRegulares.NumeroRegex))
-                            return Tuple.Create(false, simbolo.Identificador, Gramatica.Terminales.Double);
+                            throw new ErrorTipoIncorrento(simbolo.Identificador, Gramatica.Terminales.Double);
 
                         break;
                     }
@@ -240,7 +240,7 @@ namespace NeoCompiler.Analizador
                     case Gramatica.Terminales.Bool:
                     {
                         if (!valor.Equals(Gramatica.Terminales.True) || !valor.Equals(Gramatica.Terminales.False))
-                            return Tuple.Create(false, simbolo.Identificador, Gramatica.Terminales.Bool);
+                            throw new ErrorTipoIncorrento(simbolo.Identificador, Gramatica.Terminales.Bool);
 
                         break;
                     }
@@ -248,14 +248,14 @@ namespace NeoCompiler.Analizador
                     case Gramatica.Terminales.String:
                     {
                         if (!ValidarRegex(valor, Gramatica.ExpresionesRegulares.StringRegex))
-                            return Tuple.Create(false, simbolo.Identificador, Gramatica.Terminales.String);
+                            throw new ErrorTipoIncorrento(simbolo.Identificador, Gramatica.Terminales.String);
 
                         break;
                     }
                 }
             }
 
-            return Tuple.Create(true, String.Empty, String.Empty);
+            return true;
         }
 
         private bool ValidarRegex(string cadena, string regex)
@@ -272,6 +272,9 @@ namespace NeoCompiler.Analizador
             Simbolo simbolo = tabla.BuscarSimbolo(id);
 
             Console.WriteLine($"El valor del id actual '{id}' es '{simbolo.Valor}'");
+
+            if (id.Equals(simbolo.Valor))
+                throw new ErrorAsignacionRecursiva(id);
 
             if (ValidarRegex(simbolo.Valor, Gramatica.ExpresionesRegulares.IdRegex))
             {
