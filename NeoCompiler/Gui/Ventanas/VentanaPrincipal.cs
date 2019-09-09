@@ -152,6 +152,8 @@ namespace NeoCompiler
                 semantico.ChecarDuplicados(tabla, -1);
 
                 semantico.ChecarTipos(tabla, -1);
+
+                semantico.ChecarExpresionesRelacionales(tabla);
             }
             catch (ErrorVariableYaDeclarada err)
             {
@@ -159,7 +161,7 @@ namespace NeoCompiler
                 moduloSalida.Mostrar(err.Message + '\n', ModuloSalida.SalidaError);
                 return;
             }
-            catch (ErrorAsignacionRecursiva err)
+            catch (ErrorDeclaracionRecursiva err)
             {
                 moduloSalida.Mostrar("Analisis Semantico FALLÓ :(\n", ModuloSalida.SalidaError);
                 moduloSalida.Mostrar(err.Message + '\n', ModuloSalida.SalidaError);
@@ -178,6 +180,12 @@ namespace NeoCompiler
                 return;
             }
             catch (ErrorVariableSinInicializar err)
+            {
+                moduloSalida.Mostrar("Analisis Semantico FALLÓ :(\n", ModuloSalida.SalidaError);
+                moduloSalida.Mostrar(err.Message + '\n', ModuloSalida.SalidaError);
+                return;
+            }
+            catch (ErrorComparacionImposible err)
             {
                 moduloSalida.Mostrar("Analisis Semantico FALLÓ :(\n", ModuloSalida.SalidaError);
                 moduloSalida.Mostrar(err.Message + '\n', ModuloSalida.SalidaError);

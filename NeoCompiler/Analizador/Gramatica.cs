@@ -20,6 +20,7 @@ namespace NeoCompiler.Analizador
             public const string ListaDeclaracionConstante = "<lista-declaracion-constante>";
             public const string Tipo = "<tipo>";
             public const string Asignacion = "<asignacion>";
+            public const string AsignacionSentencia = "<asignacion-sentencia>";
             public const string Asignable = "<asignable>";
             public const string ListaAsignable = "<lista-asignable>";
             public const string ExpresionAritmetica = "<expresion-aritemtica>";
@@ -134,7 +135,7 @@ namespace NeoCompiler.Analizador
 
         public Gramatica() : base()
         {
-            #region Non terminals
+            #region No terminales
             var inicio = new NonTerminal(NoTerminales.Inicio);
             var declaracionVariable = new NonTerminal(NoTerminales.DeclaracionVariable);
             var listaDeclaracionVariable = new NonTerminal(NoTerminales.ListaDeclaracionVariable);
@@ -144,6 +145,7 @@ namespace NeoCompiler.Analizador
             var listaDeclaracionConstante = new NonTerminal(NoTerminales.ListaDeclaracionConstante);
             var tipo = new NonTerminal(NoTerminales.Tipo);
             var asignacion = new NonTerminal(NoTerminales.Asignacion);
+            var asignacionSentencia = new NonTerminal(NoTerminales.AsignacionSentencia);
             var asignable = new NonTerminal(NoTerminales.Asignable);
             var listaAsignable = new NonTerminal(NoTerminales.ListaAsignable);
             var expresionAritmetica = new NonTerminal(NoTerminales.ExpresionAritmetica);
@@ -307,6 +309,9 @@ namespace NeoCompiler.Analizador
                 asignacion;
 
             asignacion.Rule =
+                id + igual_ + asignable;
+
+            asignacionSentencia.Rule =
                 id + igual_ + asignable;
 
             asignable.Rule =
