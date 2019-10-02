@@ -49,8 +49,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Analizador\CodigoIntermedio\ConvertidorNotacion.cs" />
+    <Compile Include="Analizador\CodigoIntermedio\GeneradorCodigoIntermedio.cs" />
+    <Compile Include="Analizador\CodigoIntermedio\TablaTriplos.cs" />
+    <Compile Include="Analizador\CodigoIntermedio\Triplo.cs" />
     <Compile Include="Analizador\ErroresSemanticos\ErrorComparacionImposible.cs" />
     <Compile Include="Analizador\ErroresSemanticos\ErrorDeclaracionRecursiva.cs" />
+    <Compile Include="Analizador\ErroresSemanticos\ErrorNeo.cs" />
     <Compile Include="Analizador\ErroresSemanticos\ErrorTipoIncorrento.cs" />
     <Compile Include="Analizador\ErroresSemanticos\ErrorVariableSinDeclarar.cs" />
     <Compile Include="Analizador\ErroresSemanticos\ErrorVariableSinInicializar.cs" />

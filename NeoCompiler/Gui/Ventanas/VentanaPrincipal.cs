@@ -129,15 +129,15 @@ namespace NeoCompiler
             var sintactico = new Sintactico();
             ParseTree arbol = sintactico.Analizar(codigoPestanaSeleccionada);
 
-            moduloSalida.Mostrar("Realizando analisis...\n");
+            moduloSalida.Mostrar("Compilando archivo '" + nombrePestanaSeleccionada + "'...\n");
 
             if (arbol.Root == null)
             {
-                moduloSalida.Mostrar("Analisis Lexico-Sintáctico FALLÓ :(\n", ModuloSalida.SalidaError);
+                moduloSalida.Mostrar("Error lexico-sintáctico\n", ModuloSalida.SalidaError);
                 return;
             }
 
-            moduloSalida.Mostrar("Analisis Lexico-Sintáctico EXITOSO :D\n", ModuloSalida.SalidaExito);
+            moduloSalida.Mostrar("Analisis lexico-sintáctico realizado con exito\n", ModuloSalida.SalidaExito);
 
             // Tercero, realizar analisis semantico
             try
@@ -155,44 +155,13 @@ namespace NeoCompiler
 
                 semantico.ChecarExpresionesRelacionales(tabla);
             }
-            catch (ErrorVariableYaDeclarada err)
+            catch (ErrorNeo err)
             {
-                moduloSalida.Mostrar("Analisis Semantico FALLÓ :(\n", ModuloSalida.SalidaError);
-                moduloSalida.Mostrar(err.Message + '\n', ModuloSalida.SalidaError);
-                return;
-            }
-            catch (ErrorDeclaracionRecursiva err)
-            {
-                moduloSalida.Mostrar("Analisis Semantico FALLÓ :(\n", ModuloSalida.SalidaError);
-                moduloSalida.Mostrar(err.Message + '\n', ModuloSalida.SalidaError);
-                return;
-            }
-            catch (ErrorTipoIncorrento err)
-            {
-                moduloSalida.Mostrar("Analisis Semantico FALLÓ :(\n", ModuloSalida.SalidaError);
-                moduloSalida.Mostrar(err.Message + '\n', ModuloSalida.SalidaError);
-                return;
-            }
-            catch (ErrorVariableSinDeclarar err)
-            {
-                moduloSalida.Mostrar("Analisis Semantico FALLÓ :(\n", ModuloSalida.SalidaError);
-                moduloSalida.Mostrar(err.Message + '\n', ModuloSalida.SalidaError);
-                return;
-            }
-            catch (ErrorVariableSinInicializar err)
-            {
-                moduloSalida.Mostrar("Analisis Semantico FALLÓ :(\n", ModuloSalida.SalidaError);
-                moduloSalida.Mostrar(err.Message + '\n', ModuloSalida.SalidaError);
-                return;
-            }
-            catch (ErrorComparacionImposible err)
-            {
-                moduloSalida.Mostrar("Analisis Semantico FALLÓ :(\n", ModuloSalida.SalidaError);
-                moduloSalida.Mostrar(err.Message + '\n', ModuloSalida.SalidaError);
+                moduloSalida.Mostrar("Error semántico. " + err.Message + "\n", ModuloSalida.SalidaError);
                 return;
             }
 
-            moduloSalida.Mostrar("Analisis Semantico EXITOSO :D\n", ModuloSalida.SalidaExito);
+            moduloSalida.Mostrar("Analisis semantico realizado con exito\n", ModuloSalida.SalidaExito);
         }
 
         // Cerrar archivo

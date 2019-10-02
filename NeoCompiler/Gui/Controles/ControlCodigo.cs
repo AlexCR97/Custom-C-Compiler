@@ -35,9 +35,7 @@ namespace NeoCompiler.Gui.Controles
             int cantidadLineas = richTextBoxCodigo.Lines.Length;
 
             for (int i = 1; i <= cantidadLineas; i++)
-            {
                 textBoxLineas.AppendText(i.ToString() + '\n');
-            }
         }
     }
 }

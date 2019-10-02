@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace NeoCompiler.Analizador.ErroresSemanticos
 {
-    class ErrorDeclaracionRecursiva : Exception
+    class ErrorDeclaracionRecursiva : ErrorNeo
     {
         public ErrorDeclaracionRecursiva(string identificador)
             : base($"Declaracion recursiva de la variable '{identificador}'") { }

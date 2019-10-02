@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace NeoCompiler.Analizador.ErroresSemanticos
 {
-    class ErrorVariableSinInicializar : Exception
+    class ErrorVariableSinInicializar : ErrorNeo
     {
         public ErrorVariableSinInicializar(string identificador)
             : base($"La variable '{identificador}' no ha sido inicializada") { }

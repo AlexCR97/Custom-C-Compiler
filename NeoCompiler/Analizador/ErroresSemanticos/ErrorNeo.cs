@@ -6,9 +6,8 @@ using System.Threading.Tasks;
 
 namespace NeoCompiler.Analizador.ErroresSemanticos
 {
-    class ErrorVariableSinDeclarar : ErrorNeo
+    class ErrorNeo : Exception
     {
-        public ErrorVariableSinDeclarar(string identificador)
-            : base($"No existe una variable '{identificador}' declarada") { }
+        public ErrorNeo(string mensaje) : base(mensaje) { }
     }
 }

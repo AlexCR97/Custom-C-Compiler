@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace NeoCompiler.Analizador.ErroresSemanticos
 {
-    class ErrorVariableYaDeclarada : Exception
+    class ErrorVariableYaDeclarada : ErrorNeo
     {
         public ErrorVariableYaDeclarada(string identificador)
             : base($"Ya existe una variable declarada con el identificador '{identificador}'") { }
