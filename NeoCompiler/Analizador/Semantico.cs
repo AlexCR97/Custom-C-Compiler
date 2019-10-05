@@ -43,7 +43,13 @@ namespace NeoCompiler.Analizador
             List<ParseTreeNode> tipos = arbol.Recorrer(nodo, Gramatica.NoTerminales.Tipo);
             List<ParseTreeNode> ids = arbol.Recorrer(nodo, Gramatica.ExpresionesRegulares.Id);
             List<ParseTreeNode> asignaciones = arbol.Recorrer(nodo, Gramatica.NoTerminales.Asignable);
-            var asignacionesCola = new Queue<ParseTreeNode>(asignaciones);
+            var listaAsignables = new List<List<ParseTreeNode>>();
+
+            asignaciones.ForEach(node =>
+            {
+                List<ParseTreeNode> hojas = arbol.HojasDe(node);
+                listaAsignables.Add(hojas);
+            });
 
             // Crear simbolos
             for (int i = 0; i < ids.Count; i++)
@@ -51,12 +57,18 @@ namespace NeoCompiler.Analizador
                 string tipo = tipos[0].FindTokenAndGetText();
                 string id = ids[i].FindTokenAndGetText();
 
-                if (asignacionesCola.Count == 0)
+                if (listaAsignables.Count == 0)
                     simbolos.Add(new Simbolo(tipo, id));
 
                 else
                 {
-                    string asignable = asignacionesCola.Dequeue().FindTokenAndGetText();
+                    var sb = new StringBuilder();
+                    listaAsignables[i].ForEach(token =>
+                    {
+                        sb.Append($"{token.FindTokenAndGetText()} ");
+                    });
+
+                    string asignable = sb.ToString().Trim();
                     simbolos.Add(new Simbolo(tipo, id, asignable));
                 }
             }
@@ -264,15 +276,19 @@ namespace NeoCompiler.Analizador
                 tipo.Equals(Gramatica.Terminales.Double);
         }
 
-        private List<List<string>> ObtenerExpresiones()
+        // Lista de listas de strings
+        public List<string> ObtenerExpresiones()
         {
-            var expresiones = new List<List<string>>();
+            Console.WriteLine("OBTENER EXPRESIONES");
 
-            List<ParseTreeNode> nodosExpresiones = arbol.Recorrer(Gramatica.NoTerminales.ExpresionAritmetica);
+            var expresiones = new List<string>();
+
+            List<ParseTreeNode> nodosExpresiones = arbol.Recorrer(Gramatica.NoTerminales.Asignacion);
+            Console.WriteLine("Expresiones count: " + nodosExpresiones.Count);
 
             foreach (var nodo in nodosExpresiones)
             {
-                Console.WriteLine(nodo);
+                Console.WriteLine(arbol.ImprimirNodo(nodo) + "\n");
             }
 
             return expresiones;

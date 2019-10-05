@@ -8,7 +8,7 @@ namespace NeoCompiler.Analizador.CodigoIntermedio
 {
     class ConvertidorNotacion
     {
-        public static List<string> infijoPrefijo(List<string> tokensInfijo)
+        public static List<string> InfijoPrefijo(List<string> tokensInfijo)
         {
             // Voltear expresion
             var pilaTokens = new Stack<string>();
@@ -23,12 +23,52 @@ namespace NeoCompiler.Analizador.CodigoIntermedio
                 string tokenActual = pilaTokens.Pop();
 
                 // si es operador
+                if (EsOperador(tokenActual))
+                {
+                    operadores.Push(tokenActual);
 
+                    if (operadores.Contains(Gramatica.Terminales.ParentesisAbrir) && operadores.Contains(Gramatica.Terminales.ParentesisCerrar))
+                    {
+                        bool encontroAbrir = false;
+                        bool encontroCerrar = false;
+
+                        while (!encontroAbrir || !encontroCerrar)
+                        {
+                            string token = operadores.Pop();
+
+                            if (token.Equals(Gramatica.Terminales.ParentesisAbrir))
+                            {
+                                encontroAbrir = true;
+                                continue;
+                            }
+
+                            if (token.Equals(Gramatica.Terminales.ParentesisCerrar))
+                            {
+                                encontroCerrar = true;
+                                continue;
+                            }
+
+                            operandos.Push(token);
+                        }
+                    }
+                }
+                // si es operando
+                else
+                {
+                    operandos.Push(tokenActual);
+                }
             }
 
-            var tokens = new List<string>();
+            // voltear tokens
+            var prefijo = new List<string>();
 
-            return tokens;
+            while (operandos.Count > 0)
+            {
+                string token = operandos.Pop();
+                prefijo.Add(token);
+            }
+
+            return prefijo;
         }
 
         public static bool EsOperador(string token)
@@ -65,6 +105,13 @@ namespace NeoCompiler.Analizador.CodigoIntermedio
                 return 4;
 
             return -1;
+        }
+
+        public static List<string> TokensDe(string expresion)
+        {
+            string[] tokens = expresion.Split(' ');
+            var listaTokens = new List<string>(tokens);
+            return listaTokens;
         }
     }
 }

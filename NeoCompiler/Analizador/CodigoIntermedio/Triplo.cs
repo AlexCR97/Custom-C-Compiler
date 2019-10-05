@@ -8,9 +8,6 @@ namespace NeoCompiler.Analizador.CodigoIntermedio
 {
     public class Triplo
     {
-        private string id;
-        public string Id { get => id; set => id = value; }
-
         private string operador;
         public string Operador { get => operador; set => operador = value; }
 
@@ -22,9 +19,8 @@ namespace NeoCompiler.Analizador.CodigoIntermedio
 
         public Triplo() { }
 
-        public Triplo(string id, string operador, string operando1, string operando2)
+        public Triplo(string operador, string operando1, string operando2)
         {
-            this.Id = id;
             this.Operador = operador;
             this.Operando1 = operando1;
             this.Operando2 = operando2;
@@ -49,7 +45,7 @@ namespace NeoCompiler.Analizador.CodigoIntermedio
 
         public override string ToString()
         {
-            return $"{Operador}, {Operando1}, {Operando2}";
+            return "{" + Operador + ", " + Operando1 + ", " + Operando2 + "}";
         }
     }
 }

@@ -17,6 +17,37 @@ namespace NeoCompiler.Analizador
             this.arbol = arbol;
         }
 
+        public bool EsHoja(ParseTreeNode nodo)
+        {
+            if (nodo.ChildNodes == null)
+                return true;
+
+            return nodo.ChildNodes.Count == 0;
+        }
+
+        /// <summary>
+        /// Obtener las hojas de la raiz especificada
+        /// </summary>
+        /// <param name="raiz"></param>
+        /// <returns></returns>
+        public List<ParseTreeNode> HojasDe(ParseTreeNode raiz)
+        {
+            var nodos = new List<ParseTreeNode>();
+            HojasDe(raiz, nodos);
+            return nodos;
+        }
+
+        private void HojasDe(ParseTreeNode raiz, List<ParseTreeNode> nodos)
+        {
+            if (EsHoja(raiz))
+                nodos.Add(raiz);
+
+            raiz.ChildNodes.ForEach(nodo =>
+            {
+                HojasDe(nodo, nodos);
+            });
+        }
+
         public string ImprimirNodo(ParseTreeNode nodo)
         {
             var sb = new StringBuilder();
@@ -61,6 +92,27 @@ namespace NeoCompiler.Analizador
             raiz.ChildNodes.ForEach(nodo =>
             {
                 Recorrer(nodo, nodos);
+            });
+        }
+
+        /// <summary>
+        /// Obtener todos los nodos que conforman una el lado derecho de una asignacion (despues del '=')
+        /// </summary>
+        /// <param name="raiz"></param>
+        /// <returns></returns>
+        public List<ParseTreeNode> RecorrerAsignables(ParseTreeNode raiz)
+        {
+            var nodos = new List<ParseTreeNode>();
+            RecorrerAsignables(raiz, nodos);
+            return nodos;
+        }
+
+        private void RecorrerAsignables(ParseTreeNode raiz, List<ParseTreeNode> nodos)
+        {
+            nodos.Add(raiz);
+            raiz.ChildNodes.ForEach(nodo =>
+            {
+                RecorrerAsignables(nodo, nodos);
             });
         }
 

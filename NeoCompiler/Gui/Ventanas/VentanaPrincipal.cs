@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Irony.Parsing;
 using NeoCompiler.Analizador;
+using NeoCompiler.Analizador.CodigoIntermedio;
 using NeoCompiler.Analizador.ErroresSemanticos;
 using NeoCompiler.Gui.Modulos;
 
@@ -25,6 +26,22 @@ namespace NeoCompiler
             moduloExplorador.App = this;
             moduloSalida.App = this;
             moduloCodigo.App = this;
+
+            /*string expresion = "( A + ( B * C ) / D )";
+            var generador = new GeneradorCodigoIntermedio();
+            TablaTriplos tabla = generador.GenerarTriplos(expresion);
+            List<string> codigo = generador.GenerarCodigo(tabla);
+
+            Console.WriteLine(tabla);
+            Console.WriteLine();
+
+            codigo.ForEach(linea => Console.WriteLine(linea));
+
+            Console.WriteLine("=============================================");
+            Console.WriteLine("=============================================");
+            Console.WriteLine();*/
+
+            //Foo();
         }
 
         private string ObtenerRutaArchivo()
@@ -140,10 +157,11 @@ namespace NeoCompiler
             moduloSalida.Mostrar("Analisis lexico-sintáctico realizado con exito\n", ModuloSalida.SalidaExito);
 
             // Tercero, realizar analisis semantico
+            var arbolSintaxis = new ArbolSintaxis(arbol);
+            var semantico = new Semantico(arbolSintaxis);
+
             try
             {
-                var arbolSintaxis = new ArbolSintaxis(arbol);
-                var semantico = new Semantico(arbolSintaxis);
 
                 TablaSimbolos tabla = semantico.GenerarTablaSimbolos();
 
@@ -162,12 +180,53 @@ namespace NeoCompiler
             }
 
             moduloSalida.Mostrar("Analisis semantico realizado con exito\n", ModuloSalida.SalidaExito);
+
+            // Cuarto, generacion de codigo intermedio
+            List<string> expresiones = semantico.ObtenerExpresiones();
+            expresiones.ForEach(expresion =>
+            {
+                Console.WriteLine(expresion);
+            });
+
+
         }
 
         // Cerrar archivo
         private void toolStripButtonCloseFile_Click(object sender, EventArgs e)
         {
 
+        }
+
+        public void Foo()
+        {
+            var generador = new GeneradorCodigoIntermedio();
+
+            //List<string> expresiones = semantico.ObtenerExpresiones();
+            List<string> expresiones = new List<string>();
+            expresiones.Add("( A + ( (B * C) / D ) )");
+            expresiones.Add("( 1 * 10 )");
+            expresiones.Add("( ( 10 / ( B * E ) ) ^ ( 10 - 5 ) )");
+
+            var triplos = new List<TablaTriplos>();
+
+            expresiones.ForEach(expresion =>
+            {
+                TablaTriplos tablaTriplos = generador.GenerarTriplos(expresion);
+                triplos.Add(tablaTriplos);
+            });
+
+            var bloquesDeCodigo = new List<List<string>>();
+
+            triplos.ForEach(tabla =>
+            {
+                List<string> lineasDeCodigo = generador.GenerarCodigo(tabla);
+                bloquesDeCodigo.Add(lineasDeCodigo);
+            });
+
+            bloquesDeCodigo.ForEach(lineas =>
+            {
+                lineas.ForEach(linea => Console.WriteLine(linea));
+            });
         }
     }
 }
