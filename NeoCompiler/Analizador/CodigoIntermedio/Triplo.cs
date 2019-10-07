@@ -43,6 +43,36 @@ namespace NeoCompiler.Analizador.CodigoIntermedio
             }
         }
 
+        public string TipoDeOperando(string operando)
+        {
+            if (Utils.ValidarRegex(operando, Gramatica.ExpresionesRegulares.StringRegex))
+                return Gramatica.Terminales.String;
+
+            if (Utils.ValidarRegex(operando, Gramatica.ExpresionesRegulares.NumeroRegex))
+            {
+                if (operando.Contains("."))
+                    return Gramatica.Terminales.Double;
+                else
+                    return Gramatica.Terminales.Int;
+            }
+
+            return null;
+        }
+
+        public string TipoDeTriplo()
+        {
+            if (TipoDeOperando(Operando1).Equals(Gramatica.Terminales.String) || TipoDeOperando(Operando2).Equals(Gramatica.Terminales.String))
+                return Gramatica.Terminales.String;
+
+            if (TipoDeOperando(Operando1).Equals(Gramatica.Terminales.Double) || TipoDeOperando(Operando2).Equals(Gramatica.Terminales.Double))
+                return Gramatica.Terminales.Double;
+
+            if (TipoDeOperando(Operando1).Equals(Gramatica.Terminales.Float) || TipoDeOperando(Operando2).Equals(Gramatica.Terminales.Float))
+                return Gramatica.Terminales.Float;
+
+            return Gramatica.Terminales.Int;
+        }
+
         public override string ToString()
         {
             return "{" + Operador + ", " + Operando1 + ", " + Operando2 + "}";

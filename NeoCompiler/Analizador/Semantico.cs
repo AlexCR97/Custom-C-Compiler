@@ -107,7 +107,7 @@ namespace NeoCompiler.Analizador
                     continue;
 
                 // Si el valor del simbolo actual es un id
-                if (ValidarRegex(valor, Gramatica.ExpresionesRegulares.IdRegex) && !ValidarRegex(valor, Gramatica.ExpresionesRegulares.StringRegex))
+                if (Utils.ValidarRegex(valor, Gramatica.ExpresionesRegulares.IdRegex) && !Utils.ValidarRegex(valor, Gramatica.ExpresionesRegulares.StringRegex))
                 {
                     // Primero, checamos si el identificador existe
                     if (!tabla.ContieneSimbolo(valor))
@@ -121,7 +121,7 @@ namespace NeoCompiler.Analizador
                 {
                     case Gramatica.Terminales.Int:
                     {
-                        if (!ValidarRegex(valor, Gramatica.ExpresionesRegulares.NumeroRegex))
+                        if (!Utils.ValidarRegex(valor, Gramatica.ExpresionesRegulares.NumeroRegex))
                             throw new ErrorTipoIncorrento(simbolo.Identificador, Gramatica.Terminales.Int);
 
                         if (valor.Contains('.'))
@@ -132,7 +132,7 @@ namespace NeoCompiler.Analizador
 
                     case Gramatica.Terminales.Float:
                     {
-                        if (!ValidarRegex(valor, Gramatica.ExpresionesRegulares.NumeroRegex))
+                        if (!Utils.ValidarRegex(valor, Gramatica.ExpresionesRegulares.NumeroRegex))
                             throw new ErrorTipoIncorrento(simbolo.Identificador, Gramatica.Terminales.Float);
 
                         break;
@@ -140,7 +140,7 @@ namespace NeoCompiler.Analizador
 
                     case Gramatica.Terminales.Double:
                     {
-                        if (!ValidarRegex(valor, Gramatica.ExpresionesRegulares.NumeroRegex))
+                        if (!Utils.ValidarRegex(valor, Gramatica.ExpresionesRegulares.NumeroRegex))
                             throw new ErrorTipoIncorrento(simbolo.Identificador, Gramatica.Terminales.Double);
 
                         break;
@@ -156,7 +156,7 @@ namespace NeoCompiler.Analizador
 
                     case Gramatica.Terminales.String:
                     {
-                        if (!ValidarRegex(valor, Gramatica.ExpresionesRegulares.StringRegex))
+                        if (!Utils.ValidarRegex(valor, Gramatica.ExpresionesRegulares.StringRegex))
                             throw new ErrorTipoIncorrento(simbolo.Identificador, Gramatica.Terminales.String);
 
                         break;
@@ -202,12 +202,6 @@ namespace NeoCompiler.Analizador
             return true;
         }
 
-        private bool ValidarRegex(string cadena, string regex)
-        {
-            Match validacion = Regex.Match(cadena, regex);
-            return validacion.Success;
-        }
-
         private string TipoDe(TablaSimbolos tabla, string id)
         {
             Console.WriteLine("/ = / = / = / = / = / = / = / = / = / = / = / = / = / = / = / = / = / = / = / = / = /");
@@ -220,7 +214,7 @@ namespace NeoCompiler.Analizador
             if (id.Equals(simbolo.Valor))
                 throw new ErrorDeclaracionRecursiva(id);
 
-            if (ValidarRegex(simbolo.Valor, Gramatica.ExpresionesRegulares.IdRegex) && !ValidarRegex(simbolo.Valor, Gramatica.ExpresionesRegulares.StringRegex))
+            if (Utils.ValidarRegex(simbolo.Valor, Gramatica.ExpresionesRegulares.IdRegex) && !Utils.ValidarRegex(simbolo.Valor, Gramatica.ExpresionesRegulares.StringRegex))
             {
                 Console.WriteLine("Recursando...");
                 return TipoDe(tabla, simbolo.Valor);
@@ -245,7 +239,7 @@ namespace NeoCompiler.Analizador
             if (simbolo.Valor == null)
                 throw new ErrorVariableSinInicializar(simbolo.Identificador);
 
-            if (ValidarRegex(simbolo.Valor, Gramatica.ExpresionesRegulares.IdRegex) && !ValidarRegex(simbolo.Valor, Gramatica.ExpresionesRegulares.StringRegex))
+            if (Utils.ValidarRegex(simbolo.Valor, Gramatica.ExpresionesRegulares.IdRegex) && !Utils.ValidarRegex(simbolo.Valor, Gramatica.ExpresionesRegulares.StringRegex))
             {
                 Console.WriteLine("Recursando...");
                 return ValorDe(tabla, simbolo.Valor);
@@ -274,24 +268,6 @@ namespace NeoCompiler.Analizador
                 tipo.Equals(Gramatica.Terminales.Int) ||
                 tipo.Equals(Gramatica.Terminales.Float) ||
                 tipo.Equals(Gramatica.Terminales.Double);
-        }
-
-        // Lista de listas de strings
-        public List<string> ObtenerExpresiones()
-        {
-            Console.WriteLine("OBTENER EXPRESIONES");
-
-            var expresiones = new List<string>();
-
-            List<ParseTreeNode> nodosExpresiones = arbol.Recorrer(Gramatica.NoTerminales.Asignacion);
-            Console.WriteLine("Expresiones count: " + nodosExpresiones.Count);
-
-            foreach (var nodo in nodosExpresiones)
-            {
-                Console.WriteLine(arbol.ImprimirNodo(nodo) + "\n");
-            }
-
-            return expresiones;
         }
     }
 }

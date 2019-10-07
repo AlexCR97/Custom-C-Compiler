@@ -27,21 +27,9 @@ namespace NeoCompiler
             moduloSalida.App = this;
             moduloCodigo.App = this;
 
-            /*string expresion = "( A + ( B * C ) / D )";
-            var generador = new GeneradorCodigoIntermedio();
-            TablaTriplos tabla = generador.GenerarTriplos(expresion);
-            List<string> codigo = generador.GenerarCodigo(tabla);
-
-            Console.WriteLine(tabla);
-            Console.WriteLine();
-
-            codigo.ForEach(linea => Console.WriteLine(linea));
-
-            Console.WriteLine("=============================================");
-            Console.WriteLine("=============================================");
-            Console.WriteLine();*/
-
-            //Foo();
+            string expresion = "( A )";
+            var tokens = expresion.Split(' ');
+            Console.WriteLine(tokens.Length);
         }
 
         private string ObtenerRutaArchivo()
@@ -160,18 +148,16 @@ namespace NeoCompiler
             var arbolSintaxis = new ArbolSintaxis(arbol);
             var semantico = new Semantico(arbolSintaxis);
 
+            TablaSimbolos tablaSimbolos = semantico.GenerarTablaSimbolos();
             try
             {
+                moduloAnalisis.LlenarTablaSimbolos(tablaSimbolos);
 
-                TablaSimbolos tabla = semantico.GenerarTablaSimbolos();
+                semantico.ChecarDuplicados(tablaSimbolos, -1);
 
-                moduloAnalisis.LlenarTablaSimbolos(tabla);
+                semantico.ChecarTipos(tablaSimbolos, -1);
 
-                semantico.ChecarDuplicados(tabla, -1);
-
-                semantico.ChecarTipos(tabla, -1);
-
-                semantico.ChecarExpresionesRelacionales(tabla);
+                semantico.ChecarExpresionesRelacionales(tablaSimbolos);
             }
             catch (ErrorNeo err)
             {
@@ -182,51 +168,41 @@ namespace NeoCompiler
             moduloSalida.Mostrar("Analisis semantico realizado con exito\n", ModuloSalida.SalidaExito);
 
             // Cuarto, generacion de codigo intermedio
-            List<string> expresiones = semantico.ObtenerExpresiones();
-            expresiones.ForEach(expresion =>
+            var generador = new GeneradorCodigoIntermedio();
+            List<TablaTriplos> tablasTriplos = generador.GenerarTriplos(tablaSimbolos);
+
+            Console.WriteLine("{-}-{-}-{-}-{-}-{-}-{-}-{-}-{-}-{-}-{-}-{-}-{-}-{-}-{-}-{-}");
+            Console.WriteLine("Triplos generados:");
+            Console.WriteLine("{-}-{-}-{-}-{-}-{-}-{-}-{-}-{-}-{-}-{-}-{-}-{-}-{-}-{-}-{-}");
+            tablasTriplos.ForEach(triplos =>
             {
-                Console.WriteLine(expresion);
+                Console.WriteLine(triplos);
+                Console.WriteLine("o o o o o o o o o o o o o o o o o o");
             });
 
+            Console.WriteLine("{-}-{-}-{-}-{-}-{-}-{-}-{-}-{-}-{-}-{-}-{-}-{-}-{-}-{-}-{-}");
+            Console.WriteLine("Codigo generado:");
+            Console.WriteLine("{-}-{-}-{-}-{-}-{-}-{-}-{-}-{-}-{-}-{-}-{-}-{-}-{-}-{-}-{-}");
 
+            List<List<string>> codigoGenerado = generador.GenerarCodigo(tablasTriplos);
+
+            codigoGenerado.ForEach(lineas =>
+            {
+                lineas.ForEach(linea =>
+                {
+                    Console.WriteLine(linea);
+                });
+            });
+
+            moduloAnalisis.LlenarTriplos(tablasTriplos);
+
+            moduloAnalisis.LlenarCodigoIntermedio(codigoGenerado);
         }
 
         // Cerrar archivo
         private void toolStripButtonCloseFile_Click(object sender, EventArgs e)
         {
 
-        }
-
-        public void Foo()
-        {
-            var generador = new GeneradorCodigoIntermedio();
-
-            //List<string> expresiones = semantico.ObtenerExpresiones();
-            List<string> expresiones = new List<string>();
-            expresiones.Add("( A + ( (B * C) / D ) )");
-            expresiones.Add("( 1 * 10 )");
-            expresiones.Add("( ( 10 / ( B * E ) ) ^ ( 10 - 5 ) )");
-
-            var triplos = new List<TablaTriplos>();
-
-            expresiones.ForEach(expresion =>
-            {
-                TablaTriplos tablaTriplos = generador.GenerarTriplos(expresion);
-                triplos.Add(tablaTriplos);
-            });
-
-            var bloquesDeCodigo = new List<List<string>>();
-
-            triplos.ForEach(tabla =>
-            {
-                List<string> lineasDeCodigo = generador.GenerarCodigo(tabla);
-                bloquesDeCodigo.Add(lineasDeCodigo);
-            });
-
-            bloquesDeCodigo.ForEach(lineas =>
-            {
-                lineas.ForEach(linea => Console.WriteLine(linea));
-            });
         }
     }
 }

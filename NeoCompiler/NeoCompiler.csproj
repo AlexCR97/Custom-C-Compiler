@@ -52,6 +52,7 @@
     <Compile Include="Analizador\CodigoIntermedio\ConvertidorNotacion.cs" />
     <Compile Include="Analizador\CodigoIntermedio\GeneradorCodigoIntermedio.cs" />
     <Compile Include="Analizador\CodigoIntermedio\TablaTriplos.cs" />
+    <Compile Include="Analizador\CodigoIntermedio\TablaTriplosFactory.cs" />
     <Compile Include="Analizador\CodigoIntermedio\Triplo.cs" />
     <Compile Include="Analizador\ErroresSemanticos\ErrorComparacionImposible.cs" />
     <Compile Include="Analizador\ErroresSemanticos\ErrorDeclaracionRecursiva.cs" />
@@ -66,6 +67,7 @@
     <Compile Include="Analizador\Sintactico.cs" />
     <Compile Include="Analizador\ArbolSintaxis.cs" />
     <Compile Include="Analizador\TablaSimbolos.cs" />
+    <Compile Include="Analizador\Utils.cs" />
     <Compile Include="Gui\Controles\ControlCodigo.cs">
       <SubType>UserControl</SubType>
     </Compile>

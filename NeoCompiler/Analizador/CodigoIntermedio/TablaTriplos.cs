@@ -6,76 +6,12 @@ using System.Threading.Tasks;
 
 namespace NeoCompiler.Analizador.CodigoIntermedio
 {
-    class TablaTriplos
+    public class TablaTriplos
     {
         private SortedDictionary<string, Triplo> triplos = new SortedDictionary<string, Triplo>();
         public SortedDictionary<string, Triplo> Triplos { get => triplos; }
 
-        public TablaTriplos(List<string> prefijo)
-        {
-            int idContador = 0;
-
-            // voltear tokens
-            var pilaTokens = new Stack<string>();
-            prefijo.ForEach(token => pilaTokens.Push(token));
-
-            // iterar sobre tokens
-            var operandos = new Stack<string>();
-
-            while (pilaTokens.Count > 0)
-            {
-                string tokenActual = pilaTokens.Pop();
-
-                // si el token actual es operando
-                if (ConvertidorNotacion.EsOperando(tokenActual))
-                    operandos.Push(tokenActual);
-
-                // si el token actual es operador
-                else
-                {
-                    string operando1 = operandos.Pop();
-                    string operando2 = operandos.Pop();
-
-                    Triplo triplo1 = DeExpresion(operando1);
-                    Triplo triplo2 = DeExpresion(operando2);
-
-                    if (triplo1 == null && triplo2 == null)
-                    {
-                        Agregar("t" + idContador, new Triplo(tokenActual, operando1, operando2));
-
-                        string nuevoOperando = $"( {operando1} {tokenActual} {operando2} )";
-                        operandos.Push(nuevoOperando);
-                    }
-                    else if (triplo1 != null && triplo2 != null)
-                    {
-                        string id1 = EncontrarId(triplo1);
-                        string id2 = EncontrarId(triplo2);
-                        Agregar("t" + idContador, new Triplo(tokenActual, id1, id2));
-
-                        string nuevoOperando = $"( {id1} {tokenActual} {id2} )";
-                        operandos.Push(nuevoOperando);
-                    }
-                    else if (triplo1 != null && triplo2 == null)
-                    {
-                        string id1 = EncontrarId(triplo1);
-                        Agregar("t" + idContador, new Triplo(tokenActual, id1, operando2));
-
-                        string nuevoOperando = $"( {id1} {tokenActual} {operando2} )";
-                        operandos.Push(nuevoOperando);
-                    }
-                    else if (triplo1 == null && triplo2 != null)
-                    {
-                        string id2 = EncontrarId(triplo2);
-                        Agregar("t" + idContador, new Triplo(tokenActual, operando1, id2));
-
-                        string nuevoOperando = $"( {operando1} {tokenActual} {id2} )";
-                        operandos.Push(nuevoOperando);
-                    }
-
-                    idContador++;
-                }
-            }
-        }
+        public TablaTriplos() { }
 
         public bool Agregar(string id, Triplo triplo)
         {
@@ -90,23 +26,6 @@ namespace NeoCompiler.Analizador.CodigoIntermedio
         public bool Contiene(string id)
         {
             return Triplos.ContainsKey(id);
-        }
-
-        private Triplo DeExpresion(string expresion)
-        {
-            try
-            {
-                // ( A + B )
-                string[] tokens = expresion.Split(' ');
-                string operador = tokens[2];
-                string operando1 = tokens[1];
-                string operando2 = tokens[3];
-                return new Triplo(operador, operando1, operando2);
-            }
-            catch (Exception ex)
-            {
-                return null;
-            }
         }
 
         public bool Eliminar(string id)
@@ -142,11 +61,15 @@ namespace NeoCompiler.Analizador.CodigoIntermedio
             if (Triplos.Count == 0)
                 return "Triplos: {}";
 
+            sb.Append("Triplos: {\n");
+
             foreach (var i in Triplos)
             {
                 Triplo t = i.Value;
-                sb.Append(i.Key).Append(" = ").Append(t).Append('\n');
+                sb.Append('\t').Append(i.Key).Append(" = ").Append(t).Append('\n');
             }
+
+            sb.Append('}');
 
             return sb.ToString();
         }
