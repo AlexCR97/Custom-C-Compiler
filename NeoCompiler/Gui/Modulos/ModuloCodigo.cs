@@ -1,12 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Drawing;
-using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
+﻿using System.Windows.Forms;
 using NeoCompiler.Gui.Controles;
 
 namespace NeoCompiler.Gui.Modulos
@@ -52,6 +44,11 @@ namespace NeoCompiler.Gui.Modulos
 
             tabControlPestanas.TabPages.Add(nuevaPagina);
             tabControlPestanas.SelectedIndex = tabControlPestanas.TabCount - 1;
+        }
+
+        public int CantidadLineas()
+        {
+            return ControlCodigoSeleccionado().CantidadLineas;
         }
 
         public string NombrePestanaSeleccionada()

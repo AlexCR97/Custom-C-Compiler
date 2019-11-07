@@ -15,3 +15,4 @@ C:\Users\carp_\source\repos\NeoCompiler\NeoCompiler\obj\Debug\NeoCompiler.Gui.Mo
 C:\Users\carp_\source\repos\NeoCompiler\NeoCompiler\obj\Debug\NeoCompiler.Gui.Modulos.ModuloExplorador.resources
 C:\Users\carp_\source\repos\NeoCompiler\NeoCompiler\obj\Debug\NeoCompiler.Gui.Modulos.ModuloSalida.resources
 C:\Users\carp_\source\repos\NeoCompiler\NeoCompiler\obj\Debug\NeoCompiler.Gui.Modulos.ModuloCodigo.resources
+C:\Users\carp_\source\repos\NeoCompiler\NeoCompiler\obj\Debug\NeoCompiler.Gui.Ventanas.VentanaEntrada.resources

@@ -1,17 +1,15 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Drawing;
-using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace NeoCompiler.Gui.Controles
 {
     public partial class ControlCodigo : UserControl
     {
+        public int CantidadLineas
+        {
+            get { return richTextBoxCodigo.Lines.Length; }
+        }
+
         public string CodigoFuente
         {
             get { return richTextBoxCodigo.Text; }

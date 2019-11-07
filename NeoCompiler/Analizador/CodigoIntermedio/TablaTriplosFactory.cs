@@ -1,8 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace NeoCompiler.Analizador.CodigoIntermedio
 {
@@ -11,7 +8,8 @@ namespace NeoCompiler.Analizador.CodigoIntermedio
         private static int idContador = -1;
         private static int IdContador
         {
-            get {
+            get
+            {
                 idContador++;
                 return idContador;
             }
@@ -20,6 +18,14 @@ namespace NeoCompiler.Analizador.CodigoIntermedio
         public static TablaTriplos DeExpresionPrefija(List<string> prefijo)
         {
             var tabla = new TablaTriplos();
+
+            // (2 + 4) * 1
+            // * + 2 4 1
+            //
+
+            /* 2 */
+            // (1 + 4)
+            // t1 + 2 * t0
 
             // voltear tokens
             var pilaTokens = new Stack<string>();
@@ -89,23 +95,6 @@ namespace NeoCompiler.Analizador.CodigoIntermedio
             {
                 string[] tokens = expresion.Split(' ');
 
-                Console.WriteLine("Creating triplo from expression '" + expresion + "'");
-                Console.WriteLine("Tokens count: " + tokens.Length);
-
-                // A
-                /*if (tokens.Length == 1)
-                {
-                    string operando = tokens[0];
-                    return new Triplo(null, operando, null);
-                }
-
-                // ( A )
-                if (tokens.Length == 3)
-                {
-                    string operando = tokens[1];
-                    return new Triplo(null, operando, null);
-                }*/
-
                 // ( A + B )
                 string operador = tokens[2];
                 string operando1 = tokens[1];
@@ -116,6 +105,11 @@ namespace NeoCompiler.Analizador.CodigoIntermedio
             {
                 return null;
             }
+        }
+
+        public static void ReiniciarContador()
+        {
+            idContador = -1;
         }
     }
 }

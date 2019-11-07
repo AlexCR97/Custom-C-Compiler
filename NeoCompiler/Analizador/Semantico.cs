@@ -1,11 +1,10 @@
 ﻿using Irony.Parsing;
+using NeoCompiler.Analizador.CodigoIntermedio;
 using NeoCompiler.Analizador.ErroresSemanticos;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 
 namespace NeoCompiler.Analizador
 {
@@ -57,19 +56,34 @@ namespace NeoCompiler.Analizador
                 string tipo = tipos[0].FindTokenAndGetText();
                 string id = ids[i].FindTokenAndGetText();
 
-                if (listaAsignables.Count == 0)
-                    simbolos.Add(new Simbolo(tipo, id));
+                Console.WriteLine("==========================================================================================");
+                Console.WriteLine("Tipo actual es: " + tipo);
+                Console.WriteLine("Id actual es: " + id);
 
+                if (listaAsignables.Count == 0)
+                {
+                    Console.WriteLine("Lista asignables esta vacia");
+                    simbolos.Add(new Simbolo(tipo, id));
+                }
                 else
                 {
+                    Console.WriteLine("Lista asignables count: " + listaAsignables.Count);
+
                     var sb = new StringBuilder();
+
                     listaAsignables[i].ForEach(token =>
                     {
+                        Console.Write(token + " ");
                         sb.Append($"{token.FindTokenAndGetText()} ");
                     });
 
+                    Console.WriteLine();
+                    Console.WriteLine("==========================================================================================");
+
                     string asignable = sb.ToString().Trim();
-                    simbolos.Add(new Simbolo(tipo, id, asignable));
+                    string asignableNormalizado = ConvertidorNotacion.NormalizarExpresion(asignable);
+
+                    simbolos.Add(new Simbolo(tipo, id, asignableNormalizado));
                 }
             }
 

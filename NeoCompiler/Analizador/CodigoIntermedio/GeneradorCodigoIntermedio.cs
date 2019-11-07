@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
 namespace NeoCompiler.Analizador.CodigoIntermedio
 {
@@ -15,16 +11,11 @@ namespace NeoCompiler.Analizador.CodigoIntermedio
         /// <returns></returns>
         public TablaTriplos GenerarTriplos(Simbolo simbolo)
         {
-            Console.WriteLine("[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][]");
-            Console.WriteLine("Generando triplos de simbolo: " + simbolo);
-            Console.WriteLine("[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][]");
-
             string expresion = simbolo.Valor;
             List<string> infijo = ConvertidorNotacion.TokensDe(expresion);
             List<string> prefijo = ConvertidorNotacion.InfijoPrefijo(infijo);
 
             TablaTriplos tablaTriplos = TablaTriplosFactory.DeExpresionPrefija(prefijo);
-            Console.WriteLine("Triplos generados:\n" + tablaTriplos);
 
             return tablaTriplos;
         }
@@ -38,11 +29,11 @@ namespace NeoCompiler.Analizador.CodigoIntermedio
         {
             var tablasTriplos = new List<TablaTriplos>();
 
-            tablaSimbolos.Simbolos.ForEach(simbolo =>
+            foreach (Simbolo simbolo in tablaSimbolos.Simbolos)
             {
                 TablaTriplos triplos = GenerarTriplos(simbolo);
                 tablasTriplos.Add(triplos);
-            });
+            }
 
             return tablasTriplos;
         }
@@ -76,11 +67,11 @@ namespace NeoCompiler.Analizador.CodigoIntermedio
         {
             var bloquesCodigo = new List<List<string>>();
 
-            tablasTriplos.ForEach(triplos =>
+            foreach (TablaTriplos triplos in tablasTriplos)
             {
                 List<string> codigo = GenerarCodigo(triplos);
                 bloquesCodigo.Add(codigo);
-            });
+            }
 
             return bloquesCodigo;
         }

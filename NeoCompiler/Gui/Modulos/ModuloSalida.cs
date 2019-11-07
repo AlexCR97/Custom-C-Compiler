@@ -1,10 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Drawing;
-using System.Data;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -16,16 +11,47 @@ namespace NeoCompiler.Gui.Modulos
         public const int SalidaNormal = 2;
         public const int SalidaExito = 3;
 
-        private VentanaPrincipal app;
-        public VentanaPrincipal App
-        {
-            get { return app; }
-            set { app = value; }
-        }
+        public VentanaPrincipal App { get; set; }
+
+        private string entrada;
 
         public ModuloSalida()
         {
             InitializeComponent();
+
+            richTextBoxSalida.KeyDown += (object sender, KeyEventArgs e) =>
+            {
+                if (e.KeyCode == Keys.Enter)
+                {
+                    var rtb = sender as RichTextBox;
+                    string[] tokens = rtb.Text.Split(' ');
+                    string ultimoToken = tokens[tokens.Length - 1];
+
+                    entrada = ultimoToken;
+                }
+            };
+        }
+
+        public void Enfocar()
+        {
+            richTextBoxSalida.ReadOnly = false;
+            richTextBoxSalida.Focus();
+        }
+
+        public void Desenfocar()
+        {
+            richTextBoxSalida.ReadOnly = true;
+        }
+
+        public async Task<int> EntradaInt()
+        {
+            Enfocar();
+
+            int entrada = -1;
+
+            Desenfocar();
+
+            return entrada;
         }
 
         public void Limpiar()

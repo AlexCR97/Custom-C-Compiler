@@ -1,11 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
+using System.Diagnostics;
 using System.IO;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Irony.Parsing;
@@ -18,6 +14,8 @@ namespace NeoCompiler
 {
     public partial class VentanaPrincipal : Form
     {
+        private Stopwatch cronometro = new Stopwatch();
+
         public VentanaPrincipal()
         {
             InitializeComponent();
@@ -27,9 +25,22 @@ namespace NeoCompiler
             moduloSalida.App = this;
             moduloCodigo.App = this;
 
-            string expresion = "( A )";
-            var tokens = expresion.Split(' ');
-            Console.WriteLine(tokens.Length);
+            /*string expresion = "a + b * c / d";
+
+            List<string> infijo = ConvertidorNotacion.TokensDe(expresion);
+            List<string> postfijo = ConvertidorNotacion.InfijoPostfijo(infijo);
+
+            var variables = new Dictionary<string, double>();
+            variables["a"] = 1;
+            variables["b"] = 2;
+            variables["c"] = 3;
+            variables["d"] = 4;
+
+            var evaluador = new Evaluador(postfijo, variables);
+
+            double resultado = evaluador.Evaluar();
+
+            Console.WriteLine(resultado);*/
         }
 
         private string ObtenerRutaArchivo()
@@ -120,7 +131,7 @@ namespace NeoCompiler
         // Compilar
         private void toolStripButtonCompile_Click(object sender, EventArgs e)
         {
-            // Primero, guardar archivo
+            // Guardar archivo
             string nombrePestanaSeleccionada = moduloCodigo.NombrePestanaSeleccionada();
 
             if (nombrePestanaSeleccionada == null)
@@ -130,7 +141,15 @@ namespace NeoCompiler
 
             EscribirArchivo(nombrePestanaSeleccionada, codigoPestanaSeleccionada);
 
-            // Segundo, realizar analisis lexico-sintactico
+            // Iniciar el cronometro para medir el tiempo de compilacion
+            int cantidadLineas = moduloCodigo.CantidadLineas();
+            long milisegundos;
+            var tiemposPromedio = new Dictionary<int, long>();
+
+            cronometro.Reset();
+            cronometro.Start();
+
+            // Realizar analisis lexico-sintactico
             var sintactico = new Sintactico();
             ParseTree arbol = sintactico.Analizar(codigoPestanaSeleccionada);
 
@@ -138,6 +157,15 @@ namespace NeoCompiler
 
             if (arbol.Root == null)
             {
+                // Analisis lexico-sintactico fallido, registrar el tiempo
+                cronometro.Stop();
+
+                milisegundos = cronometro.ElapsedMilliseconds;
+                Utils.EscribirArchivo(Utils.RutaArchivoErrorSintactico, $"{cantidadLineas} {milisegundos}", true);
+
+                tiemposPromedio = Utils.TiemposPromedioDe(Utils.RutaArchivoErrorSintactico);
+                Utils.RegistrarTiemposPromedio(Utils.RutaArchivoTiempoPromedioErrorSintactico, tiemposPromedio);
+
                 moduloSalida.Mostrar("Error lexico-sintáctico\n", ModuloSalida.SalidaError);
                 return;
             }
@@ -149,9 +177,12 @@ namespace NeoCompiler
             var semantico = new Semantico(arbolSintaxis);
 
             TablaSimbolos tablaSimbolos = semantico.GenerarTablaSimbolos();
+            //TablaSimbolos tablaSimbolosResuelta = TablaSimbolos.DeTablaSimbolos(tablaSimbolos);
+
             try
             {
                 moduloAnalisis.LlenarTablaSimbolos(tablaSimbolos);
+                //moduloAnalisis.LlenarTablaSimbolos(tablaSimbolosResuelta);
 
                 semantico.ChecarDuplicados(tablaSimbolos, -1);
 
@@ -161,39 +192,38 @@ namespace NeoCompiler
             }
             catch (ErrorNeo err)
             {
+                // Analisis semantico fallido, registrar el tiempo
+                cronometro.Stop();
+
+                milisegundos = cronometro.ElapsedMilliseconds;
+                Utils.EscribirArchivo(Utils.RutaArchivoErrorSemantico, $"{cantidadLineas} {milisegundos}", true);
+
+                tiemposPromedio = Utils.TiemposPromedioDe(Utils.RutaArchivoErrorSemantico);
+                Utils.RegistrarTiemposPromedio(Utils.RutaArchivoTiempoPromedioErrorSemantico, tiemposPromedio);
+
                 moduloSalida.Mostrar("Error semántico. " + err.Message + "\n", ModuloSalida.SalidaError);
                 return;
             }
 
             moduloSalida.Mostrar("Analisis semantico realizado con exito\n", ModuloSalida.SalidaExito);
 
-            // Cuarto, generacion de codigo intermedio
+            // Generacion de codigo intermedio
+            TablaTriplosFactory.ReiniciarContador();
+
             var generador = new GeneradorCodigoIntermedio();
             List<TablaTriplos> tablasTriplos = generador.GenerarTriplos(tablaSimbolos);
-
-            Console.WriteLine("{-}-{-}-{-}-{-}-{-}-{-}-{-}-{-}-{-}-{-}-{-}-{-}-{-}-{-}-{-}");
-            Console.WriteLine("Triplos generados:");
-            Console.WriteLine("{-}-{-}-{-}-{-}-{-}-{-}-{-}-{-}-{-}-{-}-{-}-{-}-{-}-{-}-{-}");
-            tablasTriplos.ForEach(triplos =>
-            {
-                Console.WriteLine(triplos);
-                Console.WriteLine("o o o o o o o o o o o o o o o o o o");
-            });
-
-            Console.WriteLine("{-}-{-}-{-}-{-}-{-}-{-}-{-}-{-}-{-}-{-}-{-}-{-}-{-}-{-}-{-}");
-            Console.WriteLine("Codigo generado:");
-            Console.WriteLine("{-}-{-}-{-}-{-}-{-}-{-}-{-}-{-}-{-}-{-}-{-}-{-}-{-}-{-}-{-}");
-
             List<List<string>> codigoGenerado = generador.GenerarCodigo(tablasTriplos);
 
-            codigoGenerado.ForEach(lineas =>
-            {
-                lineas.ForEach(linea =>
-                {
-                    Console.WriteLine(linea);
-                });
-            });
+            // Compilacion exitosa, registrar el tiempo
+            cronometro.Stop();
 
+            milisegundos = cronometro.ElapsedMilliseconds;
+            Utils.EscribirArchivo(Utils.RutaArchivoCompilacionExitosa, $"{cantidadLineas} {milisegundos}", true);
+
+            tiemposPromedio = Utils.TiemposPromedioDe(Utils.RutaArchivoCompilacionExitosa);
+            Utils.RegistrarTiemposPromedio(Utils.RutaArchivoTiempoPromedioCompilacionExitosa, tiemposPromedio);
+
+            // Llenar tablas de codigo intermedio
             moduloAnalisis.LlenarTriplos(tablasTriplos);
 
             moduloAnalisis.LlenarCodigoIntermedio(codigoGenerado);
