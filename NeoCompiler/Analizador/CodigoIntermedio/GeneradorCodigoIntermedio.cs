@@ -15,6 +15,7 @@ namespace NeoCompiler.Analizador.CodigoIntermedio
             Console.WriteLine("//////////////////////////////////////////////////////////////////////////");
             Console.WriteLine("//////////////////////////////////////////////////////////////////////////");
 
+            string identificador = simbolo.Identificador;
             string expresion = simbolo.Valor;
 
             Console.WriteLine("Generando triplos para simbolo con valor " + expresion);
@@ -40,7 +41,7 @@ namespace NeoCompiler.Analizador.CodigoIntermedio
 
             Console.WriteLine($"Tokens de expresion prefija: {String.Join(", ", prefijo)}");
 
-            TablaTriplos tablaTriplos = TablaTriplosFactory.DeExpresionPrefija(prefijo);
+            TablaTriplos tablaTriplos = TablaTriplosFactory.DeExpresionPrefija(identificador, prefijo);
 
             Console.WriteLine("//////////////////////////////////////////////////////////////////////////");
             Console.WriteLine("//////////////////////////////////////////////////////////////////////////");

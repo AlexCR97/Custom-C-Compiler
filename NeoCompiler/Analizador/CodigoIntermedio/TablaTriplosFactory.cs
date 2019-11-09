@@ -15,12 +15,14 @@ namespace NeoCompiler.Analizador.CodigoIntermedio
             }
         }
 
+        private static Dictionary<string, string> Identificadores = new Dictionary<string, string>();
+
         /// <summary>
         /// Genera los triplos dada una expresion prefija
         /// </summary>
         /// <param name="prefijo"></param>
         /// <returns></returns>
-        public static TablaTriplos DeExpresionPrefija(List<string> prefijo)
+        public static TablaTriplos DeExpresionPrefija(string identificador, List<string> prefijo)
         {
             Console.WriteLine($"Generando triplos para expresion {String.Join(", ", prefijo)}");
 
@@ -60,32 +62,73 @@ namespace NeoCompiler.Analizador.CodigoIntermedio
 
                     if (triplo1 == null && triplo2 == null)
                     {
-                        tabla.Agregar("t" + IdContador, new Triplo(tokenActual, operando1, operando2));
+                        string idTriplo = $"t{IdContador}";
+                        Identificadores[identificador] = idTriplo;
+
+                        /**
+                         * Si los operandos actuales son identificadores (a, b, c, ..., etc.)
+                         * entonces hay que encontrar su id de triplo (t0, t1, t2, ..., etc.)
+                         */
+
+                        if (Identificadores.ContainsKey(operando1))
+                            operando1 = Identificadores[operando1];
+
+                        if (Identificadores.ContainsKey(operando2))
+                            operando2 = Identificadores[operando2];
+
+                        tabla.Agregar(idTriplo, new Triplo(tokenActual, operando1, operando2));
 
                         string nuevoOperando = $"( {operando1} {tokenActual} {operando2} )";
                         operandos.Push(nuevoOperando);
                     }
                     else if (triplo1 != null && triplo2 != null)
                     {
+                        string idTriplo = $"t{IdContador}";
+                        Identificadores[identificador] = idTriplo;
+
                         string id1 = tabla.EncontrarId(triplo1);
                         string id2 = tabla.EncontrarId(triplo2);
-                        tabla.Agregar("t" + IdContador, new Triplo(tokenActual, id1, id2));
+                        tabla.Agregar(idTriplo, new Triplo(tokenActual, id1, id2));
 
                         string nuevoOperando = $"( {id1} {tokenActual} {id2} )";
                         operandos.Push(nuevoOperando);
                     }
                     else if (triplo1 != null && triplo2 == null)
                     {
+                        string idTriplo = $"t{IdContador}";
+                        Identificadores[identificador] = idTriplo;
+
                         string id1 = tabla.EncontrarId(triplo1);
-                        tabla.Agregar("t" + IdContador, new Triplo(tokenActual, id1, operando2));
+
+                        /**
+                         * Si el operando actual es un identificador (a, b, c, ..., etc.)
+                         * entonces hay que encontrar su id de triplo (t0, t1, t2, ..., etc.)
+                         */
+
+                        if (Identificadores.ContainsKey(operando2))
+                            operando2 = Identificadores[operando2];
+
+                        tabla.Agregar(idTriplo, new Triplo(tokenActual, id1, operando2));
 
                         string nuevoOperando = $"( {id1} {tokenActual} {operando2} )";
                         operandos.Push(nuevoOperando);
                     }
                     else if (triplo1 == null && triplo2 != null)
                     {
+                        string idTriplo = $"t{IdContador}";
+                        Identificadores[identificador] = idTriplo;
+
                         string id2 = tabla.EncontrarId(triplo2);
-                        tabla.Agregar("t" + IdContador, new Triplo(tokenActual, operando1, id2));
+
+                        /**
+                         * Si el operando actual es un identificador (a, b, c, ..., etc.)
+                         * entonces hay que encontrar su id de triplo (t0, t1, t2, ..., etc.)
+                         */
+
+                        if (Identificadores.ContainsKey(operando1))
+                            operando1 = Identificadores[operando1];
+
+                        tabla.Agregar(idTriplo, new Triplo(tokenActual, operando1, id2));
 
                         string nuevoOperando = $"( {operando1} {tokenActual} {id2} )";
                         operandos.Push(nuevoOperando);
@@ -106,6 +149,7 @@ namespace NeoCompiler.Analizador.CodigoIntermedio
                 string operador = tokens[2];
                 string operando1 = tokens[1];
                 string operando2 = tokens[3];
+
                 return new Triplo(operador, operando1, operando2);
             }
             catch (Exception ex)
