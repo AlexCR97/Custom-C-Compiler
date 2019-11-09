@@ -41,6 +41,9 @@ namespace NeoCompiler.Analizador.CodigoIntermedio
 
         public string TipoDeOperando(string operando)
         {
+            if (operando == null)
+                return null;
+
             if (Utils.ValidarRegex(operando, Gramatica.ExpresionesRegulares.StringRegex))
                 return Gramatica.Terminales.String;
 
@@ -57,14 +60,49 @@ namespace NeoCompiler.Analizador.CodigoIntermedio
 
         public string TipoDeTriplo()
         {
-            if (TipoDeOperando(Operando1).Equals(Gramatica.Terminales.String) || TipoDeOperando(Operando2).Equals(Gramatica.Terminales.String))
+            string tipoOperando1 = "";
+            string tipoOperando2 = "";
+
+            // Si el segundo operando es nulo, entonces solo hay que sacar el tipo del primer operando
+            if (Operando2 == null)
+            {
+                tipoOperando1 = TipoDeOperando(Operando1);
+
+                // Checando tipo del operando 1
+                if (tipoOperando1 == null)
+                    return null;
+
+                if (tipoOperando1.Equals(Gramatica.Terminales.String))
+                    return Gramatica.Terminales.String;
+
+                if (tipoOperando1.Equals(Gramatica.Terminales.Double))
+                    return Gramatica.Terminales.Double;
+
+                if (tipoOperando1.Equals(Gramatica.Terminales.Float))
+                    return Gramatica.Terminales.Float;
+
+                if (tipoOperando1.Equals(Gramatica.Terminales.Int))
+                    return Gramatica.Terminales.Int;
+            }
+
+            // Sino, hay que checar ambos tipos
+            tipoOperando2 = TipoDeOperando(Operando2);
+
+            // Checando operando 2
+            if (tipoOperando2 == null)
+                return null;
+
+            if (tipoOperando2.Equals(Gramatica.Terminales.String) && tipoOperando1.Equals(Gramatica.Terminales.String))
                 return Gramatica.Terminales.String;
 
-            if (TipoDeOperando(Operando1).Equals(Gramatica.Terminales.Double) || TipoDeOperando(Operando2).Equals(Gramatica.Terminales.Double))
+            if (tipoOperando2.Equals(Gramatica.Terminales.Double) || tipoOperando1.Equals(Gramatica.Terminales.Double))
                 return Gramatica.Terminales.Double;
 
-            if (TipoDeOperando(Operando1).Equals(Gramatica.Terminales.Float) || TipoDeOperando(Operando2).Equals(Gramatica.Terminales.Float))
+            if (tipoOperando2.Equals(Gramatica.Terminales.Float) || tipoOperando1.Equals(Gramatica.Terminales.Double))
                 return Gramatica.Terminales.Float;
+
+            if (tipoOperando2.Equals(Gramatica.Terminales.Int) || tipoOperando1.Equals(Gramatica.Terminales.Double))
+                return Gramatica.Terminales.Int;
 
             return Gramatica.Terminales.Int;
         }

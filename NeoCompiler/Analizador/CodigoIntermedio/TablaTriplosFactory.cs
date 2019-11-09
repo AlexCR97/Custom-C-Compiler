@@ -15,8 +15,15 @@ namespace NeoCompiler.Analizador.CodigoIntermedio
             }
         }
 
+        /// <summary>
+        /// Genera los triplos dada una expresion prefija
+        /// </summary>
+        /// <param name="prefijo"></param>
+        /// <returns></returns>
         public static TablaTriplos DeExpresionPrefija(List<string> prefijo)
         {
+            Console.WriteLine($"Generando triplos para expresion {String.Join(", ", prefijo)}");
+
             var tabla = new TablaTriplos();
 
             // (2 + 4) * 1

@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace NeoCompiler.Analizador.CodigoIntermedio
 {
@@ -11,11 +12,38 @@ namespace NeoCompiler.Analizador.CodigoIntermedio
         /// <returns></returns>
         public TablaTriplos GenerarTriplos(Simbolo simbolo)
         {
+            Console.WriteLine("//////////////////////////////////////////////////////////////////////////");
+            Console.WriteLine("//////////////////////////////////////////////////////////////////////////");
+
             string expresion = simbolo.Valor;
+
+            Console.WriteLine("Generando triplos para simbolo con valor " + expresion);
+
             List<string> infijo = ConvertidorNotacion.TokensDe(expresion);
+
+            /**
+             * Si tenemos una expresion de un solo simbolo (x),
+             * entonces debemos converitlo a una expresion infija (x + 0)
+             */
+            if (infijo.Count == 1)
+            {
+                string tokenTemp = infijo[0];
+                infijo = new List<string>()
+                {
+                    "(", tokenTemp, "+", "0", ")"
+                };
+            }
+
+            Console.WriteLine($"Tokens de expresion infija: {String.Join(", ", infijo)}");
+
             List<string> prefijo = ConvertidorNotacion.InfijoPrefijo(infijo);
 
+            Console.WriteLine($"Tokens de expresion prefija: {String.Join(", ", prefijo)}");
+
             TablaTriplos tablaTriplos = TablaTriplosFactory.DeExpresionPrefija(prefijo);
+
+            Console.WriteLine("//////////////////////////////////////////////////////////////////////////");
+            Console.WriteLine("//////////////////////////////////////////////////////////////////////////");
 
             return tablaTriplos;
         }
@@ -39,7 +67,7 @@ namespace NeoCompiler.Analizador.CodigoIntermedio
         }
 
         /// <summary>
-        /// Generar el codigo intermedio dada una tabla de triplos
+        /// Genera el codigo intermedio dada una tabla de triplos
         /// </summary>
         /// <param name="triplos"></param>
         /// <returns></returns>
@@ -59,7 +87,7 @@ namespace NeoCompiler.Analizador.CodigoIntermedio
         }
 
         /// <summary>
-        /// Generar todos los bloques de codigo intermedio dada una lista de tablas de triplos
+        /// Genera todos los bloques de codigo intermedio dada una lista de tablas de triplos
         /// </summary>
         /// <param name="tablasTriplos"></param>
         /// <returns></returns>
