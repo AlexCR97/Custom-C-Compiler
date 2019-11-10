@@ -241,16 +241,22 @@ namespace NeoCompiler
         // Ejecutar
         private void Ejecutar()
         {
-            Console.WriteLine("\nLas instrucciones encontradas son:");
-
-            var colector = new ColectorFunciones(arbolSintaxis, tablaSimbolos);
-            List<FuncionPrint> funciones = colector.FuncionesPrint();
-
-            funciones.ForEach(fun =>
+            try
             {
-                moduloSalida.Mostrar(fun.Ejecutar().ToString() + "\n");
-                Console.WriteLine("----------------------------------------");
-            });
+                var colector = new ColectorFunciones(arbolSintaxis, tablaSimbolos);
+                List<FuncionPrint> funciones = colector.FuncionesPrint();
+
+                funciones.ForEach(fun =>
+                {
+                    moduloSalida.Mostrar(fun.Ejecutar().ToString() + "\n");
+                    Console.WriteLine("----------------------------------------");
+                });
+            }
+            catch(ErrorNeo err)
+            {
+                moduloSalida.Mostrar("Error de ejecucion. " + err.Message + "\n", ModuloSalida.SalidaError);
+                return;
+            }
         }
 
         // Cerrar archivo

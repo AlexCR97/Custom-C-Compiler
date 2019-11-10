@@ -8,7 +8,8 @@ namespace NeoCompiler.Analizador.ErroresSemanticos
 {
     class ErrorCantidadParametros : ErrorNeo
     {
-        public ErrorCantidadParametros(string nombreFuncion, int cantidadParametros) :
-            base($"Cantidad incorrecta de parametros. La funcion {nombreFuncion} solo puede tomar {cantidadParametros} argumentos") { }
+        public ErrorCantidadParametros(string nombreFuncion, int cantidadEsperada, int cantidadProporcionada) :
+            base($"Cantidad incorrecta de parametros. La funcion {nombreFuncion} solo puede tomar {cantidadEsperada} argumentos. " +
+                $"Se proporcionaron {cantidadProporcionada} argumentos.") { }
     }
 }

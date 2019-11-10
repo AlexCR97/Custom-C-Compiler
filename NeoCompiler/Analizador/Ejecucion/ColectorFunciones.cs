@@ -35,14 +35,21 @@ namespace NeoCompiler.Analizador.Ejecucion
                  * print ( x )
                  * 0     1 2 3
                  * 
-                 * Siendo 0 el identificador y 2 el parametro
+                 * print ( 1 + 3 )
+                 * 0     1 2 3 4 5
+                 * 
+                 * Siendo 0 el identificador y los demas los parametros
                  */
 
                 string identificadorFuncion = tokens[0].FindTokenAndGetText();
-                var parametros = new List<object>()
-                {
-                    tokens[2].FindTokenAndGetText(),
-                };
+
+                var parametros = new List<object>();
+                var sb = new StringBuilder();
+
+                for (int i = 2; i < tokens.Count - 1; i++)
+                    sb.Append($"{tokens[i].FindTokenAndGetText()} ");
+
+                parametros.Add(sb.ToString().TrimEnd());
 
                 funciones.Add(new FuncionPrint(identificadorFuncion, parametros, tablaSimbolos));
             });

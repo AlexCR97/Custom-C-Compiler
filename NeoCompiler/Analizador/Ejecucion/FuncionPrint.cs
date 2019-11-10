@@ -1,4 +1,5 @@
-﻿using NeoCompiler.Analizador.ErroresSemanticos;
+﻿using NeoCompiler.Analizador.CodigoIntermedio;
+using NeoCompiler.Analizador.ErroresSemanticos;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,7 +20,7 @@ namespace NeoCompiler.Analizador.Ejecucion
         public override object Ejecutar()
         {
             if (Parametros.Count != 1)
-                throw new ErrorCantidadParametros(Identificador, 1);
+                throw new ErrorCantidadParametros(Identificador, 1, Parametros.Count);
 
             Console.WriteLine($"Ejecutando funcion {ToString()}");
 
@@ -39,6 +40,10 @@ namespace NeoCompiler.Analizador.Ejecucion
 
                 string id = parametro.ToString();
                 Simbolo simbolo = tablaSimbolos.BuscarSimbolo(id);
+
+                if (simbolo == null)
+                    throw new ErrorVariableSinDeclarar(id);
+
                 string valor = tablaSimbolos.EncontrarValor(simbolo);
 
                 Console.WriteLine("El valor encontrado es " + valor);
@@ -53,7 +58,25 @@ namespace NeoCompiler.Analizador.Ejecucion
 
                 // Numero
                 if (Utils.ValidarRegex(valor, Gramatica.ExpresionesRegulares.NumeroRegex))
-                    return valor;
+                {
+                    // 1, 2, 3, ..., etc.
+                    if (valor.Split(' ').Length == 1)
+                        return valor;
+
+                    // Expresion aritmetica
+                    else
+                    {
+
+                        valor = ConvertidorNotacion.NormalizarExpresion(valor);
+                        Console.WriteLine($"El valor {valor} del parametro {parametro} es una expresion aritmetica");
+                        List<string> infija = ConvertidorNotacion.TokensDe(valor);
+                        List<string> postfijo = ConvertidorNotacion.InfijoPostfijo(infija);
+                        var vars = new Dictionary<string, double>();
+                        var eval = new Evaluador(postfijo, vars);
+
+                        return eval.Evaluar();
+                    }
+                }
 
                 return valor;
             }
@@ -62,7 +85,24 @@ namespace NeoCompiler.Analizador.Ejecucion
             if (Utils.ValidarRegex(parametro.ToString(), Gramatica.ExpresionesRegulares.NumeroRegex))
             {
                 Console.WriteLine($"El parametro {parametro} es un numero");
-                return parametro;
+
+                // 1, 2, 3, ..., etc.
+                if (parametro.ToString().Split(' ').Length == 1)
+                    return parametro;
+
+                // Expresion aritmetica
+                else
+                {
+
+                    parametro = ConvertidorNotacion.NormalizarExpresion(parametro.ToString());
+                    Console.WriteLine($"El parametro {parametro} es una expresion aritmetica");
+                    List<string> expresionInfija = ConvertidorNotacion.TokensDe(parametro.ToString());
+                    List<string> expresionPostfija = ConvertidorNotacion.InfijoPostfijo(expresionInfija);
+                    var variables = new Dictionary<string, double>();
+                    var evaluador = new Evaluador(expresionPostfija, variables);
+
+                    return evaluador.Evaluar();
+                }
             }
 
             return parametro;
