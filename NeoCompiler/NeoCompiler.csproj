@@ -55,6 +55,10 @@
     <Compile Include="Analizador\CodigoIntermedio\TablaTriplos.cs" />
     <Compile Include="Analizador\CodigoIntermedio\TablaTriplosFactory.cs" />
     <Compile Include="Analizador\CodigoIntermedio\Triplo.cs" />
+    <Compile Include="Analizador\Ejecucion\FuncionPrint.cs" />
+    <Compile Include="Analizador\Ejecucion\ColectorFunciones.cs" />
+    <Compile Include="Analizador\Ejecucion\Funcion.cs" />
+    <Compile Include="Analizador\ErroresSemanticos\ErrorCantidadParametros.cs" />
     <Compile Include="Analizador\ErroresSemanticos\ErrorComparacionImposible.cs" />
     <Compile Include="Analizador\ErroresSemanticos\ErrorDeclaracionRecursiva.cs" />
     <Compile Include="Analizador\ErroresSemanticos\ErrorNeo.cs" />
@@ -203,8 +207,6 @@
   <ItemGroup>
     <None Include="Resources\splash-screen.png" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Analizador\Ejecutor\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -7,6 +7,7 @@ using System.Windows.Forms;
 using Irony.Parsing;
 using NeoCompiler.Analizador;
 using NeoCompiler.Analizador.CodigoIntermedio;
+using NeoCompiler.Analizador.Ejecucion;
 using NeoCompiler.Analizador.ErroresSemanticos;
 using NeoCompiler.Gui.Modulos;
 
@@ -15,6 +16,9 @@ namespace NeoCompiler
     public partial class VentanaPrincipal : Form
     {
         private Stopwatch cronometro = new Stopwatch();
+
+        private ArbolSintaxis arbolSintaxis;
+        private TablaSimbolos tablaSimbolos;
 
         public VentanaPrincipal()
         {
@@ -173,10 +177,10 @@ namespace NeoCompiler
             moduloSalida.Mostrar("Analisis lexico-sintáctico realizado con exito\n", ModuloSalida.SalidaExito);
 
             // Tercero, realizar analisis semantico
-            var arbolSintaxis = new ArbolSintaxis(arbol);
+            arbolSintaxis = new ArbolSintaxis(arbol);
             var semantico = new Semantico(arbolSintaxis);
 
-            TablaSimbolos tablaSimbolos = semantico.GenerarTablaSimbolos();
+            tablaSimbolos = semantico.GenerarTablaSimbolos();
             //TablaSimbolos tablaSimbolosResuelta = TablaSimbolos.DeTablaSimbolos(tablaSimbolos);
 
             try
@@ -227,6 +231,26 @@ namespace NeoCompiler
             moduloAnalisis.LlenarTriplos(tablasTriplos);
 
             moduloAnalisis.LlenarCodigoIntermedio(codigoGenerado);
+
+            moduloSalida.Mostrar("\n");
+
+            // Empezar con la ejecucion de codigo
+            Ejecutar();
+        }
+
+        // Ejecutar
+        private void Ejecutar()
+        {
+            Console.WriteLine("\nLas instrucciones encontradas son:");
+
+            var colector = new ColectorFunciones(arbolSintaxis, tablaSimbolos);
+            List<FuncionPrint> funciones = colector.FuncionesPrint();
+
+            funciones.ForEach(fun =>
+            {
+                moduloSalida.Mostrar(fun.Ejecutar().ToString() + "\n");
+                Console.WriteLine("----------------------------------------");
+            });
         }
 
         // Cerrar archivo

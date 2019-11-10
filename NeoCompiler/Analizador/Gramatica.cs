@@ -48,6 +48,7 @@ namespace NeoCompiler.Analizador
             public const string ParametroFor2 = "<parametro-for-2>";
             public const string ParametroFor3 = "<parametro-for-3>";
             public const string BloqueFor = "<bloque-for>";
+            public const string Print = "<print>";
         }
 
         public static class Terminales
@@ -59,6 +60,7 @@ namespace NeoCompiler.Analizador
             public const string Null = "null";
             public const string True = "true";
             public const string False = "false";
+            public const string Print = "print";
 
             public const string If = "if";
             public const string Else = "else";
@@ -176,6 +178,7 @@ namespace NeoCompiler.Analizador
             var parametroFor2 = new NonTerminal(NoTerminales.ParametroFor2);
             var parametroFor3 = new NonTerminal(NoTerminales.ParametroFor3);
             var bloqueFor = new NonTerminal(NoTerminales.BloqueFor);
+            var print = new NonTerminal(NoTerminales.Print);
             #endregion
 
             #region Terminals
@@ -188,6 +191,7 @@ namespace NeoCompiler.Analizador
             var null_ = ToTerm(Terminales.Null);
             var true_ = ToTerm(Terminales.True);
             var false_ = ToTerm(Terminales.False);
+            var print_ = ToTerm(Terminales.Print);
 
             // flow controllers
             var if_ = ToTerm(Terminales.If);
@@ -288,8 +292,26 @@ namespace NeoCompiler.Analizador
                 controladorFlujo + listaSentencia |
                 controladorFlujo;
 
+            // Esta regla si funciona
+            /*sentencia.Rule =
+                declaracionVariable;*/
+
+            // Esta regla si funciona
+            /*sentencia.Rule =
+                declaracionVariable |
+                ToTerm("print") + parentesisAbrir_ + asignable + parentesisCerrar_;*/
+
+            // Esta regla no funciona
+            /*sentencia.Rule =
+                declaracionVariable |
+                llamadaFuncion;*/
+
             sentencia.Rule =
-                declaracionVariable;
+                declaracionVariable |
+                print;
+
+            print.Rule =
+                print_ + parentesisAbrir_ + asignable + parentesisCerrar_;
 
             declaracionVariable.Rule =
                 tipo + listaDeclaracionVariable |
@@ -418,9 +440,15 @@ namespace NeoCompiler.Analizador
                 sentencia + puntoComa_ |
                 controladorFlujo;
 
+            // esta regla no funciona
             llamadaFuncion.Rule =
                 idLlamadaFuncion + parentesisAbrir_ + parentesisCerrar_ |
                 idLlamadaFuncion + parentesisAbrir_ + listaAsignable + parentesisCerrar_;
+
+            // esta regla no funciona
+            llamadaFuncion.Rule =
+                id + parentesisAbrir_ + parentesisCerrar_ |
+                id + parentesisAbrir_ + listaAsignable + parentesisCerrar_;
 
             idLlamadaFuncion.Rule =
                 id + punto_ + idLlamadaFuncion |

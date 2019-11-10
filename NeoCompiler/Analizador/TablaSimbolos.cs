@@ -37,6 +37,34 @@ namespace NeoCompiler.Analizador
         }
 
         /// <summary>
+        /// Encuentra el valor para un simbolo dado. Esto incluye simbolos con valores
+        /// recursivos, es decir, si un simbolo tiene como valor un identificador, entonces
+        /// se buscara el valor del simbolo con dicho identificador, y asi recursivamente.
+        /// </summary>
+        /// <param name="simbolo"></param>
+        /// <returns></returns>
+        public string EncontrarValor(Simbolo simbolo)
+        {
+            string valor = simbolo.Valor;
+
+            if (!ContieneSimbolo(valor))
+                return valor;
+
+            return EncontrarValor(simbolo, valor);
+        }
+
+        private string EncontrarValor(Simbolo s, string id)
+        {
+            s = BuscarSimbolo(id);
+            string valor = s.Valor;
+
+            if (!ContieneSimbolo(valor))
+                return valor;
+
+            return EncontrarValor(s, valor);
+        }
+
+        /// <summary>
         /// Crea una nueva tabla de simbolos a partir de otra, pero con las expresiones resueltas
         /// </summary>
         /// <param name="tabla"></param>

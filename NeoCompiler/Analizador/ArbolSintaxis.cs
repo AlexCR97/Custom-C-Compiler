@@ -4,7 +4,7 @@ using Irony.Parsing;
 
 namespace NeoCompiler.Analizador
 {
-    class ArbolSintaxis
+    public class ArbolSintaxis
     {
         private readonly ParseTree arbol;
 
