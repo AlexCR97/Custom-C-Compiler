@@ -1,5 +1,6 @@
 ﻿using NeoCompiler.Analizador.CodigoIntermedio;
 using NeoCompiler.Analizador.ErroresSemanticos;
+using NeoCompiler.Gui.Modulos;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,7 +13,8 @@ namespace NeoCompiler.Analizador.Ejecucion
     {
         private readonly TablaSimbolos tablaSimbolos;
 
-        public FuncionPrint(string identificador, List<object> parametros, TablaSimbolos tablaSimbolos) : base(identificador, parametros)
+        public FuncionPrint(string identificador, List<object> parametros, TablaSimbolos tablaSimbolos, ModuloSalida moduloSalida) :
+            base(identificador, parametros, tablaSimbolos, moduloSalida)
         {
             this.tablaSimbolos = tablaSimbolos;
         }
@@ -30,6 +32,7 @@ namespace NeoCompiler.Analizador.Ejecucion
             if (Utils.ValidarRegex(parametro.ToString(), Gramatica.ExpresionesRegulares.StringRegex))
             {
                 Console.WriteLine($"El parametro {parametro} es un string");
+                moduloSalida.Mostrar($"{parametro.ToString().Substring(1, parametro.ToString().Length - 2)}\n");
                 return parametro.ToString().Substring(1, parametro.ToString().Length - 2);
             }
 
@@ -54,14 +57,20 @@ namespace NeoCompiler.Analizador.Ejecucion
 
                 // String
                 if (Utils.ValidarRegex(valor, Gramatica.ExpresionesRegulares.StringRegex))
+                {
+                    moduloSalida.Mostrar($"{valor.ToString().Substring(1, valor.ToString().Length - 2)}\n");
                     return valor.ToString().Substring(1, valor.ToString().Length - 2);
+                }
 
                 // Numero
                 if (Utils.ValidarRegex(valor, Gramatica.ExpresionesRegulares.NumeroRegex))
                 {
                     // 1, 2, 3, ..., etc.
                     if (valor.Split(' ').Length == 1)
+                    {
+                        moduloSalida.Mostrar($"{valor}\n");
                         return valor;
+                    }
 
                     // Expresion aritmetica
                     else
@@ -74,10 +83,12 @@ namespace NeoCompiler.Analizador.Ejecucion
                         var vars = new Dictionary<string, double>();
                         var eval = new Evaluador(postfijo, vars);
 
+                        moduloSalida.Mostrar($"{eval.Evaluar()}\n");
                         return eval.Evaluar();
                     }
                 }
 
+                moduloSalida.Mostrar($"{valor}\n");
                 return valor;
             }
 
@@ -88,7 +99,10 @@ namespace NeoCompiler.Analizador.Ejecucion
 
                 // 1, 2, 3, ..., etc.
                 if (parametro.ToString().Split(' ').Length == 1)
+                {
+                    moduloSalida.Mostrar($"{parametro}\n");
                     return parametro;
+                }
 
                 // Expresion aritmetica
                 else
@@ -101,10 +115,12 @@ namespace NeoCompiler.Analizador.Ejecucion
                     var variables = new Dictionary<string, double>();
                     var evaluador = new Evaluador(expresionPostfija, variables);
 
+                    moduloSalida.Mostrar($"{evaluador.Evaluar()}\n");
                     return evaluador.Evaluar();
                 }
             }
 
+            moduloSalida.Mostrar($"{parametro}\n");
             return parametro;
         }
     }

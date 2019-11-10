@@ -58,6 +58,7 @@
     <Compile Include="Analizador\Ejecucion\FuncionPrint.cs" />
     <Compile Include="Analizador\Ejecucion\ColectorFunciones.cs" />
     <Compile Include="Analizador\Ejecucion\Funcion.cs" />
+    <Compile Include="Analizador\Ejecucion\Instruccion.cs" />
     <Compile Include="Analizador\ErroresSemanticos\ErrorCantidadParametros.cs" />
     <Compile Include="Analizador\ErroresSemanticos\ErrorComparacionImposible.cs" />
     <Compile Include="Analizador\ErroresSemanticos\ErrorDeclaracionRecursiva.cs" />

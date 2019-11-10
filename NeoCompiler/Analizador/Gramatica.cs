@@ -49,6 +49,7 @@ namespace NeoCompiler.Analizador
             public const string ParametroFor3 = "<parametro-for-3>";
             public const string BloqueFor = "<bloque-for>";
             public const string Print = "<print>";
+            public const string Instruccion = "<instruccion>";
         }
 
         public static class Terminales
@@ -179,6 +180,7 @@ namespace NeoCompiler.Analizador
             var parametroFor3 = new NonTerminal(NoTerminales.ParametroFor3);
             var bloqueFor = new NonTerminal(NoTerminales.BloqueFor);
             var print = new NonTerminal(NoTerminales.Print);
+            var instruccion = new NonTerminal(NoTerminales.Instruccion);
             #endregion
 
             #region Terminals
@@ -285,12 +287,20 @@ namespace NeoCompiler.Analizador
                 llavesAbrir_ + llavesCerrar_ |
                 llavesAbrir_ + listaSentencia + llavesCerrar_;
 
-            listaSentencia.Rule =
+            // Esta regla si sirve
+            /*listaSentencia.Rule =
                 sentencia + puntoComa_ + listaSentencia |
                 sentencia + puntoComa_ |
 
                 controladorFlujo + listaSentencia |
-                controladorFlujo;
+                controladorFlujo;*/
+
+            listaSentencia.Rule =
+                sentencia + listaSentencia |
+                sentencia |
+
+                instruccion + listaSentencia |
+                instruccion;
 
             // Esta regla si funciona
             /*sentencia.Rule =
@@ -306,12 +316,20 @@ namespace NeoCompiler.Analizador
                 declaracionVariable |
                 llamadaFuncion;*/
 
-            sentencia.Rule =
+            // Esta regla si sirve
+            /*sentencia.Rule =
                 declaracionVariable |
-                print;
+                print;*/
+
+            sentencia.Rule =
+                declaracionVariable + puntoComa_;
+
+            instruccion.Rule =
+                print |
+                controladorFlujo;
 
             print.Rule =
-                print_ + parentesisAbrir_ + asignable + parentesisCerrar_;
+                print_ + parentesisAbrir_ + asignable + parentesisCerrar_ + puntoComa_;
 
             declaracionVariable.Rule =
                 tipo + listaDeclaracionVariable |
