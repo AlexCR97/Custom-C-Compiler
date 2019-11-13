@@ -29,6 +29,16 @@ namespace NeoCompiler.Gui.Modulos
             }
         }
 
+        public void LlenarTablaResulta(TablaSimbolos tabla)
+        {
+            dataGridViewTablaResuelta.Rows.Clear();
+
+            foreach (Simbolo simbolo in tabla.Simbolos)
+            {
+                dataGridViewTablaResuelta.Rows.Add(simbolo.Tipo, simbolo.Identificador, simbolo.Valor);
+            }
+        }
+
         public void LlenarTriplos(List<TablaTriplos> tablasTriplos)
         {
             dataGridViewTriplos.Rows.Clear();

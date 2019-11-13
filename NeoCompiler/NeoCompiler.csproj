@@ -55,8 +55,11 @@
     <Compile Include="Analizador\CodigoIntermedio\TablaTriplos.cs" />
     <Compile Include="Analizador\CodigoIntermedio\TablaTriplosFactory.cs" />
     <Compile Include="Analizador\CodigoIntermedio\Triplo.cs" />
+    <Compile Include="Analizador\Ejecucion\ControladorFlujo.cs" />
+    <Compile Include="Analizador\Ejecucion\ControladorFlujoIf.cs" />
+    <Compile Include="Analizador\Ejecucion\EvaluadorRelacional.cs" />
     <Compile Include="Analizador\Ejecucion\FuncionPrint.cs" />
-    <Compile Include="Analizador\Ejecucion\ColectorFunciones.cs" />
+    <Compile Include="Analizador\Ejecucion\ColectorInstrucciones.cs" />
     <Compile Include="Analizador\Ejecucion\Funcion.cs" />
     <Compile Include="Analizador\Ejecucion\Instruccion.cs" />
     <Compile Include="Analizador\ErroresSemanticos\ErrorCantidadParametros.cs" />

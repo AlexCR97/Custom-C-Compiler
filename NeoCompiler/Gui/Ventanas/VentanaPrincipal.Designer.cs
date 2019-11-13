@@ -44,10 +44,6 @@
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.panelContainer = new System.Windows.Forms.Panel();
-            this.moduloCodigo = new NeoCompiler.Gui.Modulos.ModuloCodigo();
-            this.moduloAnalisis = new NeoCompiler.Gui.Modulos.ModuloAnalisis();
-            this.moduloExplorador = new NeoCompiler.Gui.Modulos.ModuloExplorador();
-            this.moduloSalida = new NeoCompiler.Gui.Modulos.ModuloSalida();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.toolStripButtonNewFile = new System.Windows.Forms.ToolStripButton();
             this.toolStripButtonOpenFile = new System.Windows.Forms.ToolStripButton();
@@ -60,6 +56,10 @@
             this.toolStripButtonCompile = new System.Windows.Forms.ToolStripButton();
             this.toolStripButtonRun = new System.Windows.Forms.ToolStripButton();
             this.toolStripButtonCompileAndRun = new System.Windows.Forms.ToolStripButton();
+            this.moduloCodigo = new NeoCompiler.Gui.Modulos.ModuloCodigo();
+            this.moduloAnalisis = new NeoCompiler.Gui.Modulos.ModuloAnalisis();
+            this.moduloExplorador = new NeoCompiler.Gui.Modulos.ModuloExplorador();
+            this.moduloSalida = new NeoCompiler.Gui.Modulos.ModuloSalida();
             this.menuStrip1.SuspendLayout();
             this.panelContainer.SuspendLayout();
             this.toolStrip1.SuspendLayout();
@@ -75,7 +75,8 @@
             this.helpToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1182, 28);
+            this.menuStrip1.Padding = new System.Windows.Forms.Padding(4, 2, 0, 2);
+            this.menuStrip1.Size = new System.Drawing.Size(1184, 24);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -89,43 +90,43 @@
             this.closeFileToolStripMenuItem,
             this.exitToolStripMenuItem});
             this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
-            this.fileToolStripMenuItem.Size = new System.Drawing.Size(44, 24);
+            this.fileToolStripMenuItem.Size = new System.Drawing.Size(37, 20);
             this.fileToolStripMenuItem.Text = "File";
             // 
             // newFileToolStripMenuItem
             // 
             this.newFileToolStripMenuItem.Name = "newFileToolStripMenuItem";
-            this.newFileToolStripMenuItem.Size = new System.Drawing.Size(147, 26);
+            this.newFileToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
             this.newFileToolStripMenuItem.Text = "New File";
             // 
             // openFileToolStripMenuItem
             // 
             this.openFileToolStripMenuItem.Name = "openFileToolStripMenuItem";
-            this.openFileToolStripMenuItem.Size = new System.Drawing.Size(147, 26);
+            this.openFileToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
             this.openFileToolStripMenuItem.Text = "Open File";
             // 
             // saveToolStripMenuItem
             // 
             this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
-            this.saveToolStripMenuItem.Size = new System.Drawing.Size(147, 26);
+            this.saveToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
             this.saveToolStripMenuItem.Text = "Save";
             // 
             // saveAllToolStripMenuItem
             // 
             this.saveAllToolStripMenuItem.Name = "saveAllToolStripMenuItem";
-            this.saveAllToolStripMenuItem.Size = new System.Drawing.Size(147, 26);
+            this.saveAllToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
             this.saveAllToolStripMenuItem.Text = "Save All";
             // 
             // closeFileToolStripMenuItem
             // 
             this.closeFileToolStripMenuItem.Name = "closeFileToolStripMenuItem";
-            this.closeFileToolStripMenuItem.Size = new System.Drawing.Size(147, 26);
+            this.closeFileToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
             this.closeFileToolStripMenuItem.Text = "Close File";
             // 
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(147, 26);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
             this.exitToolStripMenuItem.Text = "Exit";
             // 
             // editToolStripMenuItem
@@ -134,25 +135,25 @@
             this.undoToolStripMenuItem,
             this.redoToolStripMenuItem});
             this.editToolStripMenuItem.Name = "editToolStripMenuItem";
-            this.editToolStripMenuItem.Size = new System.Drawing.Size(47, 24);
+            this.editToolStripMenuItem.Size = new System.Drawing.Size(39, 20);
             this.editToolStripMenuItem.Text = "Edit";
             // 
             // undoToolStripMenuItem
             // 
             this.undoToolStripMenuItem.Name = "undoToolStripMenuItem";
-            this.undoToolStripMenuItem.Size = new System.Drawing.Size(120, 26);
+            this.undoToolStripMenuItem.Size = new System.Drawing.Size(103, 22);
             this.undoToolStripMenuItem.Text = "Undo";
             // 
             // redoToolStripMenuItem
             // 
             this.redoToolStripMenuItem.Name = "redoToolStripMenuItem";
-            this.redoToolStripMenuItem.Size = new System.Drawing.Size(120, 26);
+            this.redoToolStripMenuItem.Size = new System.Drawing.Size(103, 22);
             this.redoToolStripMenuItem.Text = "Redo";
             // 
             // viewToolStripMenuItem
             // 
             this.viewToolStripMenuItem.Name = "viewToolStripMenuItem";
-            this.viewToolStripMenuItem.Size = new System.Drawing.Size(53, 24);
+            this.viewToolStripMenuItem.Size = new System.Drawing.Size(44, 20);
             this.viewToolStripMenuItem.Text = "View";
             // 
             // helpToolStripMenuItem
@@ -161,19 +162,19 @@
             this.aboutToolStripMenuItem,
             this.aboutToolStripMenuItem1});
             this.helpToolStripMenuItem.Name = "helpToolStripMenuItem";
-            this.helpToolStripMenuItem.Size = new System.Drawing.Size(53, 24);
+            this.helpToolStripMenuItem.Size = new System.Drawing.Size(44, 20);
             this.helpToolStripMenuItem.Text = "Help";
             // 
             // aboutToolStripMenuItem
             // 
             this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
-            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(187, 26);
+            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(157, 22);
             this.aboutToolStripMenuItem.Text = "Documentation";
             // 
             // aboutToolStripMenuItem1
             // 
             this.aboutToolStripMenuItem1.Name = "aboutToolStripMenuItem1";
-            this.aboutToolStripMenuItem1.Size = new System.Drawing.Size(187, 26);
+            this.aboutToolStripMenuItem1.Size = new System.Drawing.Size(157, 22);
             this.aboutToolStripMenuItem1.Text = "About";
             // 
             // panelContainer
@@ -184,50 +185,11 @@
             this.panelContainer.Controls.Add(this.moduloSalida);
             this.panelContainer.Controls.Add(this.toolStrip1);
             this.panelContainer.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelContainer.Location = new System.Drawing.Point(0, 28);
+            this.panelContainer.Location = new System.Drawing.Point(0, 24);
+            this.panelContainer.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.panelContainer.Name = "panelContainer";
-            this.panelContainer.Size = new System.Drawing.Size(1182, 625);
+            this.panelContainer.Size = new System.Drawing.Size(1184, 737);
             this.panelContainer.TabIndex = 1;
-            // 
-            // moduloCodigo
-            // 
-            this.moduloCodigo.App = null;
-            this.moduloCodigo.BackColor = System.Drawing.Color.Silver;
-            this.moduloCodigo.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.moduloCodigo.Location = new System.Drawing.Point(400, 27);
-            this.moduloCodigo.Name = "moduloCodigo";
-            this.moduloCodigo.Padding = new System.Windows.Forms.Padding(6);
-            this.moduloCodigo.Size = new System.Drawing.Size(382, 348);
-            this.moduloCodigo.TabIndex = 4;
-            // 
-            // moduloAnalisis
-            // 
-            this.moduloAnalisis.App = null;
-            this.moduloAnalisis.BackColor = System.Drawing.Color.Silver;
-            this.moduloAnalisis.Dock = System.Windows.Forms.DockStyle.Right;
-            this.moduloAnalisis.Location = new System.Drawing.Point(782, 27);
-            this.moduloAnalisis.Name = "moduloAnalisis";
-            this.moduloAnalisis.Size = new System.Drawing.Size(400, 348);
-            this.moduloAnalisis.TabIndex = 3;
-            // 
-            // moduloExplorador
-            // 
-            this.moduloExplorador.App = null;
-            this.moduloExplorador.BackColor = System.Drawing.Color.Silver;
-            this.moduloExplorador.Dock = System.Windows.Forms.DockStyle.Left;
-            this.moduloExplorador.Location = new System.Drawing.Point(0, 27);
-            this.moduloExplorador.Name = "moduloExplorador";
-            this.moduloExplorador.Size = new System.Drawing.Size(400, 348);
-            this.moduloExplorador.TabIndex = 2;
-            // 
-            // moduloSalida
-            // 
-            this.moduloSalida.App = null;
-            this.moduloSalida.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.moduloSalida.Location = new System.Drawing.Point(0, 375);
-            this.moduloSalida.Name = "moduloSalida";
-            this.moduloSalida.Size = new System.Drawing.Size(1182, 250);
-            this.moduloSalida.TabIndex = 1;
             // 
             // toolStrip1
             // 
@@ -246,7 +208,7 @@
             this.toolStripButtonCompileAndRun});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(1182, 27);
+            this.toolStrip1.Size = new System.Drawing.Size(1184, 27);
             this.toolStrip1.TabIndex = 0;
             this.toolStrip1.Text = "toolStrip1";
             // 
@@ -346,14 +308,59 @@
             this.toolStripButtonCompileAndRun.Size = new System.Drawing.Size(24, 24);
             this.toolStripButtonCompileAndRun.Text = "toolStripButton1";
             // 
+            // moduloCodigo
+            // 
+            this.moduloCodigo.App = null;
+            this.moduloCodigo.BackColor = System.Drawing.Color.Silver;
+            this.moduloCodigo.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.moduloCodigo.Location = new System.Drawing.Point(300, 27);
+            this.moduloCodigo.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.moduloCodigo.Name = "moduloCodigo";
+            this.moduloCodigo.Padding = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.moduloCodigo.Size = new System.Drawing.Size(484, 460);
+            this.moduloCodigo.TabIndex = 4;
+            // 
+            // moduloAnalisis
+            // 
+            this.moduloAnalisis.App = null;
+            this.moduloAnalisis.BackColor = System.Drawing.Color.Silver;
+            this.moduloAnalisis.Dock = System.Windows.Forms.DockStyle.Right;
+            this.moduloAnalisis.Location = new System.Drawing.Point(784, 27);
+            this.moduloAnalisis.Margin = new System.Windows.Forms.Padding(2);
+            this.moduloAnalisis.Name = "moduloAnalisis";
+            this.moduloAnalisis.Size = new System.Drawing.Size(400, 460);
+            this.moduloAnalisis.TabIndex = 3;
+            // 
+            // moduloExplorador
+            // 
+            this.moduloExplorador.App = null;
+            this.moduloExplorador.BackColor = System.Drawing.Color.Silver;
+            this.moduloExplorador.Dock = System.Windows.Forms.DockStyle.Left;
+            this.moduloExplorador.Location = new System.Drawing.Point(0, 27);
+            this.moduloExplorador.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.moduloExplorador.Name = "moduloExplorador";
+            this.moduloExplorador.Size = new System.Drawing.Size(300, 460);
+            this.moduloExplorador.TabIndex = 2;
+            // 
+            // moduloSalida
+            // 
+            this.moduloSalida.App = null;
+            this.moduloSalida.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.moduloSalida.Location = new System.Drawing.Point(0, 487);
+            this.moduloSalida.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.moduloSalida.Name = "moduloSalida";
+            this.moduloSalida.Size = new System.Drawing.Size(1184, 250);
+            this.moduloSalida.TabIndex = 1;
+            // 
             // VentanaPrincipal
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1182, 653);
+            this.ClientSize = new System.Drawing.Size(1184, 761);
             this.Controls.Add(this.panelContainer);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "VentanaPrincipal";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Neo Compiler";

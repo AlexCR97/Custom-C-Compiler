@@ -243,7 +243,12 @@ namespace NeoCompiler
         {
             try
             {
-                var colector = new ColectorFunciones(arbolSintaxis, tablaSimbolos, moduloSalida);
+                TablaSimbolos tablaResulta = TablaSimbolos.DeTablaSimbolos(tablaSimbolos);
+                moduloAnalisis.LlenarTablaResulta(tablaResulta);
+
+                //var colector = new ColectorInstrucciones(arbolSintaxis, tablaSimbolos, moduloSalida);
+                var colector = new ColectorInstrucciones(arbolSintaxis, tablaResulta, moduloSalida);
+
                 List<Instruccion> funciones = colector.ObtenerInstrucciones();
 
                 funciones.ForEach(fun =>

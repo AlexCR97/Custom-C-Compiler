@@ -53,6 +53,21 @@ namespace NeoCompiler.Analizador
             return EncontrarValor(simbolo, valor);
         }
 
+        public string EncontrarValor(string identificador)
+        {
+            Simbolo simbolo = BuscarSimbolo(identificador);
+
+            if (simbolo == null)
+                return identificador;
+
+            string valor = simbolo.Valor;
+
+            if (!ContieneSimbolo(valor))
+                return valor;
+
+            return EncontrarValor(simbolo, valor);
+        }
+
         private string EncontrarValor(Simbolo s, string id)
         {
             s = BuscarSimbolo(id);
@@ -75,59 +90,33 @@ namespace NeoCompiler.Analizador
 
             foreach (Simbolo s in tabla.Simbolos)
             {
-                // string
-                if (s.Tipo.Equals(Gramatica.Terminales.String))
-                    nuevaTabla.AgregarSimbolo(s);
+                string tipo = s.Tipo;
+                string identificador = s.Identificador;
+                string valor = s.Valor;
 
-                // bool
-                else if (s.Tipo.Equals(Gramatica.Terminales.Bool))
-                    nuevaTabla.AgregarSimbolo(s);
+                // si el valor es un identificador, buscamos su valor recursivamente antes de realizar cualquier operacion
+                if (tabla.ContieneSimbolo(valor))
+                    valor = tabla.EncontrarValor(valor);
 
-                // int, float, double
+                // si el valor es un string, lo agregamos directamente a la nueva tabla
+                if (Utils.ValidarRegex(valor, Gramatica.ExpresionesRegulares.StringRegex))
+                {
+                    var nuevoSimbolo = new Simbolo(tipo, identificador, valor);
+                    nuevaTabla.AgregarSimbolo(nuevoSimbolo);
+                }
+
+                // si el valor es un numero, lo resolvemos con un evaluador de expresiones
                 else
                 {
-                    string tipo = s.Tipo;
-                    string id = s.Identificador;
-                    string expresion = s.Valor;
-
-                    if (expresion == null)
-                    {
-                        nuevaTabla.AgregarSimbolo(new Simbolo(tipo, id));
-                        continue;
-                    }
-
-                    List<string> infijo = ConvertidorNotacion.TokensDe(expresion);
-
-                    List<string> postfijo = ConvertidorNotacion.InfijoPostfijo(infijo);
+                    string expresionAritmetica = valor;
+                    List<string> tokensInfijo = ConvertidorNotacion.TokensDe(expresionAritmetica);
+                    List<string> tokensPostfijo = ConvertidorNotacion.InfijoPostfijo(tokensInfijo);
                     var variables = new Dictionary<string, double>();
+                    var evaluador = new Evaluador(tokensPostfijo, variables);
+                    string nuevoValor = evaluador.Evaluar().ToString();
 
-                    // si hay variables, añadirlas al evaluador
-                    Console.WriteLine($"Verificando si hay variables en la expresion '{expresion}'...");
-
-                    foreach (string token in postfijo)
-                    {
-                        if (Utils.ValidarRegex(token, Gramatica.ExpresionesRegulares.IdRegex))
-                        {
-                            Simbolo temp = nuevaTabla.BuscarSimbolo(token);
-
-                            Console.WriteLine($"Se encontro el simbolo {temp.ToString()}");
-
-                            variables[temp.Identificador] = Double.Parse(temp.Valor);
-
-                            Console.WriteLine($"Se agrego el valor {temp.Valor} con la llave {temp.Identificador}");
-                        }
-                    }
-
-                    Console.WriteLine("Variables son:");
-                    foreach (var i in variables)
-                    {
-                        Console.WriteLine($"{i.Key} = {i.Value}");
-                    }
-
-                    var evaluador = new Evaluador(postfijo, variables);
-                    double resultado = evaluador.Evaluar();
-
-                    nuevaTabla.AgregarSimbolo(new Simbolo(tipo, id, resultado.ToString()));
+                    var nuevoSimbolo = new Simbolo(tipo, identificador, nuevoValor);
+                    nuevaTabla.AgregarSimbolo(nuevoSimbolo);
                 }
             }
 

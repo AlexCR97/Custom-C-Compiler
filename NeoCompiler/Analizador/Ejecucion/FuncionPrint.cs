@@ -11,13 +11,8 @@ namespace NeoCompiler.Analizador.Ejecucion
 {
     public class FuncionPrint : Funcion
     {
-        private readonly TablaSimbolos tablaSimbolos;
-
         public FuncionPrint(string identificador, List<object> parametros, TablaSimbolos tablaSimbolos, ModuloSalida moduloSalida) :
-            base(identificador, parametros, tablaSimbolos, moduloSalida)
-        {
-            this.tablaSimbolos = tablaSimbolos;
-        }
+            base(identificador, parametros, tablaSimbolos, moduloSalida) { }
 
         public override object Ejecutar()
         {
@@ -107,9 +102,9 @@ namespace NeoCompiler.Analizador.Ejecucion
                 // Expresion aritmetica
                 else
                 {
-
                     parametro = ConvertidorNotacion.NormalizarExpresion(parametro.ToString());
                     Console.WriteLine($"El parametro {parametro} es una expresion aritmetica");
+
                     List<string> expresionInfija = ConvertidorNotacion.TokensDe(parametro.ToString());
                     List<string> expresionPostfija = ConvertidorNotacion.InfijoPostfijo(expresionInfija);
                     var variables = new Dictionary<string, double>();
