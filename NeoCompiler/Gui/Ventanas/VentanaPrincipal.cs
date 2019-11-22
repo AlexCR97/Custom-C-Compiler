@@ -8,6 +8,7 @@ using Irony.Parsing;
 using NeoCompiler.Analizador;
 using NeoCompiler.Analizador.CodigoIntermedio;
 using NeoCompiler.Analizador.Ejecucion;
+using NeoCompiler.Analizador.Ejecutor;
 using NeoCompiler.Analizador.ErroresSemanticos;
 using NeoCompiler.Gui.Modulos;
 
@@ -45,6 +46,65 @@ namespace NeoCompiler
             double resultado = evaluador.Evaluar();
 
             Console.WriteLine(resultado);*/
+        }
+
+        /// <summary>
+        /// Metodo para testear la ejecucion
+        /// </summary>
+        private void Foo()
+        {
+            string nombrePestanaSeleccionada = moduloCodigo.NombrePestanaSeleccionada();
+
+            if (nombrePestanaSeleccionada == null)
+                return;
+
+            // analisis lexico
+
+            string codigoFuente = moduloCodigo.CodigoFuenteSeleccionado();
+            var lexer = new NeoLexer(codigoFuente);
+
+            while (lexer.HasNext())
+            {
+                Console.WriteLine($"{lexer.CurrentLexeme}, {lexer.CurrentToken}");
+            }
+
+            if (!lexer.IsSuccessful)
+            {
+                MessageBox.Show($"Error: {lexer.ErrorMessage}");
+                return;
+            }
+
+            MessageBox.Show("Success");
+
+            lexer.Tokens.ForEach(token =>
+            {
+                Console.WriteLine(token);
+            });
+
+            // conversion de codigo
+
+            var parser = new NeoParser(lexer.Tokens);
+
+            string cSharpSourceCode = parser.ParseToSourceCode();
+
+            MessageBox.Show(cSharpSourceCode);
+
+            // compilacion de codigo
+
+            if (!Programa.Compilar(cSharpSourceCode))
+            {
+                MessageBox.Show(String.Join("\n", Programa.Errores));
+                return;
+            }
+
+            MessageBox.Show("Compilacion exitosa");
+
+            // mostrar resultados
+            moduloSalida.Mostrar("=====================================\n");
+            moduloSalida.Mostrar(String.Join("\n", Programa.Salida));
+            moduloSalida.Mostrar("=====================================\n");
+
+            Process.Start(Programa.Exe);
         }
 
         private string ObtenerRutaArchivo()
@@ -268,6 +328,11 @@ namespace NeoCompiler
         private void toolStripButtonCloseFile_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void toolStripButtonCompileAndRun_Click(object sender, EventArgs e)
+        {
+            Foo();
         }
     }
 }

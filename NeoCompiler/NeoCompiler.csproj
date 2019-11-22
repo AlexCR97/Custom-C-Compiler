@@ -62,6 +62,17 @@
     <Compile Include="Analizador\Ejecucion\ColectorInstrucciones.cs" />
     <Compile Include="Analizador\Ejecucion\Funcion.cs" />
     <Compile Include="Analizador\Ejecucion\Instruccion.cs" />
+    <Compile Include="Analizador\Ejecutor\AleGrammar.cs" />
+    <Compile Include="Analizador\Ejecutor\Chart.cs" />
+    <Compile Include="Analizador\Ejecutor\Grammar.cs" />
+    <Compile Include="Analizador\Ejecutor\NeoLexer.cs" />
+    <Compile Include="Analizador\Ejecutor\NeoParser.cs" />
+    <Compile Include="Analizador\Ejecutor\Parser.cs" />
+    <Compile Include="Analizador\Ejecutor\Programa.cs" />
+    <Compile Include="Analizador\Ejecutor\RHS.cs" />
+    <Compile Include="Analizador\Ejecutor\State.cs" />
+    <Compile Include="Analizador\Ejecutor\NeoTokens.cs" />
+    <Compile Include="Analizador\Ejecutor\NeoToken.cs" />
     <Compile Include="Analizador\ErroresSemanticos\ErrorCantidadParametros.cs" />
     <Compile Include="Analizador\ErroresSemanticos\ErrorComparacionImposible.cs" />
     <Compile Include="Analizador\ErroresSemanticos\ErrorDeclaracionRecursiva.cs" />
