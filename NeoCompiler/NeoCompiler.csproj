@@ -106,18 +106,6 @@
     <Compile Include="Gui\Modulos\ModuloConsola.Designer.cs">
       <DependentUpon>ModuloConsola.cs</DependentUpon>
     </Compile>
-    <Compile Include="Gui\Ventanas\VentanaConsola.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Gui\Ventanas\VentanaConsola.Designer.cs">
-      <DependentUpon>VentanaConsola.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Gui\Ventanas\VentanaEntrada.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Gui\Ventanas\VentanaEntrada.Designer.cs">
-      <DependentUpon>VentanaEntrada.cs</DependentUpon>
-    </Compile>
     <Compile Include="Gui\Ventanas\VentanaPrincipal.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -155,12 +143,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Gui\Modulos\ModuloConsola.resx">
       <DependentUpon>ModuloConsola.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Gui\Ventanas\VentanaConsola.resx">
-      <DependentUpon>VentanaConsola.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Gui\Ventanas\VentanaEntrada.resx">
-      <DependentUpon>VentanaEntrada.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Gui\Ventanas\VentanaPrincipal.resx">
       <DependentUpon>VentanaPrincipal.cs</DependentUpon>

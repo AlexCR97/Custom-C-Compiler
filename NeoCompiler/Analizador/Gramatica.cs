@@ -385,8 +385,9 @@ namespace NeoCompiler.Analizador
 
             expresionAritmetica.Rule =
                 numero |
-                id |
+                idAsignable |
                 llamadaFuncion |
+                stringRegex |
                 parentesisAbrir_ + expresionAritmetica + parentesisCerrar_ |
                 expresionAritmetica + operadorAritmetico + expresionAritmetica;
 

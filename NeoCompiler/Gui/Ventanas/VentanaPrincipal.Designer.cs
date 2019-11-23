@@ -250,6 +250,7 @@
             this.toolStripButtonRun.Size = new System.Drawing.Size(24, 24);
             this.toolStripButtonRun.Text = "toolStripButton1";
             this.toolStripButtonRun.ToolTipText = "Ejecutar";
+            this.toolStripButtonRun.Click += new System.EventHandler(this.toolStripButtonRun_Click);
             // 
             // toolStripButtonCompileAndRun
             // 

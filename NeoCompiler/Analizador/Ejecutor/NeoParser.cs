@@ -18,6 +18,7 @@ namespace NeoCompiler.Analizador.Ejecutor
             ["@d"] = "double.Parse(Console.ReadLine())",
             ["@b"] = "bool.Parse(Console.ReadLine())",
             ["@s"] = "Console.ReadLine()",
+            ["base"] = "basee",
         };
 
         public List<NeoToken> NeoSourceCode { get; }
@@ -54,13 +55,34 @@ namespace NeoCompiler.Analizador.Ejecutor
         {
             var sb = new StringBuilder();
 
-            ParseToTokenList().ForEach(token =>
-            {
-                sb.Append(token).Append(" ");
+            List<string> tokens = ParseToTokenList();
 
-                if (token == "{" || token == "}" || token == ";")
+            for (int i = 0; i < tokens.Count; i++)
+            {
+                string currentToken = tokens[i];
+                string nextToken = "";
+
+                if (i != tokens.Count - 1)
+                    nextToken = tokens[i + 1];
+
+                sb.Append(currentToken);
+
+                // check for <=, >=, ==
+                if (currentToken == "<" && nextToken == "=") { }
+
+                else if (currentToken == ">" && nextToken == "=") { }
+
+                else if (currentToken == "=" && nextToken == "=") { }
+
+                else
+                {
+                    sb.Append(" ");
+                }
+
+                // check for {, }, ;
+                if (currentToken == "{" || currentToken == "}" || currentToken == ";")
                     sb.Append("\n");
-            });
+            }
 
             return sb.ToString();
         }

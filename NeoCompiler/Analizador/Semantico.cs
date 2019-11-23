@@ -83,7 +83,19 @@ namespace NeoCompiler.Analizador
                     string asignable = sb.ToString().Trim();
                     string asignableNormalizado = ConvertidorNotacion.NormalizarExpresion(asignable);
 
-                    simbolos.Add(new Simbolo(tipo, id, asignableNormalizado));
+                    Console.WriteLine($"asignable = {asignable}");
+                    Console.WriteLine($"normalizado = {asignableNormalizado}");
+
+                    // si el asignable es un string, no tenemos que normalizarlo
+                    if (asignable[0] == '"' || asignable[asignable.Length - 1] == '"')
+                    {
+                        simbolos.Add(new Simbolo(tipo, id, asignable));
+                    }
+                    // si no es un string, entonces lo normalizamos
+                    else
+                    {
+                        simbolos.Add(new Simbolo(tipo, id, asignableNormalizado));
+                    }
                 }
             }
 
@@ -125,10 +137,52 @@ namespace NeoCompiler.Analizador
                 {
                     // Primero, checamos si el identificador existe
                     if (!tabla.ContieneSimbolo(valor))
-                        throw new ErrorVariableSinDeclarar(valor);
+                    {
+                        // Si el identificador no existe
 
-                    // Despues, tenemos que obtener el valor de dicho id para comprobar su tipo
-                    valor = ValorDe(tabla, valor);
+                        // pero es un float, omitimos
+                        if (valor[valor.Length - 1] == 'f')
+                        {
+                            continue;
+                        }
+
+                        // pero es una expresion, omitimos
+                        if (valor[0] == '(' && valor[valor.Length - 1] == ')')
+                        {
+                            continue;
+                        }
+
+                        // pero es un bool, omitimos
+                        else if (
+                            valor == Gramatica.Terminales.True ||
+                            valor == Gramatica.Terminales.False)
+                        {
+                            continue;
+                        }
+
+                        // pero es una lectura, omitimos
+                        else if (
+                            valor == Gramatica.Terminales.InputInt ||
+                            valor == Gramatica.Terminales.InputFloat ||
+                            valor == Gramatica.Terminales.InputDouble ||
+                            valor == Gramatica.Terminales.InputBool ||
+                            valor == Gramatica.Terminales.InputString)
+                        {
+                            continue;
+                        }
+
+                        // pero no es ninguno de los anteriores, aventamos un error
+                        else
+                        {
+                            Console.WriteLine($"Error en clase {this.GetType().Name}: valor = {valor}");
+                            throw new ErrorVariableSinDeclarar(valor);
+                        }
+                    }
+                    else
+                    {
+                        // Si el identificador si existe, tenemos que obtener el valor de dicho id para comprobar su tipo
+                        valor = ValorDe(tabla, valor);
+                    }
                 }
 
                 switch (tipo)
@@ -196,10 +250,16 @@ namespace NeoCompiler.Analizador
 
                 // Primero, checamos si los asignables existen
                 if (!tabla.ContieneSimbolo(asignableIzquierdo))
+                {
                     throw new ErrorVariableSinDeclarar(asignableIzquierdo);
+                }
 
                 if (!tabla.ContieneSimbolo(asignableDerecho))
+                {
                     throw new ErrorVariableSinDeclarar(asignableDerecho);
+                }
+
+                Console.WriteLine($"izq = {asignableIzquierdo}\nder = {asignableDerecho}\n");
 
                 // Despues, checamos si estan inicializados
                 if (ValorDe(tabla, asignableIzquierdo) == null) return false;
@@ -220,6 +280,25 @@ namespace NeoCompiler.Analizador
         {
             Console.WriteLine("/ = / = / = / = / = / = / = / = / = / = / = / = / = / = / = / = / = / = / = / = / = /");
             Console.WriteLine($"Checando tipo del id '{id}'");
+
+            // checamos si es una lectura
+            if (id[0] == '@')
+            {
+                if (id == Gramatica.Terminales.InputBool)
+                    return Gramatica.Terminales.Bool;
+
+                if (id == Gramatica.Terminales.InputInt)
+                    return Gramatica.Terminales.Int;
+
+                if (id == Gramatica.Terminales.InputFloat)
+                    return Gramatica.Terminales.Float;
+
+                if (id == Gramatica.Terminales.InputDouble)
+                    return Gramatica.Terminales.Double;
+
+                if (id == Gramatica.Terminales.InputString)
+                    return Gramatica.Terminales.String;
+            }
 
             Simbolo simbolo = tabla.BuscarSimbolo(id);
 
@@ -246,6 +325,10 @@ namespace NeoCompiler.Analizador
             Simbolo simbolo = tabla.BuscarSimbolo(id);
 
             Console.WriteLine($"El valor del id actual '{id}' es '{simbolo.Valor}'");
+
+            // checamos si es una lectura
+            if (simbolo.Valor[0] == '@')
+                return simbolo.Valor;
 
             if (id.Equals(simbolo.Valor))
                 throw new ErrorDeclaracionRecursiva(id);

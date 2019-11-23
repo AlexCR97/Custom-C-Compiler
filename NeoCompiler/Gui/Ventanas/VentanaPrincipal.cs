@@ -11,7 +11,6 @@ using NeoCompiler.Analizador.Ejecucion;
 using NeoCompiler.Analizador.Ejecutor;
 using NeoCompiler.Analizador.ErroresSemanticos;
 using NeoCompiler.Gui.Modulos;
-using NeoCompiler.Gui.Ventanas;
 
 namespace NeoCompiler
 {
@@ -21,6 +20,8 @@ namespace NeoCompiler
 
         private ArbolSintaxis arbolSintaxis;
         private TablaSimbolos tablaSimbolos;
+
+        private bool ultimaCompilacion = false;
 
         public VentanaPrincipal()
         {
@@ -104,6 +105,7 @@ namespace NeoCompiler
             }
 
             moduloCodigo.AgregarPestana(rutaArchivo, LeerArchivo(rutaArchivo));
+            moduloExplorador.AgregarArchivo(rutaArchivo);
         }
 
         // Abrir archivo
@@ -179,6 +181,8 @@ namespace NeoCompiler
                 Utils.RegistrarTiemposPromedio(Utils.RutaArchivoTiempoPromedioErrorSintactico, tiemposPromedio);
 
                 moduloSalida.Mostrar("Error lexico-sintáctico\n", ModuloSalida.SalidaError);
+
+                ultimaCompilacion = false;
                 return;
             }
 
@@ -214,6 +218,8 @@ namespace NeoCompiler
                 Utils.RegistrarTiemposPromedio(Utils.RutaArchivoTiempoPromedioErrorSemantico, tiemposPromedio);
 
                 moduloSalida.Mostrar("Error semántico. " + err.Message + "\n", ModuloSalida.SalidaError);
+
+                ultimaCompilacion = false;
                 return;
             }
 
@@ -241,6 +247,8 @@ namespace NeoCompiler
             moduloAnalisis.LlenarCodigoIntermedio(codigoGenerado);
 
             moduloSalida.Mostrar("\n");
+
+            ultimaCompilacion = true;
         }
 
         // Ejecutar
@@ -281,25 +289,28 @@ namespace NeoCompiler
             moduloExplorador.QuitarArchivo(nombrePestanaSeleccionada);
         }
 
-        // Ejecutar
-        private void toolStripButtonCompileAndRun_Click(object sender, EventArgs e)
+        // Ejecutar Neo
+        private void toolStripButtonRun_Click(object sender, EventArgs e)
         {
-            Compilar();
-        }
-
-        private void Compilar()
-        {
-            // Guardar archivo
             string nombrePestanaSeleccionada = moduloCodigo.NombrePestanaSeleccionada();
 
             if (nombrePestanaSeleccionada == null)
                 return;
 
-            string codigoPestanaSeleccionada = moduloCodigo.CodigoFuenteSeleccionado();
+            if (ultimaCompilacion == false)
+            {
+                MessageBox.Show($"El archvo '{nombrePestanaSeleccionada}' no ha sido compilado. Asegurese de compilar primero para poder ejecutar");
+                return;
+            }
 
-            EscribirArchivo(nombrePestanaSeleccionada, codigoPestanaSeleccionada);
+            // ejecutar
+            moduloConsola1.IniciarProceso(Programa.Exe);
+        }
 
-            moduloSalida.Mostrar("Compilando archivo '" + nombrePestanaSeleccionada + "'...\n");
+        // Compilar y Ejecutar Neo
+        private void toolStripButtonCompileAndRun_Click(object sender, EventArgs e)
+        {
+            toolStripButtonCompile_Click(null, null);
 
             // analisis lexico
             string codigoFuente = moduloCodigo.CodigoFuenteSeleccionado();
@@ -331,7 +342,7 @@ namespace NeoCompiler
 
             MessageBox.Show("Compilacion exitosa");
 
-            // mostrar resultados
+            // ejecutar
             moduloConsola1.IniciarProceso(Programa.Exe);
         }
     }
