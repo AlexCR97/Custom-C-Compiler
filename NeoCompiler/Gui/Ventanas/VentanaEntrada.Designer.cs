@@ -42,40 +42,44 @@
             this.tableLayoutPanel1.Controls.Add(this.buttonIngresar, 0, 2);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
+            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.Padding = new System.Windows.Forms.Padding(10);
+            this.tableLayoutPanel1.Padding = new System.Windows.Forms.Padding(8, 8, 8, 8);
             this.tableLayoutPanel1.RowCount = 4;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 32F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 32F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(445, 119);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(334, 97);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
             // textBoxEntrada
             // 
             this.textBoxEntrada.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.textBoxEntrada.Location = new System.Drawing.Point(13, 22);
+            this.textBoxEntrada.Location = new System.Drawing.Point(10, 18);
+            this.textBoxEntrada.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.textBoxEntrada.Name = "textBoxEntrada";
-            this.textBoxEntrada.Size = new System.Drawing.Size(419, 22);
+            this.textBoxEntrada.Size = new System.Drawing.Size(314, 20);
             this.textBoxEntrada.TabIndex = 0;
             // 
             // buttonIngresar
             // 
             this.buttonIngresar.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.buttonIngresar.Location = new System.Drawing.Point(13, 62);
+            this.buttonIngresar.Location = new System.Drawing.Point(10, 50);
+            this.buttonIngresar.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.buttonIngresar.Name = "buttonIngresar";
-            this.buttonIngresar.Size = new System.Drawing.Size(419, 34);
+            this.buttonIngresar.Size = new System.Drawing.Size(314, 28);
             this.buttonIngresar.TabIndex = 1;
             this.buttonIngresar.Text = "Ingresar";
             this.buttonIngresar.UseVisualStyleBackColor = true;
             // 
             // VentanaEntrada
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(445, 119);
+            this.ClientSize = new System.Drawing.Size(334, 97);
             this.Controls.Add(this.tableLayoutPanel1);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "VentanaEntrada";
             this.Text = "VentanaEntrada";
             this.tableLayoutPanel1.ResumeLayout(false);

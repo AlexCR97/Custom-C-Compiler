@@ -5,12 +5,7 @@ namespace NeoCompiler.Gui.Modulos
 {
     public partial class ModuloCodigo : UserControl
     {
-        private VentanaPrincipal app;
-        public VentanaPrincipal App
-        {
-            get { return app; }
-            set { app = value; }
-        }
+        public VentanaPrincipal App { get; set; }
 
         public ModuloCodigo()
         {
@@ -70,6 +65,37 @@ namespace NeoCompiler.Gui.Modulos
         {
             ControlCodigo controlCodigoSeleccionado = ControlCodigoSeleccionado();
             return controlCodigoSeleccionado.CodigoFuente;
+        }
+
+        public void SeleccionarPestana(string nombrePestana)
+        {
+            int i = 0;
+            foreach (TabPage tab in tabControlPestanas.TabPages)
+            {
+                if (tab.Text == nombrePestana)
+                {
+                    tabControlPestanas.SelectedIndex = i;
+                    return;
+                }
+
+                i++;
+            }
+        }
+
+        public void CerrarPestana(string nombrePestana)
+        {
+            int i = 0;
+            foreach (TabPage tab in tabControlPestanas.TabPages)
+            {
+                if (tab.Text == nombrePestana)
+                {
+                    break;
+                }
+
+                i++;
+            }
+
+            tabControlPestanas.TabPages.RemoveAt(i);
         }
     }
 }

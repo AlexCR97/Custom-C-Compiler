@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace NeoCompiler.Analizador.Ejecutor
 {
@@ -28,11 +29,12 @@ namespace NeoCompiler.Analizador.Ejecutor
 
             CompilerResults results = csc.CompileAssemblyFromSource(parameters, codigoFuente);
 
-            Console.WriteLine("===================================");
-            Console.WriteLine("Output: " + results.Output.Count);
-            Console.WriteLine("===================================");
-
             Errores = results.Errors.Cast<CompilerError>().ToList();
+
+            foreach (var error in Errores)
+            {
+                MessageBox.Show(error.ErrorText);
+            }
 
             if (Errores.Count != 0)
             {

@@ -28,212 +28,140 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
-            this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.newFileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.openFileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.saveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.saveAllToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.closeFileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.editToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.undoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.redoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.viewToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.aboutToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.panelContainer = new System.Windows.Forms.Panel();
+            this.tableLayoutPanelDock = new System.Windows.Forms.TableLayoutPanel();
+            this.tableLayoutPanelBottom = new System.Windows.Forms.TableLayoutPanel();
+            this.moduloSalida = new NeoCompiler.Gui.Modulos.ModuloSalida();
+            this.moduloConsola1 = new NeoCompiler.Gui.Modulos.ModuloConsola();
+            this.tableLayoutPanelTop = new System.Windows.Forms.TableLayoutPanel();
+            this.moduloExplorador = new NeoCompiler.Gui.Modulos.ModuloExplorador();
             this.moduloCodigo = new NeoCompiler.Gui.Modulos.ModuloCodigo();
             this.moduloAnalisis = new NeoCompiler.Gui.Modulos.ModuloAnalisis();
-            this.moduloExplorador = new NeoCompiler.Gui.Modulos.ModuloExplorador();
-            this.moduloSalida = new NeoCompiler.Gui.Modulos.ModuloSalida();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.toolStripButtonNewFile = new System.Windows.Forms.ToolStripButton();
             this.toolStripButtonOpenFile = new System.Windows.Forms.ToolStripButton();
             this.toolStripButtonSaveFile = new System.Windows.Forms.ToolStripButton();
             this.toolStripButtonCloseFile = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
-            this.toolStripButtonUndo = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButtonRedo = new System.Windows.Forms.ToolStripButton();
-            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripButtonCompile = new System.Windows.Forms.ToolStripButton();
             this.toolStripButtonRun = new System.Windows.Forms.ToolStripButton();
             this.toolStripButtonCompileAndRun = new System.Windows.Forms.ToolStripButton();
-            this.menuStrip1.SuspendLayout();
             this.panelContainer.SuspendLayout();
+            this.tableLayoutPanelDock.SuspendLayout();
+            this.tableLayoutPanelBottom.SuspendLayout();
+            this.tableLayoutPanelTop.SuspendLayout();
             this.toolStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
-            // menuStrip1
-            // 
-            this.menuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
-            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.fileToolStripMenuItem,
-            this.editToolStripMenuItem,
-            this.viewToolStripMenuItem,
-            this.helpToolStripMenuItem});
-            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
-            this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Padding = new System.Windows.Forms.Padding(4, 2, 0, 2);
-            this.menuStrip1.Size = new System.Drawing.Size(1184, 24);
-            this.menuStrip1.TabIndex = 0;
-            this.menuStrip1.Text = "menuStrip1";
-            // 
-            // fileToolStripMenuItem
-            // 
-            this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.newFileToolStripMenuItem,
-            this.openFileToolStripMenuItem,
-            this.saveToolStripMenuItem,
-            this.saveAllToolStripMenuItem,
-            this.closeFileToolStripMenuItem,
-            this.exitToolStripMenuItem});
-            this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
-            this.fileToolStripMenuItem.Size = new System.Drawing.Size(37, 20);
-            this.fileToolStripMenuItem.Text = "File";
-            // 
-            // newFileToolStripMenuItem
-            // 
-            this.newFileToolStripMenuItem.Name = "newFileToolStripMenuItem";
-            this.newFileToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
-            this.newFileToolStripMenuItem.Text = "New File";
-            // 
-            // openFileToolStripMenuItem
-            // 
-            this.openFileToolStripMenuItem.Name = "openFileToolStripMenuItem";
-            this.openFileToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
-            this.openFileToolStripMenuItem.Text = "Open File";
-            // 
-            // saveToolStripMenuItem
-            // 
-            this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
-            this.saveToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
-            this.saveToolStripMenuItem.Text = "Save";
-            // 
-            // saveAllToolStripMenuItem
-            // 
-            this.saveAllToolStripMenuItem.Name = "saveAllToolStripMenuItem";
-            this.saveAllToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
-            this.saveAllToolStripMenuItem.Text = "Save All";
-            // 
-            // closeFileToolStripMenuItem
-            // 
-            this.closeFileToolStripMenuItem.Name = "closeFileToolStripMenuItem";
-            this.closeFileToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
-            this.closeFileToolStripMenuItem.Text = "Close File";
-            // 
-            // exitToolStripMenuItem
-            // 
-            this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
-            this.exitToolStripMenuItem.Text = "Exit";
-            // 
-            // editToolStripMenuItem
-            // 
-            this.editToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.undoToolStripMenuItem,
-            this.redoToolStripMenuItem});
-            this.editToolStripMenuItem.Name = "editToolStripMenuItem";
-            this.editToolStripMenuItem.Size = new System.Drawing.Size(39, 20);
-            this.editToolStripMenuItem.Text = "Edit";
-            // 
-            // undoToolStripMenuItem
-            // 
-            this.undoToolStripMenuItem.Name = "undoToolStripMenuItem";
-            this.undoToolStripMenuItem.Size = new System.Drawing.Size(103, 22);
-            this.undoToolStripMenuItem.Text = "Undo";
-            // 
-            // redoToolStripMenuItem
-            // 
-            this.redoToolStripMenuItem.Name = "redoToolStripMenuItem";
-            this.redoToolStripMenuItem.Size = new System.Drawing.Size(103, 22);
-            this.redoToolStripMenuItem.Text = "Redo";
-            // 
-            // viewToolStripMenuItem
-            // 
-            this.viewToolStripMenuItem.Name = "viewToolStripMenuItem";
-            this.viewToolStripMenuItem.Size = new System.Drawing.Size(44, 20);
-            this.viewToolStripMenuItem.Text = "View";
-            // 
-            // helpToolStripMenuItem
-            // 
-            this.helpToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.aboutToolStripMenuItem,
-            this.aboutToolStripMenuItem1});
-            this.helpToolStripMenuItem.Name = "helpToolStripMenuItem";
-            this.helpToolStripMenuItem.Size = new System.Drawing.Size(44, 20);
-            this.helpToolStripMenuItem.Text = "Help";
-            // 
-            // aboutToolStripMenuItem
-            // 
-            this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
-            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(157, 22);
-            this.aboutToolStripMenuItem.Text = "Documentation";
-            // 
-            // aboutToolStripMenuItem1
-            // 
-            this.aboutToolStripMenuItem1.Name = "aboutToolStripMenuItem1";
-            this.aboutToolStripMenuItem1.Size = new System.Drawing.Size(157, 22);
-            this.aboutToolStripMenuItem1.Text = "About";
-            // 
             // panelContainer
             // 
-            this.panelContainer.Controls.Add(this.moduloCodigo);
-            this.panelContainer.Controls.Add(this.moduloAnalisis);
-            this.panelContainer.Controls.Add(this.moduloExplorador);
-            this.panelContainer.Controls.Add(this.moduloSalida);
+            this.panelContainer.Controls.Add(this.tableLayoutPanelDock);
             this.panelContainer.Controls.Add(this.toolStrip1);
             this.panelContainer.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelContainer.Location = new System.Drawing.Point(0, 24);
+            this.panelContainer.Location = new System.Drawing.Point(0, 0);
             this.panelContainer.Margin = new System.Windows.Forms.Padding(2);
             this.panelContainer.Name = "panelContainer";
-            this.panelContainer.Size = new System.Drawing.Size(1184, 737);
+            this.panelContainer.Size = new System.Drawing.Size(1184, 761);
             this.panelContainer.TabIndex = 1;
+            // 
+            // tableLayoutPanelDock
+            // 
+            this.tableLayoutPanelDock.ColumnCount = 1;
+            this.tableLayoutPanelDock.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanelDock.Controls.Add(this.tableLayoutPanelBottom, 0, 1);
+            this.tableLayoutPanelDock.Controls.Add(this.tableLayoutPanelTop, 0, 0);
+            this.tableLayoutPanelDock.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanelDock.Location = new System.Drawing.Point(0, 27);
+            this.tableLayoutPanelDock.Name = "tableLayoutPanelDock";
+            this.tableLayoutPanelDock.RowCount = 2;
+            this.tableLayoutPanelDock.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanelDock.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 275F));
+            this.tableLayoutPanelDock.Size = new System.Drawing.Size(1184, 734);
+            this.tableLayoutPanelDock.TabIndex = 7;
+            // 
+            // tableLayoutPanelBottom
+            // 
+            this.tableLayoutPanelBottom.ColumnCount = 2;
+            this.tableLayoutPanelBottom.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanelBottom.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanelBottom.Controls.Add(this.moduloSalida, 0, 0);
+            this.tableLayoutPanelBottom.Controls.Add(this.moduloConsola1, 1, 0);
+            this.tableLayoutPanelBottom.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanelBottom.Location = new System.Drawing.Point(3, 462);
+            this.tableLayoutPanelBottom.Name = "tableLayoutPanelBottom";
+            this.tableLayoutPanelBottom.RowCount = 1;
+            this.tableLayoutPanelBottom.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanelBottom.Size = new System.Drawing.Size(1178, 269);
+            this.tableLayoutPanelBottom.TabIndex = 6;
+            // 
+            // moduloSalida
+            // 
+            this.moduloSalida.App = null;
+            this.moduloSalida.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.moduloSalida.Location = new System.Drawing.Point(2, 2);
+            this.moduloSalida.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.moduloSalida.Name = "moduloSalida";
+            this.moduloSalida.Size = new System.Drawing.Size(585, 265);
+            this.moduloSalida.TabIndex = 1;
+            // 
+            // moduloConsola1
+            // 
+            this.moduloConsola1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.moduloConsola1.Location = new System.Drawing.Point(592, 3);
+            this.moduloConsola1.Name = "moduloConsola1";
+            this.moduloConsola1.Size = new System.Drawing.Size(583, 263);
+            this.moduloConsola1.TabIndex = 5;
+            // 
+            // tableLayoutPanelTop
+            // 
+            this.tableLayoutPanelTop.ColumnCount = 3;
+            this.tableLayoutPanelTop.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 300F));
+            this.tableLayoutPanelTop.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanelTop.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 400F));
+            this.tableLayoutPanelTop.Controls.Add(this.moduloExplorador, 0, 0);
+            this.tableLayoutPanelTop.Controls.Add(this.moduloCodigo, 1, 0);
+            this.tableLayoutPanelTop.Controls.Add(this.moduloAnalisis, 2, 0);
+            this.tableLayoutPanelTop.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanelTop.Location = new System.Drawing.Point(3, 3);
+            this.tableLayoutPanelTop.Name = "tableLayoutPanelTop";
+            this.tableLayoutPanelTop.RowCount = 1;
+            this.tableLayoutPanelTop.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanelTop.Size = new System.Drawing.Size(1178, 453);
+            this.tableLayoutPanelTop.TabIndex = 7;
+            // 
+            // moduloExplorador
+            // 
+            this.moduloExplorador.App = null;
+            this.moduloExplorador.BackColor = System.Drawing.Color.Silver;
+            this.moduloExplorador.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.moduloExplorador.Location = new System.Drawing.Point(2, 2);
+            this.moduloExplorador.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.moduloExplorador.Name = "moduloExplorador";
+            this.moduloExplorador.Size = new System.Drawing.Size(296, 449);
+            this.moduloExplorador.TabIndex = 2;
             // 
             // moduloCodigo
             // 
             this.moduloCodigo.App = null;
             this.moduloCodigo.BackColor = System.Drawing.Color.Silver;
             this.moduloCodigo.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.moduloCodigo.Location = new System.Drawing.Point(300, 27);
+            this.moduloCodigo.Location = new System.Drawing.Point(302, 2);
             this.moduloCodigo.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.moduloCodigo.Name = "moduloCodigo";
             this.moduloCodigo.Padding = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.moduloCodigo.Size = new System.Drawing.Size(484, 460);
+            this.moduloCodigo.Size = new System.Drawing.Size(474, 449);
             this.moduloCodigo.TabIndex = 4;
             // 
             // moduloAnalisis
             // 
             this.moduloAnalisis.App = null;
             this.moduloAnalisis.BackColor = System.Drawing.Color.Silver;
-            this.moduloAnalisis.Dock = System.Windows.Forms.DockStyle.Right;
-            this.moduloAnalisis.Location = new System.Drawing.Point(784, 27);
+            this.moduloAnalisis.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.moduloAnalisis.Location = new System.Drawing.Point(780, 2);
             this.moduloAnalisis.Margin = new System.Windows.Forms.Padding(2);
             this.moduloAnalisis.Name = "moduloAnalisis";
-            this.moduloAnalisis.Size = new System.Drawing.Size(400, 460);
+            this.moduloAnalisis.Size = new System.Drawing.Size(396, 449);
             this.moduloAnalisis.TabIndex = 3;
-            // 
-            // moduloExplorador
-            // 
-            this.moduloExplorador.App = null;
-            this.moduloExplorador.BackColor = System.Drawing.Color.Silver;
-            this.moduloExplorador.Dock = System.Windows.Forms.DockStyle.Left;
-            this.moduloExplorador.Location = new System.Drawing.Point(0, 27);
-            this.moduloExplorador.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.moduloExplorador.Name = "moduloExplorador";
-            this.moduloExplorador.Size = new System.Drawing.Size(300, 460);
-            this.moduloExplorador.TabIndex = 2;
-            // 
-            // moduloSalida
-            // 
-            this.moduloSalida.App = null;
-            this.moduloSalida.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.moduloSalida.Location = new System.Drawing.Point(0, 487);
-            this.moduloSalida.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.moduloSalida.Name = "moduloSalida";
-            this.moduloSalida.Size = new System.Drawing.Size(1184, 250);
-            this.moduloSalida.TabIndex = 1;
             // 
             // toolStrip1
             // 
@@ -244,9 +172,6 @@
             this.toolStripButtonSaveFile,
             this.toolStripButtonCloseFile,
             this.toolStripSeparator1,
-            this.toolStripButtonUndo,
-            this.toolStripButtonRedo,
-            this.toolStripSeparator2,
             this.toolStripButtonCompile,
             this.toolStripButtonRun,
             this.toolStripButtonCompileAndRun});
@@ -264,6 +189,7 @@
             this.toolStripButtonNewFile.Name = "toolStripButtonNewFile";
             this.toolStripButtonNewFile.Size = new System.Drawing.Size(24, 24);
             this.toolStripButtonNewFile.Text = "toolStripButton1";
+            this.toolStripButtonNewFile.ToolTipText = "Nuevo archivo";
             this.toolStripButtonNewFile.Click += new System.EventHandler(this.toolStripButtonNewFile_Click);
             // 
             // toolStripButtonOpenFile
@@ -274,6 +200,7 @@
             this.toolStripButtonOpenFile.Name = "toolStripButtonOpenFile";
             this.toolStripButtonOpenFile.Size = new System.Drawing.Size(24, 24);
             this.toolStripButtonOpenFile.Text = "toolStripButton1";
+            this.toolStripButtonOpenFile.ToolTipText = "Abrir archivo";
             this.toolStripButtonOpenFile.Click += new System.EventHandler(this.toolStripButtonOpenFile_Click);
             // 
             // toolStripButtonSaveFile
@@ -284,6 +211,7 @@
             this.toolStripButtonSaveFile.Name = "toolStripButtonSaveFile";
             this.toolStripButtonSaveFile.Size = new System.Drawing.Size(24, 24);
             this.toolStripButtonSaveFile.Text = "toolStripButton1";
+            this.toolStripButtonSaveFile.ToolTipText = "Guardar archivo";
             this.toolStripButtonSaveFile.Click += new System.EventHandler(this.toolStripButtonSaveFile_Click);
             // 
             // toolStripButtonCloseFile
@@ -294,35 +222,13 @@
             this.toolStripButtonCloseFile.Name = "toolStripButtonCloseFile";
             this.toolStripButtonCloseFile.Size = new System.Drawing.Size(24, 24);
             this.toolStripButtonCloseFile.Text = "toolStripButton1";
+            this.toolStripButtonCloseFile.ToolTipText = "Cerrar archivo";
             this.toolStripButtonCloseFile.Click += new System.EventHandler(this.toolStripButtonCloseFile_Click);
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
             this.toolStripSeparator1.Size = new System.Drawing.Size(6, 27);
-            // 
-            // toolStripButtonUndo
-            // 
-            this.toolStripButtonUndo.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButtonUndo.Image = global::NeoCompiler.Properties.Resources.arrow_undo;
-            this.toolStripButtonUndo.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButtonUndo.Name = "toolStripButtonUndo";
-            this.toolStripButtonUndo.Size = new System.Drawing.Size(24, 24);
-            this.toolStripButtonUndo.Text = "toolStripButton1";
-            // 
-            // toolStripButtonRedo
-            // 
-            this.toolStripButtonRedo.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButtonRedo.Image = global::NeoCompiler.Properties.Resources.arrow_redo;
-            this.toolStripButtonRedo.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButtonRedo.Name = "toolStripButtonRedo";
-            this.toolStripButtonRedo.Size = new System.Drawing.Size(24, 24);
-            this.toolStripButtonRedo.Text = "toolStripButton1";
-            // 
-            // toolStripSeparator2
-            // 
-            this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(6, 27);
             // 
             // toolStripButtonCompile
             // 
@@ -332,6 +238,7 @@
             this.toolStripButtonCompile.Name = "toolStripButtonCompile";
             this.toolStripButtonCompile.Size = new System.Drawing.Size(24, 24);
             this.toolStripButtonCompile.Text = "toolStripButton1";
+            this.toolStripButtonCompile.ToolTipText = "Compilar";
             this.toolStripButtonCompile.Click += new System.EventHandler(this.toolStripButtonCompile_Click);
             // 
             // toolStripButtonRun
@@ -342,6 +249,7 @@
             this.toolStripButtonRun.Name = "toolStripButtonRun";
             this.toolStripButtonRun.Size = new System.Drawing.Size(24, 24);
             this.toolStripButtonRun.Text = "toolStripButton1";
+            this.toolStripButtonRun.ToolTipText = "Ejecutar";
             // 
             // toolStripButtonCompileAndRun
             // 
@@ -351,6 +259,7 @@
             this.toolStripButtonCompileAndRun.Name = "toolStripButtonCompileAndRun";
             this.toolStripButtonCompileAndRun.Size = new System.Drawing.Size(24, 24);
             this.toolStripButtonCompileAndRun.Text = "toolStripButton1";
+            this.toolStripButtonCompileAndRun.ToolTipText = "Compilar y ejecutar";
             this.toolStripButtonCompileAndRun.Click += new System.EventHandler(this.toolStripButtonCompileAndRun_Click);
             // 
             // VentanaPrincipal
@@ -359,40 +268,22 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1184, 761);
             this.Controls.Add(this.panelContainer);
-            this.Controls.Add(this.menuStrip1);
-            this.MainMenuStrip = this.menuStrip1;
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "VentanaPrincipal";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Neo Compiler";
-            this.menuStrip1.ResumeLayout(false);
-            this.menuStrip1.PerformLayout();
             this.panelContainer.ResumeLayout(false);
             this.panelContainer.PerformLayout();
+            this.tableLayoutPanelDock.ResumeLayout(false);
+            this.tableLayoutPanelBottom.ResumeLayout(false);
+            this.tableLayoutPanelTop.ResumeLayout(false);
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
         #endregion
-
-        private System.Windows.Forms.MenuStrip menuStrip1;
-        private System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem newFileToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem openFileToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem saveToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem saveAllToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem closeFileToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem editToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem undoToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem redoToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem viewToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem helpToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem aboutToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem aboutToolStripMenuItem1;
         private System.Windows.Forms.Panel panelContainer;
         private System.Windows.Forms.ToolStrip toolStrip1;
         private System.Windows.Forms.ToolStripButton toolStripButtonNewFile;
@@ -400,16 +291,17 @@
         private System.Windows.Forms.ToolStripButton toolStripButtonSaveFile;
         private System.Windows.Forms.ToolStripButton toolStripButtonCloseFile;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
-        private System.Windows.Forms.ToolStripButton toolStripButtonUndo;
-        private System.Windows.Forms.ToolStripButton toolStripButtonRedo;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
         private System.Windows.Forms.ToolStripButton toolStripButtonCompile;
         private System.Windows.Forms.ToolStripButton toolStripButtonRun;
         private System.Windows.Forms.ToolStripButton toolStripButtonCompileAndRun;
         private Gui.Modulos.ModuloCodigo moduloCodigo;
         private Gui.Modulos.ModuloAnalisis moduloAnalisis;
         private Gui.Modulos.ModuloExplorador moduloExplorador;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanelBottom;
         private Gui.Modulos.ModuloSalida moduloSalida;
+        private Gui.Modulos.ModuloConsola moduloConsola1;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanelDock;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanelTop;
     }
 }
 

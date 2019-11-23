@@ -11,6 +11,7 @@ using NeoCompiler.Analizador.Ejecucion;
 using NeoCompiler.Analizador.Ejecutor;
 using NeoCompiler.Analizador.ErroresSemanticos;
 using NeoCompiler.Gui.Modulos;
+using NeoCompiler.Gui.Ventanas;
 
 namespace NeoCompiler
 {
@@ -46,65 +47,6 @@ namespace NeoCompiler
             double resultado = evaluador.Evaluar();
 
             Console.WriteLine(resultado);*/
-        }
-
-        /// <summary>
-        /// Metodo para testear la ejecucion
-        /// </summary>
-        private void Foo()
-        {
-            string nombrePestanaSeleccionada = moduloCodigo.NombrePestanaSeleccionada();
-
-            if (nombrePestanaSeleccionada == null)
-                return;
-
-            // analisis lexico
-
-            string codigoFuente = moduloCodigo.CodigoFuenteSeleccionado();
-            var lexer = new NeoLexer(codigoFuente);
-
-            while (lexer.HasNext())
-            {
-                Console.WriteLine($"{lexer.CurrentLexeme}, {lexer.CurrentToken}");
-            }
-
-            if (!lexer.IsSuccessful)
-            {
-                MessageBox.Show($"Error: {lexer.ErrorMessage}");
-                return;
-            }
-
-            MessageBox.Show("Success");
-
-            lexer.Tokens.ForEach(token =>
-            {
-                Console.WriteLine(token);
-            });
-
-            // conversion de codigo
-
-            var parser = new NeoParser(lexer.Tokens);
-
-            string cSharpSourceCode = parser.ParseToSourceCode();
-
-            MessageBox.Show(cSharpSourceCode);
-
-            // compilacion de codigo
-
-            if (!Programa.Compilar(cSharpSourceCode))
-            {
-                MessageBox.Show(String.Join("\n", Programa.Errores));
-                return;
-            }
-
-            MessageBox.Show("Compilacion exitosa");
-
-            // mostrar resultados
-            moduloSalida.Mostrar("=====================================\n");
-            moduloSalida.Mostrar(String.Join("\n", Programa.Salida));
-            moduloSalida.Mostrar("=====================================\n");
-
-            Process.Start(Programa.Exe);
         }
 
         private string ObtenerRutaArchivo()
@@ -175,6 +117,12 @@ namespace NeoCompiler
             string contenidoArchivo = LeerArchivo(rutaArchivo);
 
             moduloCodigo.AgregarPestana(rutaArchivo, contenidoArchivo);
+            moduloExplorador.AgregarArchivo(rutaArchivo);
+        }
+
+        public void SeleccionarPestana(string nombrePestana)
+        {
+            moduloCodigo.SeleccionarPestana(nombrePestana);
         }
 
         // Guardar archivo
@@ -293,9 +241,6 @@ namespace NeoCompiler
             moduloAnalisis.LlenarCodigoIntermedio(codigoGenerado);
 
             moduloSalida.Mostrar("\n");
-
-            // Empezar con la ejecucion de codigo
-            Ejecutar();
         }
 
         // Ejecutar
@@ -327,12 +272,67 @@ namespace NeoCompiler
         // Cerrar archivo
         private void toolStripButtonCloseFile_Click(object sender, EventArgs e)
         {
+            string nombrePestanaSeleccionada = moduloCodigo.NombrePestanaSeleccionada();
 
+            if (nombrePestanaSeleccionada == null)
+                return;
+
+            moduloCodigo.CerrarPestana(nombrePestanaSeleccionada);
+            moduloExplorador.QuitarArchivo(nombrePestanaSeleccionada);
         }
 
+        // Ejecutar
         private void toolStripButtonCompileAndRun_Click(object sender, EventArgs e)
         {
-            Foo();
+            Compilar();
+        }
+
+        private void Compilar()
+        {
+            // Guardar archivo
+            string nombrePestanaSeleccionada = moduloCodigo.NombrePestanaSeleccionada();
+
+            if (nombrePestanaSeleccionada == null)
+                return;
+
+            string codigoPestanaSeleccionada = moduloCodigo.CodigoFuenteSeleccionado();
+
+            EscribirArchivo(nombrePestanaSeleccionada, codigoPestanaSeleccionada);
+
+            moduloSalida.Mostrar("Compilando archivo '" + nombrePestanaSeleccionada + "'...\n");
+
+            // analisis lexico
+            string codigoFuente = moduloCodigo.CodigoFuenteSeleccionado();
+            var lexer = new NeoLexer(codigoFuente);
+
+            while (lexer.HasNext()) { }
+
+            if (!lexer.IsSuccessful)
+            {
+                moduloSalida.Mostrar($"Error: {lexer.ErrorMessage}", ModuloSalida.SalidaError);
+                return;
+            }
+
+            // conversion de codigo
+
+            var parser = new NeoParser(lexer.Tokens);
+
+            string cSharpSourceCode = parser.ParseToSourceCode();
+
+            MessageBox.Show(cSharpSourceCode);
+
+            // compilacion de codigo
+
+            if (!Programa.Compilar(cSharpSourceCode))
+            {
+                MessageBox.Show(String.Join("\n", Programa.Errores));
+                return;
+            }
+
+            MessageBox.Show("Compilacion exitosa");
+
+            // mostrar resultados
+            moduloConsola1.IniciarProceso(Programa.Exe);
         }
     }
 }

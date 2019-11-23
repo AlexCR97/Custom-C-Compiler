@@ -13,6 +13,11 @@ namespace NeoCompiler.Analizador.Ejecutor
             ["void"] = "public static void",
             ["main"] = "Main",
             ["print"] = "Console.WriteLine",
+            ["@i"] = "int.Parse(Console.ReadLine())",
+            ["@f"] = "float.Parse(Console.ReadLine())",
+            ["@d"] = "double.Parse(Console.ReadLine())",
+            ["@b"] = "bool.Parse(Console.ReadLine())",
+            ["@s"] = "Console.ReadLine()",
         };
 
         public List<NeoToken> NeoSourceCode { get; }
@@ -29,7 +34,7 @@ namespace NeoCompiler.Analizador.Ejecutor
                 "using", "System", ";",
                 "class", "NeoProgram", "{",
             };
-             
+
             NeoSourceCode.ForEach(token =>
             {
                 string currentToken = token.Token;
@@ -41,13 +46,6 @@ namespace NeoCompiler.Analizador.Ejecutor
             });
 
             tokens.Add("}");
-
-            tokens.Insert(tokens.Count - 2, "Console");
-            tokens.Insert(tokens.Count - 2, ".");
-            tokens.Insert(tokens.Count - 2, "ReadLine");
-            tokens.Insert(tokens.Count - 2, "(");
-            tokens.Insert(tokens.Count - 2, ")");
-            tokens.Insert(tokens.Count - 2, ";");
 
             return tokens;
         }

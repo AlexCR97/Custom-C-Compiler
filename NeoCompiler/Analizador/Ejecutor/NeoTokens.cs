@@ -76,6 +76,12 @@ namespace NeoCompiler.Analizador.Ejecutor
             ["MAIN"] = @"^main\b",
             ["NUMBER"] = @"^\d+[f|d]?(\.\d+[f|d]?)?",
             ["IDENTIFIER"] = @"^([a-zA-Z]|_*[a-zA-Z]){1}[a-zA-Z0-9_]*",
+
+            ["INPUT_INT"] = @"^@i\b",
+            ["INPUT_FLOAT"] = @"^@f\b",
+            ["INPUT_DOUBLE"] = @"^@d\b",
+            ["INPUT_BOOL"] = @"^@f\b",
+            ["INPUT_STRING"] = @"^@s\b",
         };
 
         public static int EndOfMatch(string token, string regex)

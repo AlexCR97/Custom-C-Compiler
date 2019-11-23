@@ -50,6 +50,7 @@ namespace NeoCompiler.Analizador
             public const string BloqueFor = "<bloque-for>";
             public const string Print = "<print>";
             public const string Instruccion = "<instruccion>";
+            public const string Input = "<input>";
         }
 
         public static class Terminales
@@ -115,6 +116,12 @@ namespace NeoCompiler.Analizador
             public const string LlavesAbrir = "{";
             public const string LlavesCerrar = "}";
             public const string Igual = "=";
+
+            public const string InputInt = "@i";
+            public const string InputFloat = "@f";
+            public const string InputDouble = "@d";
+            public const string InputBool = "@b";
+            public const string InputString = "@s";
         }
 
         public static class ExpresionesRegulares
@@ -181,6 +188,7 @@ namespace NeoCompiler.Analizador
             var bloqueFor = new NonTerminal(NoTerminales.BloqueFor);
             var print = new NonTerminal(NoTerminales.Print);
             var instruccion = new NonTerminal(NoTerminales.Instruccion);
+            var input = new NonTerminal(NoTerminales.Input);
             #endregion
 
             #region Terminals
@@ -253,6 +261,13 @@ namespace NeoCompiler.Analizador
             var llavesAbrir_ = ToTerm(Terminales.LlavesAbrir);
             var llavesCerrar_ = ToTerm(Terminales.LlavesCerrar);
             var igual_ = ToTerm(Terminales.Igual);
+
+            // input
+            var inputInt_ = ToTerm(Terminales.InputInt);
+            var inputFloat_ = ToTerm(Terminales.InputFloat);
+            var inputDouble_ = ToTerm(Terminales.InputDouble);
+            var inputBool_ = ToTerm(Terminales.InputBool);
+            var inputString_ = ToTerm(Terminales.InputString);
             #endregion
 
             #region Regex
@@ -351,10 +366,18 @@ namespace NeoCompiler.Analizador
 
             asignable.Rule =
                 bool_ |
+                input |
                 idAsignable |
                 expresionAritmetica |
                 stringRegex |
                 llamadaFuncion;
+
+            input.Rule =
+                inputInt_ |
+                inputFloat_ |
+                inputDouble_ |
+                inputBool_ |
+                inputString_;
 
             listaAsignable.Rule =
                 asignable + coma_ + listaAsignable |

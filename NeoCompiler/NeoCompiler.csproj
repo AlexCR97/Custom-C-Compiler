@@ -33,6 +33,12 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="ConsoleControl, Version=1.2.1.0, Culture=neutral, PublicKeyToken=7edd23586f5e297f, processorArchitecture=MSIL">
+      <HintPath>..\packages\ConsoleControl.1.2.1\lib\net40-client\ConsoleControl.dll</HintPath>
+    </Reference>
+    <Reference Include="ConsoleControlAPI, Version=1.2.1.0, Culture=neutral, PublicKeyToken=7c86b8a36b9c33e2, processorArchitecture=MSIL">
+      <HintPath>..\packages\ConsoleControlAPI.1.2.1\lib\net40\ConsoleControlAPI.dll</HintPath>
+    </Reference>
     <Reference Include="Irony, Version=1.1.0.0, Culture=neutral, PublicKeyToken=ca48ace7223ead47, processorArchitecture=MSIL">
       <HintPath>..\packages\Irony.1.1.0\lib\net40\Irony.dll</HintPath>
     </Reference>
@@ -94,6 +100,18 @@
     <Compile Include="Gui\Controles\ControlCodigo.Designer.cs">
       <DependentUpon>ControlCodigo.cs</DependentUpon>
     </Compile>
+    <Compile Include="Gui\Modulos\ModuloConsola.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Gui\Modulos\ModuloConsola.Designer.cs">
+      <DependentUpon>ModuloConsola.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Gui\Ventanas\VentanaConsola.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Gui\Ventanas\VentanaConsola.Designer.cs">
+      <DependentUpon>VentanaConsola.cs</DependentUpon>
+    </Compile>
     <Compile Include="Gui\Ventanas\VentanaEntrada.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -134,6 +152,12 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Gui\Controles\ControlCodigo.resx">
       <DependentUpon>ControlCodigo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Gui\Modulos\ModuloConsola.resx">
+      <DependentUpon>ModuloConsola.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Gui\Ventanas\VentanaConsola.resx">
+      <DependentUpon>VentanaConsola.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Gui\Ventanas\VentanaEntrada.resx">
       <DependentUpon>VentanaEntrada.cs</DependentUpon>
@@ -222,6 +246,8 @@
   <ItemGroup>
     <None Include="Resources\splash-screen.png" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Content Include="Console.ico" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
