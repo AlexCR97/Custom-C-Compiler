@@ -12,13 +12,16 @@ namespace NeoCompiler.Analizador.Ejecutor
         {
             ["void"] = "public static void",
             ["main"] = "Main",
-            ["print"] = "Console.WriteLine",
+            ["print"] = "Console.Write",
+            ["println"] = "Console.WriteLine",
             ["@i"] = "int.Parse(Console.ReadLine())",
             ["@f"] = "float.Parse(Console.ReadLine())",
             ["@d"] = "double.Parse(Console.ReadLine())",
             ["@b"] = "bool.Parse(Console.ReadLine())",
             ["@s"] = "Console.ReadLine()",
             ["base"] = "basee",
+            ["when"] = "switch",
+            ["matches"] = "case",
         };
 
         public List<NeoToken> NeoSourceCode { get; }
@@ -36,15 +39,28 @@ namespace NeoCompiler.Analizador.Ejecutor
                 "class", "NeoProgram", "{",
             };
 
-            NeoSourceCode.ForEach(token =>
+            for (int i = 0; i < NeoSourceCode.Count; i++)
             {
-                string currentToken = token.Token;
+                string currentToken = NeoSourceCode[i].Token;
 
                 if (ParseTokens.ContainsKey(currentToken))
                     currentToken = ParseTokens[currentToken];
 
                 tokens.Add(currentToken);
-            });
+                
+                // check for 'matches'
+                if (i - 1 >= 0)
+                {
+                    string lastToken = NeoSourceCode[i - 1].Token;
+
+                    if (lastToken == "matches")
+                        tokens.Add(":");
+                }
+
+                // check for 'default'
+                if (currentToken == "default")
+                    tokens.Add(":");
+            }
 
             tokens.Add("}");
 
@@ -67,12 +83,14 @@ namespace NeoCompiler.Analizador.Ejecutor
 
                 sb.Append(currentToken);
 
-                // check for <=, >=, ==
+                // check for <=, >=, ==, !=
                 if (currentToken == "<" && nextToken == "=") { }
 
                 else if (currentToken == ">" && nextToken == "=") { }
 
                 else if (currentToken == "=" && nextToken == "=") { }
+
+                else if (currentToken == "!" && nextToken == "=") { }
 
                 else
                 {

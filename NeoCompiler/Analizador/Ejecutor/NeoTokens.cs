@@ -47,7 +47,7 @@ namespace NeoCompiler.Analizador.Ejecutor
 
             ["LOGIC_OPERATOR_AND"] = @"^and\b",
             ["LOGIC_OPERATOR_OR"] = @"^or\b",
-            ["LOGIC_OPERATOR_NOT"] = @"^not\b",
+            ["LOGIC_OPERATOR_NOT"] = @"^\!",
 
             ["MATH_OPERATOR_ADD"] = @"^+=\b",
             ["MATH_OPERATOR_SUB"] = @"^-=\b",
@@ -60,7 +60,7 @@ namespace NeoCompiler.Analizador.Ejecutor
             ["RELATIONAL_OPERATOR_GREATER_EQUALS"] = @"^>=\b",
             ["RELATIONAL_OPERATOR_LESS_EQULAS"] = @"^<=\b",
             ["RELATIONAL_OPERATOR_EQUALS"] = @"^==\b",
-            ["RELATIONAL_OPERATOR_DIFFERENT"] = @"^<>\b",
+            ["RELATIONAL_OPERATOR_DIFFERENT"] = @"^!=\b",
             ["RELATIONAL_OPERATOR_GREATER"] = @"^\>",
             ["RELATIONAL_OPERATOR_LESS"] = @"^\<",
 

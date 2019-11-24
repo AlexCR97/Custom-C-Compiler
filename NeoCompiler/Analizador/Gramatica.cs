@@ -49,6 +49,7 @@ namespace NeoCompiler.Analizador
             public const string ParametroFor3 = "<parametro-for-3>";
             public const string BloqueFor = "<bloque-for>";
             public const string Print = "<print>";
+            public const string Println = "<println>";
             public const string Instruccion = "<instruccion>";
             public const string Input = "<input>";
         }
@@ -63,6 +64,8 @@ namespace NeoCompiler.Analizador
             public const string True = "true";
             public const string False = "false";
             public const string Print = "print";
+            public const string Println = "println";
+            public const string Break = "break";
 
             public const string If = "if";
             public const string Else = "else";
@@ -92,7 +95,7 @@ namespace NeoCompiler.Analizador
             public const string Roo = "~=";
 
             public const string IgualIgual = "==";
-            public const string Diferente = "<>";
+            public const string Diferente = "!=";
             public const string Mayor = ">";
             public const string MayorIgual = ">=";
             public const string Menor = "<";
@@ -187,6 +190,7 @@ namespace NeoCompiler.Analizador
             var parametroFor3 = new NonTerminal(NoTerminales.ParametroFor3);
             var bloqueFor = new NonTerminal(NoTerminales.BloqueFor);
             var print = new NonTerminal(NoTerminales.Print);
+            var println = new NonTerminal(NoTerminales.Println);
             var instruccion = new NonTerminal(NoTerminales.Instruccion);
             var input = new NonTerminal(NoTerminales.Input);
             #endregion
@@ -202,6 +206,8 @@ namespace NeoCompiler.Analizador
             var true_ = ToTerm(Terminales.True);
             var false_ = ToTerm(Terminales.False);
             var print_ = ToTerm(Terminales.Print);
+            var println_ = ToTerm(Terminales.Println);
+            var break_ = ToTerm(Terminales.Break);
 
             // flow controllers
             var if_ = ToTerm(Terminales.If);
@@ -285,7 +291,8 @@ namespace NeoCompiler.Analizador
                 declaracionFuncion;
 
             declaracionFuncion.Rule =
-                tipoFuncion + id + parentesisAbrir_ + parentesisCerrar_ + bloqueFuncion;
+                tipoFuncion + id + parentesisAbrir_ + parentesisCerrar_ + bloqueFuncion |
+                tipoFuncion + id + parentesisAbrir_ + listaParametro + parentesisCerrar_ + bloqueFuncion;
 
             tipoFuncion.Rule =
                 void_ |
@@ -344,7 +351,8 @@ namespace NeoCompiler.Analizador
                 controladorFlujo;
 
             print.Rule =
-                print_ + parentesisAbrir_ + asignable + parentesisCerrar_ + puntoComa_;
+                print_ + parentesisAbrir_ + asignable + parentesisCerrar_ + puntoComa_ |
+                println_ + parentesisAbrir_ + asignable + parentesisCerrar_ + puntoComa_;
 
             declaracionVariable.Rule =
                 tipo + listaDeclaracionVariable |
@@ -440,7 +448,8 @@ namespace NeoCompiler.Analizador
                 defaultWhen;
 
             opcionWhen.Rule =
-                matches_ + listaAsignable + bloqueFuncion;
+                matches_ + listaAsignable + llavesAbrir_ + break_ + puntoComa_ + llavesCerrar_ |
+                matches_ + listaAsignable + llavesAbrir_ + listaSentencia + break_ + puntoComa_ + llavesCerrar_;
 
             defaultWhen.Rule =
                 default_ + bloqueFuncion;
@@ -496,6 +505,10 @@ namespace NeoCompiler.Analizador
                 id + punto_ + idLlamadaFuncion |
                 id + dosPuntosDoble_ + idLlamadaFuncion |
                 id;
+
+            listaParametro.Rule =
+                tipo + idAsignable + coma_ |
+                tipo + idAsignable;
 
             #endregion
 

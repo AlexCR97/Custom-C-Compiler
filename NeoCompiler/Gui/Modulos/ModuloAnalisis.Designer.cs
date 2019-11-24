@@ -45,12 +45,12 @@
             this.tabPageCodigoIntermedio = new System.Windows.Forms.TabPage();
             this.dataGridViewCodigoIntermedio = new System.Windows.Forms.DataGridView();
             this.CLinea = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.panelContainer = new System.Windows.Forms.Panel();
             this.tabPageTablaResulta = new System.Windows.Forms.TabPage();
             this.dataGridViewTablaResuelta = new System.Windows.Forms.DataGridView();
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.panelContainer = new System.Windows.Forms.Panel();
             this.panelTitle.SuspendLayout();
             this.tabControlAnalizadores.SuspendLayout();
             this.tabPageTablaSimbolos.SuspendLayout();
@@ -59,18 +59,18 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewTriplos)).BeginInit();
             this.tabPageCodigoIntermedio.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewCodigoIntermedio)).BeginInit();
-            this.panelContainer.SuspendLayout();
             this.tabPageTablaResulta.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewTablaResuelta)).BeginInit();
+            this.panelContainer.SuspendLayout();
             this.SuspendLayout();
             // 
             // panelTitle
             // 
-            this.panelTitle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.panelTitle.BackColor = System.Drawing.Color.SteelBlue;
             this.panelTitle.Controls.Add(this.labelTitle);
             this.panelTitle.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelTitle.Location = new System.Drawing.Point(0, 0);
-            this.panelTitle.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panelTitle.Margin = new System.Windows.Forms.Padding(2);
             this.panelTitle.Name = "panelTitle";
             this.panelTitle.Size = new System.Drawing.Size(375, 28);
             this.panelTitle.TabIndex = 3;
@@ -79,7 +79,7 @@
             // 
             this.labelTitle.AutoSize = true;
             this.labelTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelTitle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.labelTitle.ForeColor = System.Drawing.Color.White;
             this.labelTitle.Location = new System.Drawing.Point(2, 6);
             this.labelTitle.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.labelTitle.Name = "labelTitle";
@@ -95,7 +95,7 @@
             this.tabControlAnalizadores.Controls.Add(this.tabPageTablaResulta);
             this.tabControlAnalizadores.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabControlAnalizadores.Location = new System.Drawing.Point(4, 5);
-            this.tabControlAnalizadores.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tabControlAnalizadores.Margin = new System.Windows.Forms.Padding(2);
             this.tabControlAnalizadores.Name = "tabControlAnalizadores";
             this.tabControlAnalizadores.SelectedIndex = 0;
             this.tabControlAnalizadores.Size = new System.Drawing.Size(367, 450);
@@ -105,9 +105,9 @@
             // 
             this.tabPageTablaSimbolos.Controls.Add(this.dataGridViewSimbolos);
             this.tabPageTablaSimbolos.Location = new System.Drawing.Point(4, 22);
-            this.tabPageTablaSimbolos.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tabPageTablaSimbolos.Margin = new System.Windows.Forms.Padding(2);
             this.tabPageTablaSimbolos.Name = "tabPageTablaSimbolos";
-            this.tabPageTablaSimbolos.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tabPageTablaSimbolos.Padding = new System.Windows.Forms.Padding(2);
             this.tabPageTablaSimbolos.Size = new System.Drawing.Size(359, 424);
             this.tabPageTablaSimbolos.TabIndex = 2;
             this.tabPageTablaSimbolos.Text = "Tabla de simbolos";
@@ -127,7 +127,7 @@
             this.Valor});
             this.dataGridViewSimbolos.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridViewSimbolos.Location = new System.Drawing.Point(2, 2);
-            this.dataGridViewSimbolos.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.dataGridViewSimbolos.Margin = new System.Windows.Forms.Padding(2);
             this.dataGridViewSimbolos.Name = "dataGridViewSimbolos";
             this.dataGridViewSimbolos.RowTemplate.Height = 24;
             this.dataGridViewSimbolos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
@@ -153,9 +153,9 @@
             // 
             this.tabPageTriplos.Controls.Add(this.dataGridViewTriplos);
             this.tabPageTriplos.Location = new System.Drawing.Point(4, 22);
-            this.tabPageTriplos.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tabPageTriplos.Margin = new System.Windows.Forms.Padding(2);
             this.tabPageTriplos.Name = "tabPageTriplos";
-            this.tabPageTriplos.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tabPageTriplos.Padding = new System.Windows.Forms.Padding(2);
             this.tabPageTriplos.Size = new System.Drawing.Size(359, 424);
             this.tabPageTriplos.TabIndex = 3;
             this.tabPageTriplos.Text = "Triplos";
@@ -176,7 +176,7 @@
             this.COperando2});
             this.dataGridViewTriplos.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridViewTriplos.Location = new System.Drawing.Point(2, 2);
-            this.dataGridViewTriplos.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.dataGridViewTriplos.Margin = new System.Windows.Forms.Padding(2);
             this.dataGridViewTriplos.Name = "dataGridViewTriplos";
             this.dataGridViewTriplos.RowTemplate.Height = 24;
             this.dataGridViewTriplos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
@@ -207,9 +207,9 @@
             // 
             this.tabPageCodigoIntermedio.Controls.Add(this.dataGridViewCodigoIntermedio);
             this.tabPageCodigoIntermedio.Location = new System.Drawing.Point(4, 22);
-            this.tabPageCodigoIntermedio.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tabPageCodigoIntermedio.Margin = new System.Windows.Forms.Padding(2);
             this.tabPageCodigoIntermedio.Name = "tabPageCodigoIntermedio";
-            this.tabPageCodigoIntermedio.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tabPageCodigoIntermedio.Padding = new System.Windows.Forms.Padding(2);
             this.tabPageCodigoIntermedio.Size = new System.Drawing.Size(359, 424);
             this.tabPageCodigoIntermedio.TabIndex = 4;
             this.tabPageCodigoIntermedio.Text = "Codigo intermedio";
@@ -227,7 +227,7 @@
             this.CLinea});
             this.dataGridViewCodigoIntermedio.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridViewCodigoIntermedio.Location = new System.Drawing.Point(2, 2);
-            this.dataGridViewCodigoIntermedio.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.dataGridViewCodigoIntermedio.Margin = new System.Windows.Forms.Padding(2);
             this.dataGridViewCodigoIntermedio.Name = "dataGridViewCodigoIntermedio";
             this.dataGridViewCodigoIntermedio.RowTemplate.Height = 24;
             this.dataGridViewCodigoIntermedio.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
@@ -238,17 +238,6 @@
             // 
             this.CLinea.HeaderText = "Linea";
             this.CLinea.Name = "CLinea";
-            // 
-            // panelContainer
-            // 
-            this.panelContainer.Controls.Add(this.tabControlAnalizadores);
-            this.panelContainer.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelContainer.Location = new System.Drawing.Point(0, 28);
-            this.panelContainer.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.panelContainer.Name = "panelContainer";
-            this.panelContainer.Padding = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.panelContainer.Size = new System.Drawing.Size(375, 460);
-            this.panelContainer.TabIndex = 6;
             // 
             // tabPageTablaResulta
             // 
@@ -297,6 +286,17 @@
             this.dataGridViewTextBoxColumn4.HeaderText = "Valor";
             this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
             // 
+            // panelContainer
+            // 
+            this.panelContainer.Controls.Add(this.tabControlAnalizadores);
+            this.panelContainer.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panelContainer.Location = new System.Drawing.Point(0, 28);
+            this.panelContainer.Margin = new System.Windows.Forms.Padding(2);
+            this.panelContainer.Name = "panelContainer";
+            this.panelContainer.Padding = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.panelContainer.Size = new System.Drawing.Size(375, 460);
+            this.panelContainer.TabIndex = 6;
+            // 
             // ModuloAnalisis
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -304,7 +304,7 @@
             this.BackColor = System.Drawing.Color.Silver;
             this.Controls.Add(this.panelContainer);
             this.Controls.Add(this.panelTitle);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "ModuloAnalisis";
             this.Size = new System.Drawing.Size(375, 488);
             this.panelTitle.ResumeLayout(false);
@@ -316,9 +316,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewTriplos)).EndInit();
             this.tabPageCodigoIntermedio.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewCodigoIntermedio)).EndInit();
-            this.panelContainer.ResumeLayout(false);
             this.tabPageTablaResulta.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewTablaResuelta)).EndInit();
+            this.panelContainer.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }

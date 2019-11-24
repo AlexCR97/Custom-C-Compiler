@@ -87,11 +87,12 @@
             this.tableLayoutPanelBottom.Controls.Add(this.moduloSalida, 0, 0);
             this.tableLayoutPanelBottom.Controls.Add(this.moduloConsola1, 1, 0);
             this.tableLayoutPanelBottom.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanelBottom.Location = new System.Drawing.Point(3, 462);
+            this.tableLayoutPanelBottom.Location = new System.Drawing.Point(0, 459);
+            this.tableLayoutPanelBottom.Margin = new System.Windows.Forms.Padding(0);
             this.tableLayoutPanelBottom.Name = "tableLayoutPanelBottom";
             this.tableLayoutPanelBottom.RowCount = 1;
             this.tableLayoutPanelBottom.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanelBottom.Size = new System.Drawing.Size(1178, 269);
+            this.tableLayoutPanelBottom.Size = new System.Drawing.Size(1184, 275);
             this.tableLayoutPanelBottom.TabIndex = 6;
             // 
             // moduloSalida
@@ -99,17 +100,17 @@
             this.moduloSalida.App = null;
             this.moduloSalida.Dock = System.Windows.Forms.DockStyle.Fill;
             this.moduloSalida.Location = new System.Drawing.Point(2, 2);
-            this.moduloSalida.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.moduloSalida.Margin = new System.Windows.Forms.Padding(2);
             this.moduloSalida.Name = "moduloSalida";
-            this.moduloSalida.Size = new System.Drawing.Size(585, 265);
+            this.moduloSalida.Size = new System.Drawing.Size(588, 271);
             this.moduloSalida.TabIndex = 1;
             // 
             // moduloConsola1
             // 
             this.moduloConsola1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.moduloConsola1.Location = new System.Drawing.Point(592, 3);
+            this.moduloConsola1.Location = new System.Drawing.Point(595, 3);
             this.moduloConsola1.Name = "moduloConsola1";
-            this.moduloConsola1.Size = new System.Drawing.Size(583, 263);
+            this.moduloConsola1.Size = new System.Drawing.Size(586, 269);
             this.moduloConsola1.TabIndex = 5;
             // 
             // tableLayoutPanelTop
@@ -135,7 +136,7 @@
             this.moduloExplorador.BackColor = System.Drawing.Color.Silver;
             this.moduloExplorador.Dock = System.Windows.Forms.DockStyle.Fill;
             this.moduloExplorador.Location = new System.Drawing.Point(2, 2);
-            this.moduloExplorador.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.moduloExplorador.Margin = new System.Windows.Forms.Padding(2);
             this.moduloExplorador.Name = "moduloExplorador";
             this.moduloExplorador.Size = new System.Drawing.Size(296, 449);
             this.moduloExplorador.TabIndex = 2;
@@ -165,6 +166,7 @@
             // 
             // toolStrip1
             // 
+            this.toolStrip1.BackColor = System.Drawing.Color.SteelBlue;
             this.toolStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripButtonNewFile,
@@ -273,6 +275,7 @@
             this.Name = "VentanaPrincipal";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Neo Compiler";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.panelContainer.ResumeLayout(false);
             this.panelContainer.PerformLayout();
             this.tableLayoutPanelDock.ResumeLayout(false);

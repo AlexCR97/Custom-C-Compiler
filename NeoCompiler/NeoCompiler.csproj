@@ -106,6 +106,12 @@
     <Compile Include="Gui\Modulos\ModuloConsola.Designer.cs">
       <DependentUpon>ModuloConsola.cs</DependentUpon>
     </Compile>
+    <Compile Include="Gui\Ventanas\VentanaCarga.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Gui\Ventanas\VentanaCarga.Designer.cs">
+      <DependentUpon>VentanaCarga.cs</DependentUpon>
+    </Compile>
     <Compile Include="Gui\Ventanas\VentanaPrincipal.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -143,6 +149,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Gui\Modulos\ModuloConsola.resx">
       <DependentUpon>ModuloConsola.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Gui\Ventanas\VentanaCarga.resx">
+      <DependentUpon>VentanaCarga.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Gui\Ventanas\VentanaPrincipal.resx">
       <DependentUpon>VentanaPrincipal.cs</DependentUpon>
@@ -230,6 +239,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Console.ico" />
+    <None Include="Resources\background-load.jpg" />
+    <None Include="Resources\cargando.gif" />
+    <Content Include="Resources\logo-neo.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using NeoCompiler.Gui.Ventanas;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -16,7 +17,8 @@ namespace NeoCompiler
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new VentanaPrincipal());
+            Application.Run(new VentanaCarga());
+            //Application.Run(new VentanaPrincipal());
         }
     }
 }
