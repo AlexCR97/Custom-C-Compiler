@@ -1,0 +1,13 @@
+void main() {
+    int a = 10 + 5;
+    float b = 2.71f + 13;
+    double c = 3.1416 + 5.55f;
+    string d = "hola " + "mundo";
+    string e = "numero: " + a;
+
+    println(a);
+    println(b);
+    println(c);
+    println(d);
+    println(e);
+}

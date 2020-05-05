@@ -178,6 +178,16 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <None Include="CodigosFuente\01 - hola mundo.neo" />
+    <None Include="CodigosFuente\02 - variables.neo" />
+    <None Include="CodigosFuente\03 - expresiones.neo" />
+    <None Include="CodigosFuente\04 - lectura por teclado.neo" />
+    <None Include="CodigosFuente\05 - if.neo" />
+    <None Include="CodigosFuente\07 - while.neo" />
+    <None Include="CodigosFuente\08 - for.neo" />
+    <None Include="CodigosFuente\09 - ejemplo.neo" />
+    <None Include="CodigosFuente\area triangulo.neo" />
+    <None Include="CodigosFuente\suma.neo" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

@@ -1,0 +1,15 @@
+void main(){
+ int x= 3;
+ for(int i = 0; i <= x; i = i + 1){
+   println("num: " + i);
+}
+
+ 
+
+
+
+
+
+
+
+}

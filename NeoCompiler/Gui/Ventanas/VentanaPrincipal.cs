@@ -175,10 +175,10 @@ namespace NeoCompiler
                 cronometro.Stop();
 
                 milisegundos = cronometro.ElapsedMilliseconds;
-                Utils.EscribirArchivo(Utils.RutaArchivoErrorSintactico, $"{cantidadLineas} {milisegundos}", true);
+                //Utils.EscribirArchivo(Utils.RutaArchivoErrorSintactico, $"{cantidadLineas} {milisegundos}", true);
 
-                tiemposPromedio = Utils.TiemposPromedioDe(Utils.RutaArchivoErrorSintactico);
-                Utils.RegistrarTiemposPromedio(Utils.RutaArchivoTiempoPromedioErrorSintactico, tiemposPromedio);
+                //tiemposPromedio = Utils.TiemposPromedioDe(Utils.RutaArchivoErrorSintactico);
+                //Utils.RegistrarTiemposPromedio(Utils.RutaArchivoTiempoPromedioErrorSintactico, tiemposPromedio);
 
                 moduloSalida.Mostrar("Error lexico-sintáctico\n", ModuloSalida.SalidaError);
 
@@ -212,10 +212,10 @@ namespace NeoCompiler
                 cronometro.Stop();
 
                 milisegundos = cronometro.ElapsedMilliseconds;
-                Utils.EscribirArchivo(Utils.RutaArchivoErrorSemantico, $"{cantidadLineas} {milisegundos}", true);
+                //Utils.EscribirArchivo(Utils.RutaArchivoErrorSemantico, $"{cantidadLineas} {milisegundos}", true);
 
-                tiemposPromedio = Utils.TiemposPromedioDe(Utils.RutaArchivoErrorSemantico);
-                Utils.RegistrarTiemposPromedio(Utils.RutaArchivoTiempoPromedioErrorSemantico, tiemposPromedio);
+                //tiemposPromedio = Utils.TiemposPromedioDe(Utils.RutaArchivoErrorSemantico);
+                //Utils.RegistrarTiemposPromedio(Utils.RutaArchivoTiempoPromedioErrorSemantico, tiemposPromedio);
 
                 moduloSalida.Mostrar("Error semántico. " + err.Message + "\n", ModuloSalida.SalidaError);
 
@@ -236,10 +236,10 @@ namespace NeoCompiler
             cronometro.Stop();
 
             milisegundos = cronometro.ElapsedMilliseconds;
-            Utils.EscribirArchivo(Utils.RutaArchivoCompilacionExitosa, $"{cantidadLineas} {milisegundos}", true);
+            //Utils.EscribirArchivo(Utils.RutaArchivoCompilacionExitosa, $"{cantidadLineas} {milisegundos}", true);
 
-            tiemposPromedio = Utils.TiemposPromedioDe(Utils.RutaArchivoCompilacionExitosa);
-            Utils.RegistrarTiemposPromedio(Utils.RutaArchivoTiempoPromedioCompilacionExitosa, tiemposPromedio);
+            //tiemposPromedio = Utils.TiemposPromedioDe(Utils.RutaArchivoCompilacionExitosa);
+            //Utils.RegistrarTiemposPromedio(Utils.RutaArchivoTiempoPromedioCompilacionExitosa, tiemposPromedio);
 
             // Llenar tablas de codigo intermedio
             moduloAnalisis.LlenarTriplos(tablasTriplos);
@@ -330,7 +330,7 @@ namespace NeoCompiler
 
             string cSharpSourceCode = parser.ParseToSourceCode();
 
-            MessageBox.Show(cSharpSourceCode);
+            //MessageBox.Show(cSharpSourceCode);
 
             // compilacion de codigo
 

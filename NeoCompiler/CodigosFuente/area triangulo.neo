@@ -1,0 +1,12 @@
+void main() {
+
+    print("Base: ");
+    double base = @d;
+
+    print("Altura: ");
+    double altura = @d;
+
+    double area = (base * altura) / 2;
+    println("Area: " + area);
+
+}

@@ -21,3 +21,25 @@ C:\Users\carp_\source\repos\NeoCompiler\NeoCompiler\obj\Debug\NeoCompiler.csproj
 C:\Users\carp_\source\repos\NeoCompiler\NeoCompiler\obj\Debug\NeoCompiler.exe
 C:\Users\carp_\source\repos\NeoCompiler\NeoCompiler\obj\Debug\NeoCompiler.pdb
 C:\Users\carp_\source\repos\NeoCompiler\NeoCompiler\obj\Debug\NeoCompiler.csprojAssemblyReference.cache
+D:\Projects\Visual Studio\Neo Compiler\NeoCompiler\bin\Debug\NeoCompiler.exe.config
+D:\Projects\Visual Studio\Neo Compiler\NeoCompiler\bin\Debug\NeoCompiler.exe
+D:\Projects\Visual Studio\Neo Compiler\NeoCompiler\bin\Debug\NeoCompiler.pdb
+D:\Projects\Visual Studio\Neo Compiler\NeoCompiler\bin\Debug\ConsoleControl.dll
+D:\Projects\Visual Studio\Neo Compiler\NeoCompiler\bin\Debug\ConsoleControlAPI.dll
+D:\Projects\Visual Studio\Neo Compiler\NeoCompiler\bin\Debug\Irony.dll
+D:\Projects\Visual Studio\Neo Compiler\NeoCompiler\bin\Debug\ConsoleControl.xml
+D:\Projects\Visual Studio\Neo Compiler\NeoCompiler\bin\Debug\ConsoleControlAPI.xml
+D:\Projects\Visual Studio\Neo Compiler\NeoCompiler\obj\Debug\NeoCompiler.csprojAssemblyReference.cache
+D:\Projects\Visual Studio\Neo Compiler\NeoCompiler\obj\Debug\NeoCompiler.Gui.Controles.ControlCodigo.resources
+D:\Projects\Visual Studio\Neo Compiler\NeoCompiler\obj\Debug\NeoCompiler.Gui.Modulos.ModuloConsola.resources
+D:\Projects\Visual Studio\Neo Compiler\NeoCompiler\obj\Debug\NeoCompiler.Gui.Ventanas.VentanaCarga.resources
+D:\Projects\Visual Studio\Neo Compiler\NeoCompiler\obj\Debug\NeoCompiler.VentanaPrincipal.resources
+D:\Projects\Visual Studio\Neo Compiler\NeoCompiler\obj\Debug\NeoCompiler.Gui.Modulos.ModuloAnalisis.resources
+D:\Projects\Visual Studio\Neo Compiler\NeoCompiler\obj\Debug\NeoCompiler.Gui.Modulos.ModuloExplorador.resources
+D:\Projects\Visual Studio\Neo Compiler\NeoCompiler\obj\Debug\NeoCompiler.Gui.Modulos.ModuloSalida.resources
+D:\Projects\Visual Studio\Neo Compiler\NeoCompiler\obj\Debug\NeoCompiler.Gui.Modulos.ModuloCodigo.resources
+D:\Projects\Visual Studio\Neo Compiler\NeoCompiler\obj\Debug\NeoCompiler.Properties.Resources.resources
+D:\Projects\Visual Studio\Neo Compiler\NeoCompiler\obj\Debug\NeoCompiler.csproj.GenerateResource.cache
+D:\Projects\Visual Studio\Neo Compiler\NeoCompiler\obj\Debug\NeoCompiler.csproj.CopyComplete
+D:\Projects\Visual Studio\Neo Compiler\NeoCompiler\obj\Debug\NeoCompiler.exe
+D:\Projects\Visual Studio\Neo Compiler\NeoCompiler\obj\Debug\NeoCompiler.pdb

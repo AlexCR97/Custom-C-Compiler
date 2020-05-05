@@ -1,0 +1,22 @@
+void main() {
+
+    print("Ingresa un int: ");
+    int a = @i;
+    println(a);
+
+    print("Ingresa un float: ");
+    float b = @f;
+    println(b);
+
+    print("Ingresa un double: ");
+    double c = @d;
+    println(c);
+
+    print("Ingresa un bool: ");
+    bool d = @b;
+    println(d);
+
+    print("Ingresa un string: ");
+    string e = @s;
+    println(e);
+}

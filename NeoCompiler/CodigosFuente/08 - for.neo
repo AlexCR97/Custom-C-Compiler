@@ -1,0 +1,12 @@
+void main() {
+
+    print("Ingresa un numero para ver su tabla de multiplicacion: ");
+    int numero = @i;
+    int n = 10;
+
+    for (int i = 1; i <= n; i = i + 1) {
+        int resultado = numero * i;
+        println("" + numero + " * " + i + " = " + resultado + "");
+    }
+
+}

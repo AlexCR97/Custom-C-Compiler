@@ -1,0 +1,12 @@
+void main() {
+    
+    print("a = ");
+    int a = @i;
+
+    print("b = ");
+    int b = @i;
+
+    int c = a + b;
+    println("c = " + c);
+    
+}

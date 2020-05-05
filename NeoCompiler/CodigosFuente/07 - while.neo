@@ -1,0 +1,22 @@
+void main() {
+
+    int numero = 42;
+    println("Estoy pensando en un numero...");
+
+    int adivina = 0;
+
+    while (adivina != numero) {
+        print("En que numero estoy pensando? ");
+        adivina = @i;
+
+        if (adivina != numero) {
+            if (adivina > numero) {
+                println("El numero que estoy pensando es menor a " + adivina);
+            } else {
+                println("El numero que estoy pensando es mayor a " + adivina);
+            }
+        }
+    }
+
+    println("¡Ganaste! Estaba pensando en el numero " + numero);
+}

@@ -17,8 +17,8 @@ namespace NeoCompiler
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new VentanaCarga());
-            //Application.Run(new VentanaPrincipal());
+            //Application.Run(new VentanaCarga());
+            Application.Run(new VentanaPrincipal());
         }
     }
 }
